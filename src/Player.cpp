@@ -6,6 +6,7 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -33,25 +34,35 @@ void Player::clean(){
 	SDLGameObject::clean();
 }
 
+double dot(Vector2D a, Vector2D b){
+	return a.getX()*b.getX() + a.getY()*b.getY();
+}
+
+double otoDot(Vector2D a){
+	return sqrt(a.getX() * a.getX() + a.getY() * a.getY());
+}
+
 void Player::handleInput(){
-	if(InputHandler::Instance().joysticksInitialised()){
-		int t_x = InputHandler::Instance().xvalue(0,1);
-		int t_y = InputHandler::Instance().yvalue(0,1);
+	Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
 
-		Vector2D velocity(t_x, t_y);
-		velocity = velocity.norm();
+	target = target.norm();
 
-		int boost = 1;
-	
-		if(InputHandler::Instance().getButtonState(0, 0)){
-				boost = 3;
-		}
+	Vector2D horizontal(-1,0);
 
-		m_velocity.setX(boost * velocity.getX());
-		m_velocity.setY(boost * velocity.getY());		
+	double angle = dot(target, horizontal);
+	angle /= otoDot(target);
+	angle = acos(angle);
+
+	angle = angle * 180.0 / acos(-1);
+
+	target = InputHandler::Instance().getMousePosition() - m_position;
+
+	if(target.getY() > 0){
+		m_angle = 360 - angle;
+	} else {
+		m_angle = angle;
 	}
 
-	Vector2D target = InputHandler::Instance().getMousePosition();
-	m_velocity = target - m_position;
-	m_velocity /= 50;
+	//std::cout << angle << std::endl;
+
 }

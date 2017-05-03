@@ -14,6 +14,7 @@ void SDLGameObject::load(const LoaderParams *pParams){
 	m_currentRow = 1;
 	m_currentFrame = 1;
 	m_numFrames = pParams->getNumFrames();
+	m_angle = pParams->getAngle();
 }
 
 void SDLGameObject::draw(){
@@ -21,9 +22,9 @@ void SDLGameObject::draw(){
 	int y = (int) m_position.getY();
 
 	if(m_velocity.getX() > 0){
-		TextureManager::Instance().drawFrame(m_textureID, x, y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance().getRenderer(), SDL_FLIP_HORIZONTAL);
+		TextureManager::Instance().drawFrame(m_textureID, x, y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance().getRenderer(), SDL_FLIP_HORIZONTAL, m_angle);
 	} else {
-		TextureManager::Instance().drawFrame(m_textureID, x, y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance().getRenderer());
+		TextureManager::Instance().drawFrame(m_textureID, x, y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance().getRenderer(), SDL_FLIP_NONE, m_angle );
 	}
 }
 

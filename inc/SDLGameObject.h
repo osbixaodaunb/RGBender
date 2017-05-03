@@ -50,6 +50,7 @@ protected:
 
 	std::string m_textureID;
 
+	double m_angle;
 };
 
 #endif
