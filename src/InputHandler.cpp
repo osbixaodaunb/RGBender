@@ -3,6 +3,7 @@
 #include <SDL2/SDL.h>
 #include <iostream>
 
+#include "Timer.h"
 #include "Game.h"
 
 using namespace std;
@@ -113,6 +114,23 @@ int InputHandler::yvalue(int joy, int stick){
 bool InputHandler::isKeyDown(SDL_Scancode key){
 	if(m_keystates != 0){
 		return m_keystates[key] == 1;
+	}
+
+	return false;
+}
+
+bool InputHandler::isKeyDown(SDL_Scancode key, Uint32 time){
+	if(m_keystates != 0){
+		if(m_keystates[key] == 1 ){
+			if(m_times[key] == 0){
+				m_times[key] = Timer::Instance().step() + time;
+				return true;
+			} else if(Timer::Instance().step() <= m_times[key]){
+				return false;
+			} else {
+				m_times[key] = 0;
+			}
+		}
 	}
 
 	return false;

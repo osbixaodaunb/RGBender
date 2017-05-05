@@ -24,6 +24,11 @@ public:
 		m_textureMap.erase(id);
 	}
 
+	void changeColorPixels(uint8_t* pixelColors){
+		SDL_Texture* pTexture = m_textureMap["helicopter"];
+		SDL_SetTextureColorMod( pTexture, pixelColors[0],pixelColors[1], pixelColors[2] );
+	}
+
 private:
 	std::map<std::string, SDL_Texture*> m_textureMap;
 	TextureManager() { }

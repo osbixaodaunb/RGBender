@@ -18,6 +18,9 @@ public:
 
 	virtual ~GameState() {}
 
+	void addGameObject(GameObject* gameObject){
+		m_gameObjects.push_back(gameObject);
+	}
 	// COISA MAIS MIGUE QUE UE JA FIZ NA MINHA VIDA
 	bool can_update = true;
 protected:

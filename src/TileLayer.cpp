@@ -40,7 +40,6 @@ void TileLayer::render(){
 			}
 			Tileset tileset = getTilesetByID(id);
 			id--;
-
 			TextureManager::Instance().drawTile(tileset.name, 2, 2, (j * m_tileSize) - x2, 
 					(i * m_tileSize) - y2, m_tileSize, m_tileSize, 
 					(id - (tileset.firstGridID - 1)) / tileset.numColumns, 

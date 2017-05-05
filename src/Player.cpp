@@ -1,7 +1,10 @@
+
 #include "Player.h"
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
+#include "Bullet.h"
+#include "Game.h"
 
 #include <string>
 #include <SDL2/SDL.h>
@@ -11,8 +14,9 @@
 using namespace std;
 
 Player::Player() : SDLGameObject(){
-	m_timer.setTime(0);
-	m_canDash = true;
+	TextureManager::Instance().load("assets/bullets.png", "bullet", Game::Instance().getRenderer());
+
+	bullet = new Bullet();
 }
 
 void Player::load(const LoaderParams* pParams){
@@ -46,12 +50,18 @@ double otoDot(Vector2D a){
 void Player::handleInput(){
 	rotateTowards();
 	move();
-	//std::cout << angle << std::endl;
-}
+	useSkill();
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_V, 500)){
 
+		Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
+		target = target.norm();
+
+		bullet->load(new LoaderParams(m_position.getX(), m_position.getY(), m_width, m_height, "bullet", 1), target);
+		Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
+	}
+}
 void Player::rotateTowards(){
 	Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
-
 	target = target.norm();
 
 	Vector2D horizontal(-1,0);
@@ -93,27 +103,51 @@ void Player::move(){
 
 	move = move.norm();
 
-	m_velocity = move;
-	m_position += m_velocity;
+	if(!m_isDashing){
+		m_velocity = move;
+	}
+
 
 	dash();
+	m_position += m_velocity;
+}
+
+void Player::useSkill(){
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_1, 200)){
+		m_skillManager.setSkillPair(&m_pSkills, RED, &isFirstSkill);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_2, 200)){
+		m_skillManager.setSkillPair(&m_pSkills, GREEN, &isFirstSkill);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_3, 200)){
+		m_skillManager.setSkillPair(&m_pSkills, BLUE, &isFirstSkill);
+	}
+
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_X, 200)){
+		if(m_pSkills.first != BLANK and m_pSkills.second != BLANK){
+			pixelColors = m_skillManager.getSkill(m_pSkills)();
+			TheTextureManager::Instance().changeColorPixels(pixelColors);
+		}
+		m_pSkills.first = BLANK;
+		m_pSkills.second = BLANK;
+		isFirstSkill = true;
+		std::cout << "APERTE O X, N EH PARA APARECER NADA" << std::endl;
+	}
 }
 
 void Player::dash(){
-	bool dashPressed = false;
-	if(m_canDash){
-		dashPressed = InputHandler::Instance().isKeyDown(SDL_SCANCODE_SPACE);
-		if(dashPressed and m_canDash){
-			m_position += (m_velocity * 5);
-			m_timer.start();
-			m_canDash = false;
-		}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_SPACE, 1000)){
+		m_dashTime = Timer::Instance().step();
+		m_velocity = (m_velocity.norm() * 5);
+		m_isDashing = true;
 	}
-	else{
-		if(m_timer.getTime() >= 2){
-			m_timer.reset();
-			m_canDash = true;
-		}
+
+	if(m_isDashing && Timer::Instance().step() >= m_dashTime + 100){
+		m_isDashing = false;
 	}
 	
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="15" tilewidth="32" tileheight="32" nextobjectid="3">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="60" height="15" tilewidth="32" tileheight="32" nextobjectid="4">
  <properties>
-  <property name="helicopter" value="assets/helicopter.png"/>
+  <property name="helicopter" value="assets/HLD.png"/>
  </properties>
- <tileset firstgid="1" name="tileset1" tilewidth="32" tileheight="32" spacing="2" margin="2">
+ <tileset firstgid="1" name="tileset1" tilewidth="32" tileheight="32" spacing="2" margin="2" tilecount="198">
   <image source="blocks1.png" width="614" height="376"/>
  </tileset>
  <layer name="Tile Layer 1" width="60" height="15">
@@ -14,10 +14,10 @@
  <objectgroup name="Object Layer 1">
   <object id="1" name="Helicopter1" type="Player" x="221" y="224" width="1" height="1">
    <properties>
-    <property name="numFrames" value="4"/>
-    <property name="textureHeight" value="55"/>
+    <property name="numFrames" value="12"/>
+    <property name="textureHeight" value="50"/>
     <property name="textureID" value="helicopter"/>
-    <property name="textureWidth" value="128"/>
+    <property name="textureWidth" value="32"/>
    </properties>
   </object>
  </objectgroup>
