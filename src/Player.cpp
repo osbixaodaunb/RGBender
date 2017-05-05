@@ -1,3 +1,5 @@
+		//
+		//
 #include "Player.h"
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
@@ -63,6 +65,29 @@ void Player::handleInput(){
 		m_angle = angle;
 	}
 
-	//std::cout << angle << std::endl;
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_1)){
+		m_skillManager.setSkillPair(&m_pSkills, RED, &isFirstSkill);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_2)){
+		m_skillManager.setSkillPair(&m_pSkills, GREEN, &isFirstSkill);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_3)){
+		m_skillManager.setSkillPair(&m_pSkills, BLUE, &isFirstSkill);
+	}
+
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_X)){
+		std::cout << "TANTO FAZ" << std::endl;
+		if(m_pSkills.first != BLANK and m_pSkills.second != BLANK){
+			pixelColors = m_skillManager.getSkill(m_pSkills)();
+			TheTextureManager::Instance().changeColorPixels(pixelColors);
+		}
+		m_pSkills.first = BLANK;
+		m_pSkills.second = BLANK;
+		isFirstSkill = true;
+
+	}
 
 }
