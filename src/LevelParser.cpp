@@ -134,9 +134,7 @@ void LevelParser::parseTextures(TiXmlElement* root){
 
 void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Layer*> *pLayers){
 	ObjectLayer* pObjectLayer = new ObjectLayer();
-	std::cout << pObjectElement->FirstChildElement()->Value();
 	for(TiXmlElement* e = pObjectElement->FirstChildElement(); e != NULL; e = e->NextSiblingElement()){
-		std::cout << e->Value();
 		if(e->Value() == std::string("object")){
 			int x, y, width, height, numFrames, callbackID, animSpeed;
 			std::string textureID;
@@ -166,6 +164,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 						}
 					}
 				}
+				
 			pGameObject->load(new
 			LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed));
 			pObjectLayer->getGameObjects()->push_back(pGameObject);

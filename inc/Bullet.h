@@ -31,7 +31,7 @@ public:
 private:
 	double rotateTowards(Vector2D);
 
-	int m_moveSpeed = 1;
+	int m_moveSpeed;
 
 	Uint32 timeToLive;
 	Uint32 bornTime;

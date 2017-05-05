@@ -3,7 +3,6 @@
 
 void Timer::start(){
 	m_time = SDL_GetTicks();
-	std::cout << m_time << std::endl;
 }
 
 Uint32 Timer::step(){

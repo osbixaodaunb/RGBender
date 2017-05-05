@@ -14,7 +14,7 @@ Bullet::~Bullet(){
 }
 
 Bullet::Bullet() : SDLGameObject(){
-	timeToLive = 3000;
+	timeToLive = 1000;
 	m_active = true;
 }
 
@@ -47,7 +47,6 @@ double Bullet::rotateTowards(Vector2D pPosition){
 	target = InputHandler::Instance().getMousePosition() - pPosition;
 
 	if(target.getX() > 0){
-		std::cout << "Primeiro\n";
 		return 360 - angle;
 	} else {
 		return angle;
@@ -56,8 +55,8 @@ double Bullet::rotateTowards(Vector2D pPosition){
 void Bullet::load(Vector2D pVelocity, Vector2D pPosition){
 	double angle = rotateTowards(pPosition);
 
+	m_moveSpeed = 5;
 	angle += 180;
-
 	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 100, 357, "bullet", 0, 0, 0, angle);
 	SDLGameObject::load(pParams);
 
@@ -74,7 +73,6 @@ void Bullet::update(){
 	m_position += m_velocity;
 
 	if(Timer::Instance().step() >= bornTime + timeToLive){
-		std::cout << "Ficou inativo\n";
 		m_active = false;
 		Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
 	}

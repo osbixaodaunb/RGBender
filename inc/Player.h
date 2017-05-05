@@ -4,6 +4,7 @@
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
 #include "BaseCreator.h"
+#include "SkillManager.h"
 #include "Timer.h"
 #include "Bullet.h"
 
@@ -19,12 +20,18 @@ public:
 	void draw();
 	void update();
 	void clean();
-
+	typedef uint8_t*(*Callback) ();
+	uint8_t* pixelColors;
 private:
 	void handleInput();
+	SkillManager m_skillManager;
+	std::pair<default_inks, default_inks> m_pSkills;
+	std::map<std::pair<default_inks, default_inks>, Callback> mapSkill;
+	bool isFirstSkill = true;
 	void move();
 	void rotateTowards();
 	void dash();
+	void useSkill();
 	bool m_isDashing;
 	Uint32 m_dashTime;
 

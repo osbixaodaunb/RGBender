@@ -1,3 +1,4 @@
+
 #include "Player.h"
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
@@ -48,35 +49,37 @@ void Player::handleInput(){
 	rotateTowards();
 	move();
 
-	//std::cout << m_position.getX() << " " << m_position.getY() << std::endl;
-
+	useSkill();
 	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_V, 500)){
-		Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
+		Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
+
+		Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
 		target = target.norm();
 		Bullet *bullet =  bulletCreator.create();
-		bullet->load(target, m_position);
+		bullet->load(target, Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY()));
 		Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
 	}
 }
-
 void Player::rotateTowards(){
-	Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
+	Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
+
+	Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
 	target = target.norm();
 
-	Vector2D horizontal(-1,0);
+	Vector2D horizontal(0,1);
 
 	double angle = dot(target, horizontal);
-	angle /= otoDot(target);
+	angle /= otoDot(target) * otoDot(horizontal);
 	angle = acos(angle);
 
 	angle = angle * 180.0 / acos(-1);
 
-	target = InputHandler::Instance().getMousePosition() - m_position;
+	target = InputHandler::Instance().getMousePosition() - pivot;
 
-	if(target.getY() > 0){
-		m_angle = 360 - angle;
+	if(target.getX() > 0){
+		m_angle = 360 - angle + 180;
 	} else {
-		m_angle = angle;
+		m_angle = angle + 180;
 	}
 }
 
@@ -106,8 +109,34 @@ void Player::move(){
 		m_velocity = move;
 	}
 
+
 	dash();
 	m_position += m_velocity;
+}
+
+void Player::useSkill(){
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_1, 200)){
+		m_skillManager.setSkillPair(&m_pSkills, RED, &isFirstSkill);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_2, 200)){
+		m_skillManager.setSkillPair(&m_pSkills, GREEN, &isFirstSkill);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_3, 200)){
+		m_skillManager.setSkillPair(&m_pSkills, BLUE, &isFirstSkill);
+	}
+
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_X, 200)){
+		if(m_pSkills.first != BLANK and m_pSkills.second != BLANK){
+			pixelColors = m_skillManager.getSkill(m_pSkills)();
+			TheTextureManager::Instance().changeColorPixels(pixelColors);
+		}
+		m_pSkills.first = BLANK;
+		m_pSkills.second = BLANK;
+		isFirstSkill = true;
+	}
 }
 
 void Player::dash(){
@@ -121,5 +150,5 @@ void Player::dash(){
 	if(m_isDashing && Timer::Instance().step() >= m_dashTime + 100){
 		m_isDashing = false;
 	}
-
+	
 }

@@ -19,7 +19,7 @@ Tileset TileLayer::getTilesetByID(int tileID){
 
 void TileLayer::update(){
 	m_position += m_velocity;
-	m_velocity.setX(1);
+	//	m_velocity.setX(1);
 }
 
 void TileLayer::render(){
@@ -40,7 +40,6 @@ void TileLayer::render(){
 			}
 			Tileset tileset = getTilesetByID(id);
 			id--;
-
 			TextureManager::Instance().drawTile(tileset.name, 2, 2, (j * m_tileSize) - x2, 
 					(i * m_tileSize) - y2, m_tileSize, m_tileSize, 
 					(id - (tileset.firstGridID - 1)) / tileset.numColumns, 
