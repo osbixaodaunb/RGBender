@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="2">
+ <properties>
+  <property name="helicopter" value="assets/player-topdown.png"/>
+ </properties>
+ <tileset firstgid="1" name="tibiasheet" tilewidth="32" tileheight="32" spacing="2" margin="2" tilecount="256">
+  <image source="tibiasheet.png" width="544" height="544"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="20" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzzY2Bg+ArF/mRimH4/IL5GgTno+AoS24oCc3DpvUGGWTep6D964e9A/AOIf9JJ33DDIy38Rpp/YZia5QEtyitqYD8qmwUAExGMxQ==
+  </data>
+ </layer>
+ <objectgroup name="Object Layer 1">
+  <object id="1" name="Helicopter1" type="Player" x="302" y="531">
+   <properties>
+    <property name="numFrames" value="7"/>
+    <property name="textureHeight" value="150"/>
+    <property name="textureID" value="helicopter"/>
+    <property name="textureWidth" value="150"/>
+   </properties>
+  </object>
+ </objectgroup>
+</map>

@@ -4,6 +4,7 @@
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
 #include "BaseCreator.h"
+
 #include "SkillManager.h"
 #include "Bullet.h"
 #include "Timer.h"

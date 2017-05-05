@@ -52,15 +52,14 @@ void Player::handleInput(){
 	move();
 	useSkill();
 	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_V, 500)){
-		
+
 		Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
 		target = target.norm();
 
 		bullet->load(new LoaderParams(m_position.getX(), m_position.getY(), m_width, m_height, "bullet", 1), target);
-		Game::Instance().Instance().getStateMachine()->currentState()->addGameObject(bullet);
+		Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
 	}
 }
-
 void Player::rotateTowards(){
 	Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
 	target = target.norm();
@@ -150,5 +149,5 @@ void Player::dash(){
 	if(m_isDashing && Timer::Instance().step() >= m_dashTime + 100){
 		m_isDashing = false;
 	}
-
+	
 }
