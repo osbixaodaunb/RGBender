@@ -1,3 +1,4 @@
+
 #include "Player.h"
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
@@ -49,7 +50,7 @@ double otoDot(Vector2D a){
 void Player::handleInput(){
 	rotateTowards();
 	move();
-
+	useSkill();
 	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_V, 500)){
 		
 		Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
@@ -107,8 +108,35 @@ void Player::move(){
 		m_velocity = move;
 	}
 
+
 	dash();
 	m_position += m_velocity;
+}
+
+void Player::useSkill(){
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_1, 200)){
+		m_skillManager.setSkillPair(&m_pSkills, RED, &isFirstSkill);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_2, 200)){
+		m_skillManager.setSkillPair(&m_pSkills, GREEN, &isFirstSkill);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_3, 200)){
+		m_skillManager.setSkillPair(&m_pSkills, BLUE, &isFirstSkill);
+	}
+
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_X, 200)){
+		if(m_pSkills.first != BLANK and m_pSkills.second != BLANK){
+			pixelColors = m_skillManager.getSkill(m_pSkills)();
+			TheTextureManager::Instance().changeColorPixels(pixelColors);
+		}
+		m_pSkills.first = BLANK;
+		m_pSkills.second = BLANK;
+		isFirstSkill = true;
+		std::cout << "APERTE O X, N EH PARA APARECER NADA" << std::endl;
+	}
 }
 
 void Player::dash(){

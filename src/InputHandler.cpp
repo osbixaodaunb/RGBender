@@ -129,7 +129,6 @@ bool InputHandler::isKeyDown(SDL_Scancode key, Uint32 time){
 				return false;
 			} else {
 				m_times[key] = 0;
-				return true;
 			}
 		}
 	}
