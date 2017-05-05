@@ -1,9 +1,10 @@
-		//
-		//
+
 #include "Player.h"
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
+#include "Bullet.h"
+#include "Game.h"
 
 #include <string>
 #include <SDL2/SDL.h>
@@ -13,7 +14,9 @@
 using namespace std;
 
 Player::Player() : SDLGameObject(){
+	TextureManager::Instance().load("assets/bullets.png", "bullet", Game::Instance().getRenderer());
 
+	bullet = new Bullet();
 }
 
 void Player::load(const LoaderParams* pParams){
@@ -45,8 +48,21 @@ double otoDot(Vector2D a){
 }
 
 void Player::handleInput(){
-	Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
+	rotateTowards();
+	move();
+	useSkill();
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_V, 500)){
+		
+		Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
+		target = target.norm();
 
+		bullet->load(new LoaderParams(m_position.getX(), m_position.getY(), m_width, m_height, "bullet", 1), target);
+		Game::Instance().Instance().getStateMachine()->currentState()->addGameObject(bullet);
+	}
+}
+
+void Player::rotateTowards(){
+	Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
 	target = target.norm();
 
 	Vector2D horizontal(-1,0);
@@ -64,7 +80,40 @@ void Player::handleInput(){
 	} else {
 		m_angle = angle;
 	}
+}
 
+void Player::move(){
+	Vector2D move(0, 0);
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_W)){
+		move += Vector2D(0, -1);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_S)){
+		move += Vector2D(0, +1);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_D)){
+		move += Vector2D(1, 0);
+	}
+
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_A)){
+		move += Vector2D(-1, 0);
+	}
+
+	move = move.norm();
+
+	if(!m_isDashing){
+		m_velocity = move;
+	}
+
+
+	dash();
+	m_position += m_velocity;
+}
+
+void Player::useSkill(){
 	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_1)){
 		m_skillManager.setSkillPair(&m_pSkills, RED, &isFirstSkill);
 	}
@@ -87,7 +136,19 @@ void Player::handleInput(){
 		m_pSkills.first = BLANK;
 		m_pSkills.second = BLANK;
 		isFirstSkill = true;
+	}
+}
 
+void Player::dash(){
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_SPACE, 1000)){
+		m_dashTime = Timer::Instance().step();
+		m_velocity = (m_velocity.norm() * 5);
+		m_isDashing = true;
+	}
+
+	if(m_isDashing && Timer::Instance().step() >= m_dashTime + 100){
+		m_isDashing = false;
 	}
 
 }

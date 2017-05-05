@@ -13,6 +13,10 @@ public:
 	void update();
 	void render();
 
+	GameState* currentState(){
+		return m_gameStates.back();
+	}
+
 private:
 	std::vector<GameState*> m_gameStates;
 };
