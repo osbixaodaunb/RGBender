@@ -6,8 +6,7 @@
 
 void GameState::update(){
 	for(auto gameObject : m_gameObjects){
-		if(can_update)
-			gameObject->update();
+		gameObject->update();
 	}
 }
 

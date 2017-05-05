@@ -2,6 +2,7 @@
 
 #include <SDL2/SDL_image.h>
 #include <string>
+#include <iostream>
 
 bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pRenderer){
 	SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
@@ -43,6 +44,7 @@ void TextureManager::draw(std::string id, int x, int y, int width, int height,
 void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, 
 							   int currentRow, int currentFrame, SDL_Renderer* pRenderer, 
 							   SDL_RendererFlip flip, double angle){
+
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
 	srcRect.x = width * currentFrame;
@@ -51,6 +53,11 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 	srcRect.h = destRect.h = height;
 	destRect.x = x;
 	destRect.y = y;
+
+	if(id == "bullet"){
+		destRect.w = destRect.w/10;
+		destRect.h = destRect.h/10;
+	}
 
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, angle, 0, flip);
 }

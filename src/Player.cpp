@@ -13,9 +13,7 @@
 using namespace std;
 
 Player::Player() : SDLGameObject(){
-	TextureManager::Instance().load("assets/bullets.png", "bullet", Game::Instance().getRenderer());
-
-	bullet = new Bullet();
+	TextureManager::Instance().load("assets/clash2.png", "bullet", Game::Instance().getRenderer());
 }
 
 void Player::load(const LoaderParams* pParams){
@@ -50,13 +48,14 @@ void Player::handleInput(){
 	rotateTowards();
 	move();
 
+	//std::cout << m_position.getX() << " " << m_position.getY() << std::endl;
+
 	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_V, 500)){
-		
 		Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
 		target = target.norm();
-
-		bullet->load(new LoaderParams(m_position.getX(), m_position.getY(), m_width, m_height, "bullet", 1), target);
-		Game::Instance().Instance().getStateMachine()->currentState()->addGameObject(bullet);
+		Bullet *bullet =  bulletCreator.create();
+		bullet->load(target, m_position);
+		Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
 	}
 }
 

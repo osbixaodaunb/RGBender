@@ -3,6 +3,7 @@
 
 #include "GameObject.h"
 
+#include <algorithm>
 #include <string>
 #include <vector>
 
@@ -20,6 +21,13 @@ public:
 
 	void addGameObject(GameObject* gameObject){
 		m_gameObjects.push_back(gameObject);
+	}
+
+	void removeGameObject(GameObject* gameObject){
+		std::vector<GameObject*>::iterator position = std::find(m_gameObjects.begin(), m_gameObjects.end(), gameObject);
+		if(position != m_gameObjects.end()){
+			m_gameObjects.erase(position);
+		}
 	}
 	// COISA MAIS MIGUE QUE UE JA FIZ NA MINHA VIDA
 	bool can_update = true;

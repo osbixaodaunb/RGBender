@@ -4,8 +4,10 @@
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
 #include "BaseCreator.h"
-#include "Bullet.h"
 #include "Timer.h"
+#include "Bullet.h"
+
+#include <vector>
 #include <string>
 #include <SDL2/SDL.h>
 
@@ -26,9 +28,7 @@ private:
 	bool m_isDashing;
 	Uint32 m_dashTime;
 
-	bool teste = true;
-	Bullet *bullet;
-
+	BulletCreator bulletCreator;
 };
 
 class PlayerCreator : public BaseCreator{
