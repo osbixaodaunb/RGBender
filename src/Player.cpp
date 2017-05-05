@@ -43,6 +43,12 @@ double otoDot(Vector2D a){
 }
 
 void Player::handleInput(){
+	rotateTowards();
+	move();
+	//std::cout << angle << std::endl;
+}
+
+void Player::rotateTowards(){
 	Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
 
 	target = target.norm();
@@ -62,7 +68,30 @@ void Player::handleInput(){
 	} else {
 		m_angle = angle;
 	}
+}
 
-	//std::cout << angle << std::endl;
+void Player::move(){
+	Vector2D move(0, 0);
 
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_W)){
+		move += Vector2D(0, -1);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_S)){
+		move += Vector2D(0, +1);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_D)){
+		move += Vector2D(1, 0);
+	}
+
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_A)){
+		move += Vector2D(-1, 0);
+	}
+
+	move = move.norm();
+
+	m_velocity = move;
+	m_position += m_velocity;
 }

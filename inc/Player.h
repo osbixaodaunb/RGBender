@@ -19,6 +19,8 @@ public:
 
 private:
 	void handleInput();
+	void move();
+	void rotateTowards();
 
 };
 
