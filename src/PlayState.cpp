@@ -51,7 +51,7 @@ bool PlayState::onEnter(){
 	//stateParser.parseState("test.xml", s_playID, &m_gameObjects, &m_textureIDList);
 
 	LevelParser levelParser;
-	pLevel = levelParser.parseLevel("assets/tileset1.tmx");
+	pLevel = levelParser.parseLevel("assets/mapadoidao.tmx");
 
 	cout <<	"Entering PlayState" << endl;
 	return true;

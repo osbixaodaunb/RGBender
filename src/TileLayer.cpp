@@ -19,7 +19,7 @@ Tileset TileLayer::getTilesetByID(int tileID){
 
 void TileLayer::update(){
 	m_position += m_velocity;
-	m_velocity.setX(1);
+	//	m_velocity.setX(1);
 }
 
 void TileLayer::render(){
