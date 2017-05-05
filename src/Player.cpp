@@ -11,7 +11,6 @@
 using namespace std;
 
 Player::Player() : SDLGameObject(){
-	m_timer.setTime(0);
 	m_canDash = true;
 }
 
@@ -93,27 +92,26 @@ void Player::move(){
 
 	move = move.norm();
 
-	m_velocity = move;
-	m_position += m_velocity;
+	if(m_canDash){
+		m_velocity = move;
+	}
 
 	dash();
+	m_position += m_velocity;
 }
 
 void Player::dash(){
+
 	bool dashPressed = false;
 	if(m_canDash){
 		dashPressed = InputHandler::Instance().isKeyDown(SDL_SCANCODE_SPACE);
 		if(dashPressed and m_canDash){
-			m_position += (m_velocity * 5);
-			m_timer.start();
+			m_velocity += (m_velocity * 5);
 			m_canDash = false;
+			m_dashTime = Timer::Instance().step();
 		}
 	}
-	else{
-		if(m_timer.getTime() >= 2){
-			m_timer.reset();
+	else if(Timer::Instance().step() >= m_dashTime + 100){
 			m_canDash = true;
 		}
-	}
-	
 }

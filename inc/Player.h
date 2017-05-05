@@ -23,8 +23,8 @@ private:
 	void move();
 	void rotateTowards();
 	void dash();
-	Timer m_timer;
 	bool m_canDash;
+	Uint32 m_dashTime;
 
 };
 
