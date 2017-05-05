@@ -2,6 +2,8 @@
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
+#include "Bullet.h"
+#include "Game.h"
 
 #include <string>
 #include <SDL2/SDL.h>
@@ -11,7 +13,10 @@
 using namespace std;
 
 Player::Player() : SDLGameObject(){
+	TextureManager::Instance().load("assets/bullets.png", "bullet", Game::Instance().getRenderer());
 
+	bullet = new Bullet();
+	m_canDash = true;
 }
 
 void Player::load(const LoaderParams* pParams){
@@ -43,8 +48,25 @@ double otoDot(Vector2D a){
 }
 
 void Player::handleInput(){
-	Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
+	rotateTowards();
+	move();
 
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_V, 1000)){
+		
+		Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
+		target = target.norm();
+
+		bullet->load(new LoaderParams(m_position.getX(), m_position.getY(), m_width, m_height, "bullet", 1), target);
+		Game::Instance().Instance().getStateMachine()->currentState()->addGameObject(bullet);
+	}
+
+	//std::cout << angle << std::endl;
+}
+
+void Player::rotateTowards(){
+	std::cout << InputHandler::Instance().getMousePosition().getX() << std::endl;
+
+	Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
 	target = target.norm();
 
 	Vector2D horizontal(-1,0);
@@ -62,7 +84,50 @@ void Player::handleInput(){
 	} else {
 		m_angle = angle;
 	}
+}
 
-	//std::cout << angle << std::endl;
+void Player::move(){
+	Vector2D move(0, 0);
 
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_W)){
+		move += Vector2D(0, -1);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_S)){
+		move += Vector2D(0, +1);
+	}
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_D)){
+		move += Vector2D(1, 0);
+	}
+
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_A)){
+		move += Vector2D(-1, 0);
+	}
+
+	move = move.norm();
+
+	if(m_canDash){
+		m_velocity = move;
+	}
+
+	dash();
+	m_position += m_velocity;
+}
+
+void Player::dash(){
+
+	bool dashPressed = false;
+	if(m_canDash){
+		dashPressed = InputHandler::Instance().isKeyDown(SDL_SCANCODE_SPACE);
+		if(dashPressed and m_canDash){
+			m_velocity = (m_velocity * 5);
+			m_canDash = false;
+			m_dashTime = Timer::Instance().step();
+		}
+	}
+	else if(Timer::Instance().step() >= m_dashTime + 100){
+			m_canDash = true;
+		}
 }

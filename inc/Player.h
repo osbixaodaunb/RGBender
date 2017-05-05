@@ -4,7 +4,8 @@
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
 #include "BaseCreator.h"
-
+#include "Bullet.h"
+#include "Timer.h"
 #include <string>
 #include <SDL2/SDL.h>
 
@@ -19,6 +20,14 @@ public:
 
 private:
 	void handleInput();
+	void move();
+	void rotateTowards();
+	void dash();
+	bool m_canDash;
+	Uint32 m_dashTime;
+
+	bool teste = true;
+	Bullet *bullet;
 
 };
 

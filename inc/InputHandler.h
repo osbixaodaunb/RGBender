@@ -3,6 +3,8 @@
 
 #include <SDL2/SDL.h>
 #include <vector>
+#include <unordered_map>
+#include <iostream>
 
 #include "Vector2D.h"
 
@@ -41,10 +43,12 @@ public:
 	}
 
 	Vector2D getMousePosition(){
+		std::cout << m_mousePosition.getX() << " " << m_mousePosition.getY() << std::endl;
 		return m_mousePosition;
 	}
 
 	bool isKeyDown(SDL_Scancode key);
+	bool isKeyDown(SDL_Scancode key, Uint32 time);
 	bool getMouseButtonState(mouse_buttons p_button){
 		return m_mouseButtonStates[p_button];
 	}
@@ -54,6 +58,7 @@ private:
 	InputHandler();
 
 	const Uint8* m_keystates;
+	std::unordered_map<Uint8, Uint32> m_times;
 
 	Vector2D m_mousePosition;
 
