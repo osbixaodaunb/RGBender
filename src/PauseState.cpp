@@ -13,7 +13,6 @@
 const std::string PauseState::s_pauseID = "PAUSE";
 
 void PauseState::s_pauseToMain(){
-	Game::Instance().getStateMachine()->popState();
 	Game::Instance().getStateMachine()->changeState(new MainMenuState());
 }
 

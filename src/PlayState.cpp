@@ -27,9 +27,16 @@ void PlayState::update(){
 	//	Game::Instance().getStateMachine()->pushState(new PauseState());
 	//}
 
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_P))
+		Game::Instance().getStateMachine()->pushState(new PauseState());
+
 	GameState::update();
 	if(pLevel != NULL)
 		pLevel->update();
+
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_Q)){
+		Game::Instance().getStateMachine()->pushState(new GameOverState());
+	}
 
 	//if(checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[0]), dynamic_cast<SDLGameObject*>(m_gameObjects[1]))){
 	//	Game::Instance().getStateMachine()->pushState(new GameOverState());

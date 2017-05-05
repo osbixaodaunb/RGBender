@@ -10,6 +10,7 @@ Enemy::Enemy() : SDLGameObject(){
 	m_totalHealth = 1000;
 	m_actualHealth = m_totalHealth;
 	m_state = FULL;
+	
 }
 
 void Enemy::load(const LoaderParams* pParams){
