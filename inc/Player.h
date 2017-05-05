@@ -23,7 +23,7 @@ private:
 	void move();
 	void rotateTowards();
 	void dash();
-	bool m_canDash;
+	bool m_isDashing;
 	Uint32 m_dashTime;
 
 	bool teste = true;

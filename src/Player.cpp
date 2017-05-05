@@ -16,7 +16,6 @@ Player::Player() : SDLGameObject(){
 	TextureManager::Instance().load("assets/bullets.png", "bullet", Game::Instance().getRenderer());
 
 	bullet = new Bullet();
-	m_canDash = true;
 }
 
 void Player::load(const LoaderParams* pParams){
@@ -51,7 +50,7 @@ void Player::handleInput(){
 	rotateTowards();
 	move();
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_V, 1000)){
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_V, 500)){
 		
 		Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
 		target = target.norm();
@@ -59,13 +58,9 @@ void Player::handleInput(){
 		bullet->load(new LoaderParams(m_position.getX(), m_position.getY(), m_width, m_height, "bullet", 1), target);
 		Game::Instance().Instance().getStateMachine()->currentState()->addGameObject(bullet);
 	}
-
-	//std::cout << angle << std::endl;
 }
 
 void Player::rotateTowards(){
-	std::cout << InputHandler::Instance().getMousePosition().getX() << std::endl;
-
 	Vector2D target = InputHandler::Instance().getMousePosition() - m_position;
 	target = target.norm();
 
@@ -108,7 +103,7 @@ void Player::move(){
 
 	move = move.norm();
 
-	if(m_canDash){
+	if(!m_isDashing){
 		m_velocity = move;
 	}
 
@@ -118,16 +113,14 @@ void Player::move(){
 
 void Player::dash(){
 
-	bool dashPressed = false;
-	if(m_canDash){
-		dashPressed = InputHandler::Instance().isKeyDown(SDL_SCANCODE_SPACE);
-		if(dashPressed and m_canDash){
-			m_velocity = (m_velocity * 5);
-			m_canDash = false;
-			m_dashTime = Timer::Instance().step();
-		}
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_SPACE, 1000)){
+		m_dashTime = Timer::Instance().step();
+		m_velocity = (m_velocity.norm() * 5);
+		m_isDashing = true;
 	}
-	else if(Timer::Instance().step() >= m_dashTime + 100){
-			m_canDash = true;
-		}
+
+	if(m_isDashing && Timer::Instance().step() >= m_dashTime + 100){
+		m_isDashing = false;
+	}
+
 }

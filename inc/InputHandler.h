@@ -43,7 +43,6 @@ public:
 	}
 
 	Vector2D getMousePosition(){
-		std::cout << m_mousePosition.getX() << " " << m_mousePosition.getY() << std::endl;
 		return m_mousePosition;
 	}
 

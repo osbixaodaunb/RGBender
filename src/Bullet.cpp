@@ -27,7 +27,6 @@ void Bullet::draw(){
 
 void Bullet::update(){
 	m_position += m_velocity;
-	std::cout << m_velocity.getX() << " " << m_velocity.getY() << std::endl;
 }
 
 void Bullet::clean(){
