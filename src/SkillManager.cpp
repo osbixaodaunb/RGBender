@@ -60,9 +60,9 @@ uint8_t* SkillManager::cyan(){
 uint8_t* SkillManager::brown(){
 	std::cout << "BROWN PLUS: " << std::endl;
 	uint8_t* pixels = new uint8_t[3];
-	pixels[0] = 255;
-	pixels[1] = 255;
-	pixels[2] = 0;
+	pixels[0] = 190;
+	pixels[1] = 105;
+	pixels[2] = 30;
 	return pixels;
 }
 
