@@ -114,21 +114,20 @@ void Player::move(){
 }
 
 void Player::useSkill(){
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_1)){
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_1, 200)){
 		m_skillManager.setSkillPair(&m_pSkills, RED, &isFirstSkill);
 	}
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_2)){
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_2, 200)){
 		m_skillManager.setSkillPair(&m_pSkills, GREEN, &isFirstSkill);
 	}
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_3)){
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_3, 200)){
 		m_skillManager.setSkillPair(&m_pSkills, BLUE, &isFirstSkill);
 	}
 
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_X)){
-		std::cout << "TANTO FAZ" << std::endl;
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_X, 200)){
 		if(m_pSkills.first != BLANK and m_pSkills.second != BLANK){
 			pixelColors = m_skillManager.getSkill(m_pSkills)();
 			TheTextureManager::Instance().changeColorPixels(pixelColors);
@@ -136,6 +135,7 @@ void Player::useSkill(){
 		m_pSkills.first = BLANK;
 		m_pSkills.second = BLANK;
 		isFirstSkill = true;
+		std::cout << "APERTE O X, N EH PARA APARECER NADA" << std::endl;
 	}
 }
 

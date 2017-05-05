@@ -17,7 +17,7 @@
 
 	<PLAY>
 		<TEXTURES>
-			<texture filename="assets/helicopter.png" ID="helicopter"/>
+			<texture filename="assets/HLD.png" ID="helicopter"/>
 		</TEXTURES>
 
 		<OBJECTS>
