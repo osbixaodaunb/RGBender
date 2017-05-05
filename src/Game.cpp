@@ -9,6 +9,7 @@
 #include "MenuButton.h"
 #include "GameObjectFactory.h"
 #include "AnimatedGraphic.h"
+#include "Timer.h"
 
 #include <iostream>
 #include <vector>
@@ -61,6 +62,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	InputHandler::Instance().initialiseJoysticks();
 
 	cout << "Init success" << endl;
+
+	Timer::Instance().start();
 	
 	// everything inited successfully, start the main loop
 	m_bRunning = true;

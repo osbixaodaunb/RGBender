@@ -17,6 +17,22 @@ public:
 	void draw();
 	void update();
 	void clean();
+
+private:
+	enum BossHealth{
+		FULL = 1,
+		MEDIUM = 2,
+		LOW = 3,
+		DEAD = 4
+	};
+
+	int m_totalHealth;
+	int m_actualHealth;
+	int m_state;
+
+	void changeAttack();
+	void updateHealth();
+	void changeState();
 };
 
 class EnemyCreator : public BaseCreator{
