@@ -4,6 +4,7 @@
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
 #include "BaseCreator.h"
+#include "Timer.h"
 
 #include <string>
 #include <SDL2/SDL.h>
@@ -21,6 +22,9 @@ private:
 	void handleInput();
 	void move();
 	void rotateTowards();
+	void dash();
+	Timer m_timer;
+	bool m_canDash;
 
 };
 
