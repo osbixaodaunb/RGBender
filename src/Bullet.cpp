@@ -24,39 +24,18 @@ void Bullet::load(const LoaderParams* pParams){
 	SDLGameObject::load(pParams);
 }
 
-double bulletDot(Vector2D a, Vector2D b){
-	return a.getX()*b.getX() + a.getY()*b.getY();
-}
-
-double bulletOtoDot(Vector2D a){
-	return sqrt(a.getX() * a.getX() + a.getY() * a.getY());
-}
-
 double Bullet::rotateTowards(Vector2D pPosition){
 	Vector2D target = InputHandler::Instance().getMousePosition() - pPosition;
 	target = target.norm();
 
 	Vector2D horizontal(0,1);
 
-	double angle = bulletDot(target, horizontal);
-	angle /= bulletOtoDot(target);
-	angle = acos(angle);
-
-	angle = angle * 180.0 / acos(-1);
-
-	target = InputHandler::Instance().getMousePosition() - pPosition;
-
-	if(target.getX() > 0){
-		return 360 - angle;
-	} else {
-		return angle;
-	}
+	return Vector2D::angle(target, Vector2D(0, 1));
 }
 void Bullet::load(Vector2D pVelocity, Vector2D pPosition){
 	double angle = rotateTowards(pPosition);
 
 	m_moveSpeed = 5;
-	angle += 180;
 	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 100, 357, "bullet", 0, 0, 0, angle);
 	SDLGameObject::load(pParams);
 

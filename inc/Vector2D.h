@@ -1,7 +1,8 @@
 #ifndef VECTOR_2D_H
 #define VECTOR_2D_H
 
-#include <math.h>
+#include <cmath>
+
 class Vector2D{
 public:
 	Vector2D(float x, float y) : m_x(x), m_y(y) {}
@@ -76,10 +77,30 @@ public:
 	Vector2D norm(){
 		float l = length();
 		if(l > 0){
-			(*this) /= l;
+			return (*this) / l;
 		}
 
 		return *this;
+	}
+
+	double dot(Vector2D a){
+		return m_x * a.getX() + m_y * a.getY();
+	}
+
+	static double angle(Vector2D target, Vector2D other){
+		double angle = target.dot(other);
+		angle /= target.length() * other.length();
+		angle = acos(angle);
+
+		angle = angle * 180.0 / acos(-1);
+
+		if(target.getX() > 0){
+			angle = 180 - angle;
+		} else {
+			angle = angle + 180;
+		}
+
+		return angle;
 	}
 
 private:

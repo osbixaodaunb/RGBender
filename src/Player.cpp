@@ -26,7 +26,7 @@ void Player::draw(){
 }
 
 void Player::update(){
-	m_currentFrame = int(((SDL_GetTicks() / 100) % 5));
+	m_currentFrame = int(((SDL_GetTicks() / 300) % 6));
 
 	handleInput();
 
@@ -35,14 +35,6 @@ void Player::update(){
 
 void Player::clean(){
 	SDLGameObject::clean();
-}
-
-double dot(Vector2D a, Vector2D b){
-	return a.getX()*b.getX() + a.getY()*b.getY();
-}
-
-double otoDot(Vector2D a){
-	return sqrt(a.getX() * a.getX() + a.getY() * a.getY());
 }
 
 void Player::handleInput(){
@@ -66,21 +58,7 @@ void Player::rotateTowards(){
 	Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
 	target = target.norm();
 
-	Vector2D horizontal(0,1);
-
-	double angle = dot(target, horizontal);
-	angle /= otoDot(target) * otoDot(horizontal);
-	angle = acos(angle);
-
-	angle = angle * 180.0 / acos(-1);
-
-	target = InputHandler::Instance().getMousePosition() - pivot;
-
-	if(target.getX() > 0){
-		m_angle = 360 - angle + 180;
-	} else {
-		m_angle = angle + 180;
-	}
+	m_angle = Vector2D::angle(target, Vector2D(0, 1));
 }
 
 void Player::move(){
