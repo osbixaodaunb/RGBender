@@ -14,6 +14,7 @@
 using namespace std;
 
 Player::Player() : SDLGameObject(){
+	fire_rate = 500;
 	TextureManager::Instance().load("assets/clash2.png", "bullet", Game::Instance().getRenderer());
 }
 
@@ -42,7 +43,8 @@ void Player::handleInput(){
 	move();
 
 	useSkill();
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_V, 500)){
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_V, fire_rate)){
+		std::cout << "FIRE RATE: " << fire_rate << std::endl;
 		Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
 
 		Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
@@ -94,6 +96,7 @@ void Player::move(){
 
 void Player::useSkill(){
 	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_1, 200)){
+		fire_rate = 100;
 		m_skillManager.setSkillPair(&m_pSkills, RED, &isFirstSkill);
 	}
 
@@ -106,14 +109,23 @@ void Player::useSkill(){
 	}
 
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_X, 200)){
-		if(m_pSkills.first != BLANK and m_pSkills.second != BLANK){
-			pixelColors = m_skillManager.getSkill(m_pSkills)();
-			TheTextureManager::Instance().changeColorPixels(pixelColors);
+	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_X, 100)){
+		std::map<std::pair<default_inks, default_inks>, bool>::iterator it = m_skillManager.getCoolDownMap()->find(m_pSkills);
+		if(it != m_skillManager.getCoolDownMap()->end()){
+			if(it->second == false){
+				m_skillManager.setCoolDownTrigger(m_pSkills);
+				if(m_pSkills.first != BLANK and m_pSkills.second != BLANK){
+					pixelColors = m_skillManager.getSkill(m_pSkills)();
+					TheTextureManager::Instance().changeColorPixels(pixelColors);
+				}
+			}
+			else
+				std::cout << "TA EM CD\n";
+			
+			m_pSkills.first = BLANK;
+			m_pSkills.second = BLANK;
+			isFirstSkill = true;
 		}
-		m_pSkills.first = BLANK;
-		m_pSkills.second = BLANK;
-		isFirstSkill = true;
 	}
 }
 

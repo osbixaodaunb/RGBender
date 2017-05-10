@@ -25,7 +25,7 @@ public:
 	}
 
 	void changeColorPixels(uint8_t* pixelColors){
-		SDL_Texture* pTexture = m_textureMap["helicopter"];
+		SDL_Texture* pTexture = m_textureMap["bullet"];
 		SDL_SetTextureColorMod( pTexture, pixelColors[0],pixelColors[1], pixelColors[2] );
 	}
 

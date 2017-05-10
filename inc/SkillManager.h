@@ -16,10 +16,14 @@ class SkillManager{
 public:
 	SkillManager();
 	typedef uint8_t*(*Callback) ();
-	void setSkillCallback(std::pair<default_inks, default_inks> combinedSkills);
 	void setSkillPair(std::pair<default_inks, default_inks>* combinedSkills, 
 		default_inks, bool* isFirst);
 	Callback getSkill(std::pair<default_inks, default_inks> combinedSkills);
+	void setCoolDownTrigger(std::pair<default_inks, default_inks> combinedSkills);
+	void setCoolDownTimer(std::pair<default_inks, default_inks> combinedSkills);
+	std::map<std::pair<default_inks, default_inks>, bool>* getCoolDownMap(){
+		return &m_coolDownMap;
+	}
 private:
 
 	static uint8_t* purple();
@@ -29,6 +33,7 @@ private:
 	static uint8_t* greenPlus();
 	static uint8_t* bluePlus();
 	std::map<std::pair<default_inks, default_inks>, Callback> m_skills;
+	std::map<std::pair<default_inks, default_inks>, bool> m_coolDownMap;
 
 };
 

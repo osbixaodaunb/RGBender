@@ -26,7 +26,6 @@ private:
 	void handleInput();
 	SkillManager m_skillManager;
 	std::pair<default_inks, default_inks> m_pSkills;
-	std::map<std::pair<default_inks, default_inks>, Callback> mapSkill;
 	bool isFirstSkill = true;
 	void move();
 	void rotateTowards();
@@ -34,7 +33,7 @@ private:
 	void useSkill();
 	bool m_isDashing;
 	Uint32 m_dashTime;
-
+	int fire_rate;
 	BulletCreator bulletCreator;
 };
 

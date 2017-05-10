@@ -29,7 +29,6 @@ public:
 			m_gameObjects.erase(position);
 		}
 	}
-	// COISA MAIS MIGUE QUE UE JA FIZ NA MINHA VIDA
 	bool can_update = true;
 protected:
 	std::vector<GameObject*> m_gameObjects;
