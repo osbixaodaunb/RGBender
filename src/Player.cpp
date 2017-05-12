@@ -1,4 +1,3 @@
-
 #include "Player.h"
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
@@ -29,7 +28,12 @@ void Player::draw(){
 void Player::update(){
 	m_currentFrame = int(((SDL_GetTicks() / 300) % 6));
 
+
 	handleInput();
+
+	if(m_velocity == Vector2D(0, 0)){
+		m_currentFrame = 0;
+	}
 
 	SDLGameObject::update();
 }
@@ -64,32 +68,32 @@ void Player::rotateTowards(){
 }
 
 void Player::move(){
-	Vector2D move(0, 0);
+	Vector2D movement(0, 0);
 
 	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_W)){
-		move += Vector2D(0, -1);
+		movement += Vector2D(0, -1);
 	}
 
 	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_S)){
-		move += Vector2D(0, +1);
+		movement += Vector2D(0, +1);
 	}
 
 	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_D)){
-		move += Vector2D(1, 0);
+		movement += Vector2D(1, 0);
 	}
 
 
 	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_A)){
-		move += Vector2D(-1, 0);
+		movement += Vector2D(-1, 0);
 	}
 
-	move = move.norm();
+	movement = movement.norm();
 
 	if(!m_isDashing){
-		m_velocity = move;
+		m_velocity = movement;
+		
 	}
-
-
+		
 	dash();
 	m_position += m_velocity;
 }

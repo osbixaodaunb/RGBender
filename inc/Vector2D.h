@@ -2,6 +2,9 @@
 #define VECTOR_2D_H
 
 #include <cmath>
+#include <iostream>	
+
+#define EPS 1e-6
 
 class Vector2D{
 public:
@@ -72,6 +75,14 @@ public:
 		setY(other.getY());
 
 		return *this;
+	}
+
+	bool operator ==(Vector2D other){
+		if(fabs(getX() - other.getX()) < EPS and fabs(getY() - other.getY()) < EPS){
+			return true;
+		}
+
+		return false;
 	}
 
 	Vector2D norm(){
