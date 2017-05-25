@@ -7,7 +7,7 @@
 #include <map>
 
 using namespace std;
-
+using namespace engine;
 bool GameObjectFactory::registerType(string typeID, BaseCreator* pCreator){
 	map<string, BaseCreator*>::iterator it = m_creators.find(typeID);
 

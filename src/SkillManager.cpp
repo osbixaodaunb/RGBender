@@ -3,6 +3,8 @@
 #include <utility>
 #include <iostream>
 
+using namespace engine;
+
 SkillManager::SkillManager(){
 	m_skills[std::make_pair(RED, RED)] = &SkillManager::redPlus;
 	m_coolDownMap[std::make_pair(RED, RED)] = false;

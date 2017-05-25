@@ -9,6 +9,8 @@
 
 #include <iostream>
 
+using namespace engine;
+
 Bullet::~Bullet(){
 	std::cout << "Destruiu\n";
 }

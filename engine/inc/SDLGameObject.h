@@ -8,49 +8,51 @@
 
 #include <string>
 
-class SDLGameObject : public GameObject{
-public:
-	SDLGameObject();
+namespace engine{
 
-	virtual void load(const LoaderParams* pParams);
+	class SDLGameObject : public GameObject{
+	public:
+		SDLGameObject();
 
-	virtual void draw();
-	virtual void update();
-	virtual void clean();
+		virtual void load(const LoaderParams* pParams);
 
-	std::string getTextureID(){
-		return m_textureID;
-	}
+		virtual void draw();
+		virtual void update();
+		virtual void clean();
 
-	Vector2D& getPosition() {
-		return m_position;
-	}
+		std::string getTextureID(){
+			return m_textureID;
+		}
 
-	int getWidth(){
-		return m_width;
-	}
+		Vector2D& getPosition() {
+			return m_position;
+		}
 
-	int getHeight(){
-		return m_height;
-	}
+		int getWidth(){
+			return m_width;
+		}
 
-protected:
+		int getHeight(){
+			return m_height;
+		}
 
-	Vector2D m_position;	
-	Vector2D m_velocity;
-	Vector2D m_acceleration;
+	protected:
 
-	int m_width;
-	int m_height;
+		Vector2D m_position;	
+		Vector2D m_velocity;
+		Vector2D m_acceleration;
 
-	int m_currentFrame;
-	int m_currentRow;
+		int m_width;
+		int m_height;
 
-	int m_numFrames;
+		int m_currentFrame;
+		int m_currentRow;
 
-	std::string m_textureID;
+		int m_numFrames;
 
-	double m_angle;
-};
+		std::string m_textureID;
 
+		double m_angle;
+	};
+}
 #endif

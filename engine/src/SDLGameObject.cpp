@@ -1,6 +1,8 @@
 #include "SDLGameObject.h"
 #include "Game.h"
 
+using namespace engine;
+
 SDLGameObject::SDLGameObject() : GameObject() {
 }
 

@@ -4,6 +4,8 @@
 #include <string>
 #include <iostream>
 
+using namespace engine;
+
 bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pRenderer){
 	SDL_Surface* pTempSurface = IMG_Load(fileName.c_str());
 	

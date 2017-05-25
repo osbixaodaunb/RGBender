@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-class GameOverState : public MenuState{
+class GameOverState : public engine::MenuState{
 public:
 	virtual void update();
 	virtual void render();

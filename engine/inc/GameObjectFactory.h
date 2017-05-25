@@ -6,24 +6,27 @@
 #include <string>
 #include <map>
 
-class GameObjectFactory{
-public:
-	static GameObjectFactory& Instance(){
-		static GameObjectFactory instance;
+namespace engine{
 
-		return instance;
-	}
+	class GameObjectFactory{
+	public:
+		static GameObjectFactory& Instance(){
+			static GameObjectFactory instance;
 
-	GameObjectFactory(GameObjectFactory const&) = delete;
-	void operator=(GameObjectFactory const&) = delete;
+			return instance;
+		}
 
-	bool registerType(std::string typeID, BaseCreator* pCreator);
+		GameObjectFactory(GameObjectFactory const&) = delete;
+		void operator=(GameObjectFactory const&) = delete;
 
-	GameObject* create(std::string typeID);
+		bool registerType(std::string typeID, BaseCreator* pCreator);
 
-private:
-	GameObjectFactory(){};
-	std::map<std::string, BaseCreator*> m_creators;
-};
+		GameObject* create(std::string typeID);
 
+	private:
+		GameObjectFactory(){};
+		std::map<std::string, BaseCreator*> m_creators;
+	};
+
+}
 #endif

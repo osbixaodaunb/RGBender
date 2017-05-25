@@ -3,7 +3,7 @@
 #include "TextureManager.h"
 
 #include <iostream>
-
+using namespace engine;
 void GameState::update(){
 	for(auto gameObject : m_gameObjects){
 		gameObject->update();

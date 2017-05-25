@@ -7,13 +7,15 @@
 #include <vector>
 #include <string>
 
-class StateParser{
-public:
-	bool parseState(std::string stateFile, std::string stateID, std::vector<GameObject*> *pObjects, std::vector<std::string> *pTextureIDs);
+namespace engine{
 
-private:
-	void parseObjects(TiXmlElement* root, std::vector<GameObject*> *pObjects);
-	void parseTextures(TiXmlElement* root, std::vector<std::string> *pTextureIDs);
-};
+	class StateParser{
+	public:
+		bool parseState(std::string stateFile, std::string stateID, std::vector<GameObject*> *pObjects, std::vector<std::string> *pTextureIDs);
 
+	private:
+		void parseObjects(TiXmlElement* root, std::vector<GameObject*> *pObjects);
+		void parseTextures(TiXmlElement* root, std::vector<std::string> *pTextureIDs);
+	};
+}
 #endif

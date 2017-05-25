@@ -3,26 +3,29 @@
 
 #include <SDL2/SDL.h>
 
-class Timer{
+namespace engine{
 
-public:
-	static Timer& Instance(){
-		static Timer instance;
+	class Timer{
 
-		return instance;
-	}
+	public:
+		static Timer& Instance(){
+			static Timer instance;
 
-	Timer(Timer const&) = delete;
-	void operator=(Timer const&) = delete;
+			return instance;
+		}
 
-	void start();
-	Uint32 step();
-	void stop();
+		Timer(Timer const&) = delete;
+		void operator=(Timer const&) = delete;
 
-private:
-	Timer() {}
-	Uint32 m_time;
-	Uint32 m_lastTime;
-};
+		void start();
+		Uint32 step();
+		void stop();
 
+	private:
+		Timer() {}
+		Uint32 m_time;
+		Uint32 m_lastTime;
+	};
+
+}
 #endif

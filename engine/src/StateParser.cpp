@@ -11,6 +11,7 @@
 #include <vector>
 
 using namespace std;
+using namespace engine;
 
 TiXmlElement* findValue(TiXmlElement* root, string value){
 	TiXmlElement* elem = 0;

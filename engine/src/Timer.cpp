@@ -1,6 +1,8 @@
 #include <Timer.h>
 #include <iostream>
 
+using namespace engine;
+
 void Timer::start(){
 	m_time = SDL_GetTicks();
 }

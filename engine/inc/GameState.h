@@ -7,33 +7,35 @@
 #include <string>
 #include <vector>
 
-class GameState{
-public:
-	virtual void update();
-	virtual void render();
+namespace engine{
 
-	virtual bool onEnter() = 0;
-	virtual bool onExit();
+	class GameState{
+	public:
+		virtual void update();
+		virtual void render();
 
-	virtual std::string getStateID() const = 0;
+		virtual bool onEnter() = 0;
+		virtual bool onExit();
 
-	virtual ~GameState() {}
+		virtual std::string getStateID() const = 0;
 
-	void addGameObject(GameObject* gameObject){
-		m_gameObjects.push_back(gameObject);
-	}
+		virtual ~GameState() {}
 
-	void removeGameObject(GameObject* gameObject){
-		std::vector<GameObject*>::iterator position = std::find(m_gameObjects.begin(), m_gameObjects.end(), gameObject);
-		if(position != m_gameObjects.end()){
-			m_gameObjects.erase(position);
+		void addGameObject(GameObject* gameObject){
+			m_gameObjects.push_back(gameObject);
 		}
-	}
-	bool can_update = true;
-protected:
-	std::vector<GameObject*> m_gameObjects;
-	std::vector<std::string> m_textureIDList;
-	
-};
 
+		void removeGameObject(GameObject* gameObject){
+			std::vector<GameObject*>::iterator position = std::find(m_gameObjects.begin(), m_gameObjects.end(), gameObject);
+			if(position != m_gameObjects.end()){
+				m_gameObjects.erase(position);
+			}
+		}
+		bool can_update = true;
+	protected:
+		std::vector<GameObject*> m_gameObjects;
+		std::vector<std::string> m_textureIDList;
+		
+	};
+}
 #endif

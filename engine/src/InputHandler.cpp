@@ -7,6 +7,7 @@
 #include "Game.h"
 
 using namespace std;
+using namespace engine;
 
 InputHandler::InputHandler(){
 	for(int i=0; i<3; i++){

@@ -18,6 +18,8 @@
 
 using namespace std;
 
+using namespace engine;
+
 const string PlayState::s_playID = "PLAY";
 
 Level *pLevel = NULL;

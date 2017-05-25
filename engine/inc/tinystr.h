@@ -30,6 +30,7 @@ distribution.
 #include <assert.h>
 #include <string.h>
 
+namespace engine{
 /*	The support for explicit isn't that universal, and it isn't really
 	required - it is used to check that the TiXmlString class isn't incorrectly
 	used. Be nice to old compilers and macro it here:
@@ -52,11 +53,11 @@ distribution.
    The buffer allocation is made by a simplistic power of 2 like mechanism : if we increase
    a string and there's no more room, we allocate a buffer twice as big as we need.
 */
-class TiXmlString
-{
-  public :
+	class TiXmlString
+	{
+		public :
 	// The size type used
-  	typedef size_t size_type;
+		typedef size_t size_type;
 
 	// Error value for find primitive
 	static const size_type npos; // = -1;
@@ -170,7 +171,7 @@ class TiXmlString
 
 		for (const char* p = c_str() + offset; *p != '\0'; ++p)
 		{
-		   if (*p == tofind) return static_cast< size_type >( p - c_str() );
+			if (*p == tofind) return static_cast< size_type >( p - c_str() );
 		}
 		return npos;
 	}
@@ -201,7 +202,7 @@ class TiXmlString
 		other.rep_ = r;
 	}
 
-  private:
+private:
 
 	void init(size_type sz) { init(sz, sz); }
 	void set_size(size_type sz) { rep_->str[ rep_->size = sz ] = '\0'; }
@@ -256,50 +257,50 @@ inline bool operator == (const TiXmlString & a, const TiXmlString & b)
 {
 	return    ( a.length() == b.length() )				// optimization on some platforms
 	       && ( strcmp(a.c_str(), b.c_str()) == 0 );	// actual compare
-}
-inline bool operator < (const TiXmlString & a, const TiXmlString & b)
-{
-	return strcmp(a.c_str(), b.c_str()) < 0;
-}
+	   }
+	   inline bool operator < (const TiXmlString & a, const TiXmlString & b)
+	   {
+	   	return strcmp(a.c_str(), b.c_str()) < 0;
+	   }
 
-inline bool operator != (const TiXmlString & a, const TiXmlString & b) { return !(a == b); }
-inline bool operator >  (const TiXmlString & a, const TiXmlString & b) { return b < a; }
-inline bool operator <= (const TiXmlString & a, const TiXmlString & b) { return !(b < a); }
-inline bool operator >= (const TiXmlString & a, const TiXmlString & b) { return !(a < b); }
+	   inline bool operator != (const TiXmlString & a, const TiXmlString & b) { return !(a == b); }
+	   inline bool operator >  (const TiXmlString & a, const TiXmlString & b) { return b < a; }
+	   inline bool operator <= (const TiXmlString & a, const TiXmlString & b) { return !(b < a); }
+	   inline bool operator >= (const TiXmlString & a, const TiXmlString & b) { return !(a < b); }
 
-inline bool operator == (const TiXmlString & a, const char* b) { return strcmp(a.c_str(), b) == 0; }
-inline bool operator == (const char* a, const TiXmlString & b) { return b == a; }
-inline bool operator != (const TiXmlString & a, const char* b) { return !(a == b); }
-inline bool operator != (const char* a, const TiXmlString & b) { return !(b == a); }
+	   inline bool operator == (const TiXmlString & a, const char* b) { return strcmp(a.c_str(), b) == 0; }
+	   inline bool operator == (const char* a, const TiXmlString & b) { return b == a; }
+	   inline bool operator != (const TiXmlString & a, const char* b) { return !(a == b); }
+	   inline bool operator != (const char* a, const TiXmlString & b) { return !(b == a); }
 
-TiXmlString operator + (const TiXmlString & a, const TiXmlString & b);
-TiXmlString operator + (const TiXmlString & a, const char* b);
-TiXmlString operator + (const char* a, const TiXmlString & b);
+	   TiXmlString operator + (const TiXmlString & a, const TiXmlString & b);
+	   TiXmlString operator + (const TiXmlString & a, const char* b);
+	   TiXmlString operator + (const char* a, const TiXmlString & b);
 
 
 /*
    TiXmlOutStream is an emulation of std::ostream. It is based on TiXmlString.
    Only the operators that we need for TinyXML have been developped.
 */
-class TiXmlOutStream : public TiXmlString
-{
-public :
+	   class TiXmlOutStream : public TiXmlString
+	   {
+	   	public :
 
 	// TiXmlOutStream << operator.
-	TiXmlOutStream & operator << (const TiXmlString & in)
-	{
-		*this += in;
-		return *this;
-	}
+	   	TiXmlOutStream & operator << (const TiXmlString & in)
+	   	{
+	   		*this += in;
+	   		return *this;
+	   	}
 
 	// TiXmlOutStream << operator.
-	TiXmlOutStream & operator << (const char * in)
-	{
-		*this += in;
-		return *this;
+	   	TiXmlOutStream & operator << (const char * in)
+	   	{
+	   		*this += in;
+	   		return *this;
+	   	}
+
+	   } ;
 	}
-
-} ;
-
 #endif	// TIXML_STRING_INCLUDED
 #endif	// TIXML_USE_STL

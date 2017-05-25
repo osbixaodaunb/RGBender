@@ -6,17 +6,19 @@
 
 #include <vector>
 
-class ObjectLayer : public Layer{
-public:
-	virtual void update();
-	virtual void render();
+namespace engine{
 
-	std::vector<GameObject*> *getGameObjects(){
-		return &m_gameObjects;
-	}
+	class ObjectLayer : public Layer{
+	public:
+		virtual void update();
+		virtual void render();
 
-private:
-	std::vector<GameObject*> m_gameObjects;
-};
+		std::vector<GameObject*> *getGameObjects(){
+			return &m_gameObjects;
+		}
 
+	private:
+		std::vector<GameObject*> m_gameObjects;
+	};
+}
 #endif

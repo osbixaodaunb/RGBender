@@ -7,64 +7,64 @@
 
 #include <SDL2/SDL.h>
 #include <vector>
+namespace engine{
+	class Game{
+	public:
+		
+		static Game& Instance(){
+			static Game game;
 
-class Game{
-public:
-	
-	static Game& Instance(){
-		static Game game;
+			return game;
+		}
 
-		return game;
-	}
+		Game(Game const&) = delete;
+		void operator=(Game const&) = delete;
 
-	Game(Game const&) = delete;
-	void operator=(Game const&) = delete;
+		bool init(const char*, int, int, int, int, bool);
 
-	bool init(const char*, int, int, int, int, bool);
+		void render();
+		void update();
+		void handleEvents();
+		void clean();
+		void draw();
+		void quit();
 
-	void render();
-	void update();
-	void handleEvents();
-	void clean();
-	void draw();
-	void quit();
+		SDL_Renderer* getRenderer(){
+			return m_pRenderer;
+		}
 
-	SDL_Renderer* getRenderer(){
-		return m_pRenderer;
-	}
+		bool running() { return m_bRunning; }
+		GameStateMachine* getStateMachine(){
+			return m_pGameStateMachine;
+		}
 
-	bool running() { return m_bRunning; }
-	GameStateMachine* getStateMachine(){
-		return m_pGameStateMachine;
-	}
+		int getGameWidth() const{
+			return m_gameWidth;
+		}
 
-	int getGameWidth() const{
-		return m_gameWidth;
-	}
+		int getGameHeight() const {
+			return m_gameHeight;
+		}
 
-	int getGameHeight() const {
-		return m_gameHeight;
-	}
+	private:
+		Game() {}
 
-private:
-	Game() {}
+		int m_gameWidth;
+		int m_gameHeight;
 
-	int m_gameWidth;
-	int m_gameHeight;
+		SDL_Window* m_pWindow;
+		SDL_Renderer* m_pRenderer;
 
-	SDL_Window* m_pWindow;
-	SDL_Renderer* m_pRenderer;
+		GameObject* m_go;
+		GameObject* m_player;
+		GameObject* m_enemy;
 
-	GameObject* m_go;
-	GameObject* m_player;
-	GameObject* m_enemy;
+		std::vector<GameObject*> m_gameObjects;
 
-	std::vector<GameObject*> m_gameObjects;
+		int m_currentFrame;
+		bool m_bRunning;
 
-	int m_currentFrame;
-	bool m_bRunning;
-
-	GameStateMachine *m_pGameStateMachine;
-};
-
+		GameStateMachine *m_pGameStateMachine;
+	};
+}
 #endif

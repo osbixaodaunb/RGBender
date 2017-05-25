@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+using namespace engine;
+
 AnimatedGraphic::AnimatedGraphic() : SDLGameObject(){
 
 }

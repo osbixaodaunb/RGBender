@@ -8,11 +8,11 @@
 #include <string>
 #include <SDL2/SDL.h>
 
-class Enemy : public SDLGameObject{
+class Enemy : public engine::SDLGameObject{
 public:
 	Enemy();
 
-	void load(const LoaderParams* pParams);
+	void load(const engine::LoaderParams* pParams);
 
 	void draw();
 	void update();
@@ -35,8 +35,8 @@ private:
 	void changeState();
 };
 
-class EnemyCreator : public BaseCreator{
-	GameObject* createGameObject() const{
+class EnemyCreator : public engine::BaseCreator{
+	engine::GameObject* createGameObject() const{
 		return new Enemy();
 	}
 };

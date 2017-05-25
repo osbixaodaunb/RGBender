@@ -16,6 +16,7 @@
 #include <SDL2/SDL_image.h>
 
 using namespace std;
+using namespace engine;
 
 bool Game::init(const char* title, int xpos, int ypos, int width, int height, bool fullscreen){
 	int flags = fullscreen ? SDL_WINDOW_FULLSCREEN : 0;

@@ -5,21 +5,23 @@
 
 #include <vector>
 
-class GameStateMachine{
-public:
-	void pushState(GameState* pState);
-	void changeState(GameState* pState);
-	void popState();
-	void update();
-	void render();
+namespace engine{
 
-	GameState* currentState(){
-		return m_gameStates.back();
-	}
+	class GameStateMachine{
+	public:
+		void pushState(GameState* pState);
+		void changeState(GameState* pState);
+		void popState();
+		void update();
+		void render();
 
-private:
-	std::vector<GameState*> m_gameStates;
-};
+		GameState* currentState(){
+			return m_gameStates.back();
+		}
 
+	private:
+		std::vector<GameState*> m_gameStates;
+	};
 
+}
 #endif

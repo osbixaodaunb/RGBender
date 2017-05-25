@@ -13,6 +13,8 @@
 #include <vector>
 #include <zlib.h>
 
+using namespace engine;
+
 Level* LevelParser::parseLevel(const char *levelFile){
 	// create a TinyXML document and load the map XML
 	TiXmlDocument levelDocument;

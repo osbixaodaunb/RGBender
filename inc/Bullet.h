@@ -9,12 +9,12 @@
 #include <iostream>
 #include <vector>
 
-class Bullet : public SDLGameObject{
+class Bullet : public engine::SDLGameObject{
 public:
 	Bullet();
 	~Bullet();
 
-	void load(Vector2D pVelocity, Vector2D pPosition);
+	void load(engine::Vector2D pVelocity, engine::Vector2D pPosition);
 	void load(const LoaderParams* pParams);
 	void draw();
 	void update();

@@ -5,7 +5,7 @@
 #include "SDLGameObject.h"
 #include "GameObject.h"
 
-class PlayState : public GameState{
+class PlayState : public engine::GameState{
 public:
 	virtual void update();
 	virtual void render();
@@ -21,7 +21,7 @@ public:
 private:
 	static const std::string s_playID;
 
-	bool checkCollision(SDLGameObject *p1, SDLGameObject *p2);
+	bool checkCollision(engine::SDLGameObject *p1, engine::SDLGameObject *p2);
 };
 
 #endif

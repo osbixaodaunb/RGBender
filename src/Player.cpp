@@ -11,6 +11,7 @@
 #include <cmath>
 
 using namespace std;
+using namespace engine;
 
 Player::Player() : SDLGameObject(){
 	fire_rate = 500;
