@@ -1,4 +1,4 @@
-# Install script for directory: /home/harrison/Documents/UnB/IJE/RGBender
+# Install script for directory: /home/felipe/Documents/C-C++/SDL/livro
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/harrison/Documents/UnB/IJE/RGBender/engine/cmake_install.cmake")
+  include("/home/felipe/Documents/C-C++/SDL/livro/engine/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/harrison/Documents/UnB/IJE/RGBender/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/felipe/Documents/C-C++/SDL/livro/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
