@@ -14,7 +14,7 @@ using namespace std;
 using namespace engine;
 
 Player::Player() : SDLGameObject(){
-	fire_rate = 500;
+	m_fireRate = 500;
 	TextureManager::Instance().load("assets/clash2.png", "bullet", Game::Instance().getRenderer());
 }
 
@@ -48,8 +48,8 @@ void Player::handleInput(){
 	move();
 
 	useSkill();
-	if(InputHandler::Instance().isKeyDown("v", fire_rate)){
-		std::cout << "FIRE RATE: " << fire_rate << std::endl;
+	if(InputHandler::Instance().isKeyDown("v", m_fireRate)){
+		std::cout << "FIRE RATE: " << m_fireRate << std::endl;
 		Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
 
 		Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
@@ -100,9 +100,13 @@ void Player::move(){
 }
 
 void Player::useSkill(){
+
 	if(InputHandler::Instance().isKeyDown("1", 200)){
-		fire_rate = 100;
+		setFireRate(100);
 		m_skillManager.setSkillPair(&m_pSkills, RED, &isFirstSkill);
+
+		std::function<void(int)> redSkill = std::bind(&Player::setFireRate, this, 500);
+		Game::Instance().addCooldown(new Cooldown<int>(1000, redSkill, 500));
 	}
 
 	if(InputHandler::Instance().isKeyDown("2", 200)){

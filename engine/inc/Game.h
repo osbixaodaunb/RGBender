@@ -4,6 +4,7 @@
 #include "TextureManager.h"
 #include "GameObject.h"
 #include "GameStateMachine.h"
+#include "Cooldown.h"
 
 #include <SDL2/SDL.h>
 #include <vector>
@@ -46,6 +47,10 @@ namespace engine{
 			return m_gameHeight;
 		}
 
+		void addCooldown(Cooldown<int>* cooldown){
+			m_cooldowns.push_back(cooldown);
+		}
+
 	private:
 		Game() {}
 
@@ -63,6 +68,8 @@ namespace engine{
 
 		int m_currentFrame;
 		bool m_bRunning;
+
+		std::vector<Cooldown<int>*> m_cooldowns;
 
 		GameStateMachine *m_pGameStateMachine;
 	};

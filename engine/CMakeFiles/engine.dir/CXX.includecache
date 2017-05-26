@@ -6,39 +6,41 @@
 
 #IncludeRegexTransform: 
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/AnimatedGraphic.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/AnimatedGraphic.cpp
 AnimatedGraphic.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/AnimatedGraphic.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/AnimatedGraphic.h
 SDLGameObject.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/SDLGameObject.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/SDLGameObject.h
 iostream
 -
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Game.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Game.cpp
 Game.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Game.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Game.h
 Player.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Player.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Player.h
 Enemy.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Enemy.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Enemy.h
 LoaderParams.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/LoaderParams.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/LoaderParams.h
 InputHandler.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/InputHandler.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/InputHandler.h
 GameStateMachine.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameStateMachine.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameStateMachine.h
 MainMenuState.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/MainMenuState.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/MainMenuState.h
 PlayState.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/PlayState.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/PlayState.h
 MenuButton.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/MenuButton.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/MenuButton.h
 GameObjectFactory.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameObjectFactory.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameObjectFactory.h
 AnimatedGraphic.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/AnimatedGraphic.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/AnimatedGraphic.h
 Timer.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Timer.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Timer.h
+Cooldown.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Cooldown.h
 iostream
 -
 vector
@@ -46,11 +48,11 @@ vector
 SDL2/SDL_image.h
 -
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameObjectFactory.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameObjectFactory.cpp
 GameObjectFactory.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameObjectFactory.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameObjectFactory.h
 BaseCreator.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/BaseCreator.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/BaseCreator.h
 string
 -
 iostream
@@ -58,59 +60,59 @@ iostream
 map
 -
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameState.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameState.cpp
 GameState.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameState.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameState.h
 GameObject.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameObject.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameObject.h
 TextureManager.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/TextureManager.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/TextureManager.h
 iostream
 -
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameStateMachine.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameStateMachine.cpp
 GameStateMachine.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameStateMachine.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameStateMachine.h
 iostream
 -
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/InputHandler.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/InputHandler.cpp
 InputHandler.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/InputHandler.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/InputHandler.h
 SDL2/SDL.h
 -
 iostream
 -
 Timer.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Timer.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Timer.h
 Game.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Game.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Game.h
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Level.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Level.cpp
 Level.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Level.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Level.h
 vector
 -
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/LevelParser.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/LevelParser.cpp
 LevelParser.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/LevelParser.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/LevelParser.h
 Level.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Level.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Level.h
 tinyxml.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/tinyxml.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/tinyxml.h
 TextureManager.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/TextureManager.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/TextureManager.h
 Game.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Game.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Game.h
 TileLayer.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/TileLayer.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/TileLayer.h
 base64.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/base64.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/base64.h
 ObjectLayer.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/ObjectLayer.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/ObjectLayer.h
 GameObjectFactory.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameObjectFactory.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameObjectFactory.h
 iostream
 -
 string
@@ -120,31 +122,31 @@ vector
 zlib.h
 -
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/ObjectLayer.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/ObjectLayer.cpp
 ObjectLayer.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/ObjectLayer.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/ObjectLayer.h
 GameObject.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameObject.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameObject.h
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/SDLGameObject.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/SDLGameObject.cpp
 SDLGameObject.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/SDLGameObject.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/SDLGameObject.h
 Game.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Game.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Game.h
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/StateParser.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/StateParser.cpp
 StateParser.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/StateParser.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/StateParser.h
 GameObject.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameObject.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameObject.h
 tinyxml.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/tinyxml.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/tinyxml.h
 Game.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Game.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Game.h
 TextureManager.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/TextureManager.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/TextureManager.h
 GameObjectFactory.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameObjectFactory.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/GameObjectFactory.h
 iostream
 -
 string
@@ -152,9 +154,9 @@ string
 vector
 -
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/TextureManager.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/TextureManager.cpp
 TextureManager.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/TextureManager.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/TextureManager.h
 SDL2/SDL_image.h
 -
 string
@@ -162,35 +164,35 @@ string
 iostream
 -
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/TileLayer.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/TileLayer.cpp
 TileLayer.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/TileLayer.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/TileLayer.h
 Level.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Level.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Level.h
 Game.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Game.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Game.h
 iostream
 -
 vector
 -
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Timer.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/Timer.cpp
 Timer.h
 -
 iostream
 -
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/base64.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/base64.cpp
 base64.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/base64.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/base64.h
 iostream
 -
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/tinystr.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/tinystr.cpp
 tinystr.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/tinystr.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/tinystr.h
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/tinyxml.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/tinyxml.cpp
 ctype.h
 -
 sstream
@@ -198,19 +200,19 @@ sstream
 iostream
 -
 tinyxml.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/tinyxml.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/tinyxml.h
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/tinyxmlerror.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/tinyxmlerror.cpp
 tinyxml.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/tinyxml.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/tinyxml.h
 
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/tinyxmlparser.cpp
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/tinyxmlparser.cpp
 ctype.h
 -
 stddef.h
 -
 tinyxml.h
-/home/harrison/Documents/UnB/IJE/RGBender/engine/src/tinyxml.h
+/home/felipe/Documents/C-C++/SDL/livro/engine/src/tinyxml.h
 windows.h
 -
 
@@ -228,6 +230,14 @@ string
 map
 -
 
+engine/inc/Cooldown.h
+functional
+-
+iostream
+-
+Timer.h
+engine/inc/Timer.h
+
 engine/inc/Game.h
 TextureManager.h
 engine/inc/TextureManager.h
@@ -235,6 +245,8 @@ GameObject.h
 engine/inc/GameObject.h
 GameStateMachine.h
 engine/inc/GameStateMachine.h
+Cooldown.h
+engine/inc/Cooldown.h
 SDL2/SDL.h
 -
 vector
