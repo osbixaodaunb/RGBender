@@ -5,11 +5,11 @@
 #include "SDLGameObject.h"
 #include "BaseCreator.h"
 
-class MenuButton : public SDLGameObject{
+class MenuButton : public engine::SDLGameObject{
 public:
 	MenuButton();
 
-	void load(const LoaderParams* pParams);
+	void load(const engine::LoaderParams* pParams);
 
 	void setCallback(void(*callback) ()) {
 		m_callback = callback;
@@ -35,8 +35,8 @@ private:
 	int m_callbackID;
 };
 
-class MenuButtonCreator : public BaseCreator{
-	GameObject* createGameObject() const{
+class MenuButtonCreator : public engine::BaseCreator{
+	engine::GameObject* createGameObject() const{
 		return new MenuButton();
 	}
 };

@@ -12,6 +12,7 @@
 #include <iostream>
 
 using namespace std;
+using namespace engine;
 
 const string MainMenuState::s_menuID = "MENU";
 

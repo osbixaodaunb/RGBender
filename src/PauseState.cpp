@@ -10,6 +10,8 @@
 #include <iostream>
 #include <string>
 
+using namespace engine;
+
 const std::string PauseState::s_pauseID = "PAUSE";
 
 void PauseState::s_pauseToMain(){

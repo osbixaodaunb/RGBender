@@ -5,7 +5,7 @@
 
 #include <vector>
 
-class MenuState : public GameState{
+class MenuState : public engine::GameState{
 public:
 	typedef void(*Callback) ();
 protected:

@@ -12,11 +12,11 @@
 #include <string>
 #include <SDL2/SDL.h>
 
-class Player : public SDLGameObject{
+class Player : public engine::SDLGameObject{
 public:
 	Player();
 
-	void load(const LoaderParams* pParams);
+	void load(const engine::LoaderParams* pParams);
 	void draw();
 	void update();
 	void clean();
@@ -37,8 +37,8 @@ private:
 	BulletCreator bulletCreator;
 };
 
-class PlayerCreator : public BaseCreator{
-	GameObject* createGameObject() const{
+class PlayerCreator : public engine::BaseCreator{
+	engine::GameObject* createGameObject() const{
 		return new Player();
 	}
 };
