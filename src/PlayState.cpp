@@ -29,14 +29,14 @@ void PlayState::update(){
 	//	Game::Instance().getStateMachine()->pushState(new PauseState());
 	//}
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_P))
+	if(InputHandler::Instance().isKeyDown("p"))
 		Game::Instance().getStateMachine()->pushState(new PauseState());
 
 	GameState::update();
 	if(pLevel != NULL)
 		pLevel->update();
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_Q)){
+	if(InputHandler::Instance().isKeyDown("q")){
 		Game::Instance().getStateMachine()->pushState(new GameOverState());
 	}
 

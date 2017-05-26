@@ -105,7 +105,7 @@ void Game::update(){
 void Game::handleEvents(){
 	InputHandler::Instance().update();
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_LEFT)){
+	if(InputHandler::Instance().isKeyDown("left")){
 		m_pGameStateMachine->changeState(new PlayState());
 	}
 }
