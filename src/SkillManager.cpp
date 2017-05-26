@@ -3,7 +3,7 @@
 #include <utility>
 #include <iostream>
 
-using namespace engine;
+//using namespace engine;
 
 SkillManager::SkillManager(){
 	m_skills[std::make_pair(RED, RED)] = &SkillManager::redPlus;

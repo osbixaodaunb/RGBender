@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-class PauseState : public engine::MenuState{
+class PauseState : public MenuState{
 public:
 	virtual void update();
 	virtual void render();

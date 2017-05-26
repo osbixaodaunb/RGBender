@@ -26,7 +26,6 @@ distribution.
 
 #include "tinystr.h"
 
-using namespace engine;
 
 // Error value for find primitive
 const TiXmlString::size_type TiXmlString::npos = static_cast< TiXmlString::size_type >(-1);

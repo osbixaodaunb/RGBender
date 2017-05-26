@@ -15,7 +15,7 @@ public:
 	~Bullet();
 
 	void load(engine::Vector2D pVelocity, engine::Vector2D pPosition);
-	void load(const LoaderParams* pParams);
+	void load(const engine::LoaderParams* pParams);
 	void draw();
 	void update();
 	void clean();
@@ -29,7 +29,7 @@ public:
 	}
 
 private:
-	double rotateTowards(Vector2D);
+	double rotateTowards(engine::Vector2D);
 
 	int m_moveSpeed;
 

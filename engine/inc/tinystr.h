@@ -30,7 +30,6 @@ distribution.
 #include <assert.h>
 #include <string.h>
 
-namespace engine{
 /*	The support for explicit isn't that universal, and it isn't really
 	required - it is used to check that the TiXmlString class isn't incorrectly
 	used. Be nice to old compilers and macro it here:
@@ -53,11 +52,11 @@ namespace engine{
    The buffer allocation is made by a simplistic power of 2 like mechanism : if we increase
    a string and there's no more room, we allocate a buffer twice as big as we need.
 */
-	class TiXmlString
-	{
-		public :
+class TiXmlString
+{
+	public :
 	// The size type used
-		typedef size_t size_type;
+	typedef size_t size_type;
 
 	// Error value for find primitive
 	static const size_type npos; // = -1;
@@ -301,6 +300,6 @@ inline bool operator == (const TiXmlString & a, const TiXmlString & b)
 	   	}
 
 	   } ;
-	}
+	   
 #endif	// TIXML_STRING_INCLUDED
 #endif	// TIXML_USE_STL

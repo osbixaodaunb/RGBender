@@ -35,7 +35,7 @@ private:
 	int m_callbackID;
 };
 
-class MenuButtonCreator : public BaseCreator{
+class MenuButtonCreator : public engine::BaseCreator{
 	engine::GameObject* createGameObject() const{
 		return new MenuButton();
 	}

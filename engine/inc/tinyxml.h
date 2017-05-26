@@ -82,8 +82,6 @@ distribution.
 	#endif
 #endif	
 
-namespace engine{
-
 class TiXmlDocument;
 class TiXmlElement;
 class TiXmlComment;
@@ -1801,7 +1799,6 @@ private:
 	TIXML_STRING lineBreak;
 };
 
-}
 #ifdef _MSC_VER
 #pragma warning( pop )
 #endif
