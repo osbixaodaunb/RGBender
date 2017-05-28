@@ -1,6 +1,6 @@
 #include "Enemy.h"
 #include "InputHandler.h"
-
+#include "Log.h"
 #include <iostream>
 #include <string>
 

@@ -6,7 +6,7 @@
 #include "MenuButton.h"
 #include "InputHandler.h"
 #include "StateParser.h"
-
+#include "Log.h"
 #include <iostream>
 #include <string>
 
@@ -39,8 +39,7 @@ bool PauseState::onEnter(){
 	m_callbacks.push_back(s_resumePlay);
 
 	setCallbacks(m_callbacks);
-
-	std::cout << "Entering PauseState" << std::endl;
+	INFO("Entering PauseState");
 
 	return true;
 }
@@ -61,8 +60,7 @@ bool PauseState::onExit(){
 	TextureManager::Instance().clearFromTextureMap("menuButton");
 
 	InputHandler::Instance().reset();
-
-	std::cout << "Exiting PauseState" << std::endl;
+	INFO("Exiting PauseState");
 	return true;
 
 }

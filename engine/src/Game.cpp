@@ -10,8 +10,8 @@
 #include "GameObjectFactory.h"
 #include "AnimatedGraphic.h"
 #include "Timer.h"
+#include "Log.h"
 #include "Cooldown.h"
-
 #include <iostream>
 #include <vector>
 #include <SDL2/SDL_image.h>
@@ -27,7 +27,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
 	// attempt to initialize SDL
 	if(SDL_Init(SDL_INIT_EVERYTHING) >= 0){
-		cout << "SDL init success" << endl;
+		INFO("SDL init success");
 			
 		// init the window
 		m_pWindow = SDL_CreateWindow(title, 
@@ -37,33 +37,32 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		
 		if(m_pWindow != 0){
 			// window init success
-			cout << "Window creation success" << endl;
+			INFO("Window creation success");
 			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, 0);
 
 			if(m_pRenderer != 0){
 				// renderer init success
-				cout << "Renderer creation success" << endl;
+				INFO("Renderer creation success");
 				SDL_SetRenderDrawColor(m_pRenderer,
 										 255, 255, 255, 255);
 			} else {
 				// renderer init failed
-				cout << "Renderer init failed" << endl;
+				INFO("Renderer init failed");
 					return false;
 			}
 		} else {
 			// window init failed
-			cout << "Window init failed" << endl;
+			INFO("Window init failed");
 			return false;
 		}
 	} else {
 		// SDL init failed
-		cout << "SDL init failed" << endl;
+		INFO("SDL init failed");
 		return false;
 	}
 
 	InputHandler::Instance().initialiseJoysticks();
-
-	cout << "Init success" << endl;
+	INFO("Init success");
 
 	Timer::Instance().start();
 	
@@ -126,8 +125,7 @@ void Game::handleEvents(){
 }
 
 void Game::clean(){
-	cout << "Cleaning game" << endl;
-
+	INFO("Cleaning game");
 	SDL_DestroyWindow(m_pWindow);
 	SDL_DestroyRenderer(m_pRenderer);
 

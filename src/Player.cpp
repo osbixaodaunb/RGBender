@@ -4,7 +4,7 @@
 #include "InputHandler.h"
 #include "Bullet.h"
 #include "Game.h"
-
+#include "Log.h"
 #include <string>
 #include <SDL2/SDL.h>
 #include <iostream>
@@ -49,9 +49,8 @@ void Player::handleInput(){
 
 	useSkill();
 	if(InputHandler::Instance().isKeyDown("v", m_fireRate)){
-		std::cout << "FIRE RATE: " << m_fireRate << std::endl;
+		INFO("FIRE RATE: " + m_fireRate);
 		Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
-
 		Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
 		target = target.norm();
 		Bullet *bullet =  bulletCreator.create();
@@ -129,7 +128,7 @@ void Player::useSkill(){
 				}
 			}
 			else
-				std::cout << "TA EM CD\n";
+				INFO("TA EM CD");
 			
 			m_pSkills.first = BLANK;
 			m_pSkills.second = BLANK;

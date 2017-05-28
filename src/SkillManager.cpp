@@ -1,5 +1,5 @@
 #include "SkillManager.h"
-
+#include "Log.h"
 #include <utility>
 #include <iostream>
 
@@ -21,7 +21,7 @@ SkillManager::SkillManager(){
 }
 
 uint8_t* SkillManager::redPlus(){
-	std::cout << "RED PLUS: " << std::endl;
+	INFO("RED PLUS");
 	uint8_t* pixels = new uint8_t[3];
 	pixels[0] = 255;
 	pixels[1] = 0;
@@ -30,7 +30,7 @@ uint8_t* SkillManager::redPlus(){
 }
 
 uint8_t* SkillManager::greenPlus(){
-	std::cout << "GREEN PLUS: " << std::endl;
+	INFO("GREEN PLUS");
 	uint8_t* pixels = new uint8_t[3];
 	pixels[0] = 0;
 	pixels[1] = 255;
@@ -39,7 +39,7 @@ uint8_t* SkillManager::greenPlus(){
 }
 
 uint8_t* SkillManager::bluePlus(){
-	std::cout << "BLUE PLUS: " << std::endl;
+	INFO("BLUE PLUS");
 	uint8_t* pixels = new uint8_t[3];
 	pixels[0] = 0;
 	pixels[1] = 0;
@@ -48,7 +48,7 @@ uint8_t* SkillManager::bluePlus(){
 }
 
 uint8_t* SkillManager::purple(){
-	std::cout << "PURPLE PLUS: " << std::endl;
+	INFO("PURPLE PLUS");
 	uint8_t* pixels = new uint8_t[3];
 	pixels[0] = 255;
 	pixels[1] = 0;
@@ -57,7 +57,7 @@ uint8_t* SkillManager::purple(){
 }
 
 uint8_t* SkillManager::cyan(){
-	std::cout << "CYAN PLUS: " << std::endl;
+	INFO("CYAN PLUS");
 	uint8_t* pixels = new uint8_t[3];
 	pixels[0] = 0;
 	pixels[1] = 255;
@@ -66,7 +66,7 @@ uint8_t* SkillManager::cyan(){
 }
 
 uint8_t* SkillManager::brown(){
-	std::cout << "BROWN PLUS: " << std::endl;
+	INFO("BROWN PLUS");
 	uint8_t* pixels = new uint8_t[3];
 	pixels[0] = 190;
 	pixels[1] = 105;
@@ -99,7 +99,7 @@ void SkillManager::setCoolDownTrigger(std::pair<default_inks, default_inks> comb
 
 	std::map<std::pair<default_inks, default_inks>, bool>::iterator it = m_coolDownMap.find(combinedSkills);
 	if(it == m_coolDownMap.end())
-		std::cout << "NAO ENCONTROU A COMBINACAO\n";
+		INFO("NAO ENCONTROU A COMBINACAO")
 	else{
 		m_coolDownMap[combinedSkills] = true; //Seta a skill pra entrar no estado de CoolDown
 	}

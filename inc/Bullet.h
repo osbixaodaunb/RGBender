@@ -5,7 +5,7 @@
 #include "LoaderParams.h"
 #include "Vector2D.h"
 #include "BaseCreator.h"
-
+#include "Log.h"
 #include <iostream>
 #include <vector>
 
@@ -48,8 +48,7 @@ public:
 				return bullet;
 			}
 		}
-
-		std::cout << "Foi criado uma nova bullet\n";
+		INFO("A new bullet was created");
 		bullets.push_back(new Bullet());
 		return bullets.back();
 	}

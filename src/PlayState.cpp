@@ -12,7 +12,7 @@
 #include "StateParser.h"
 #include "Level.h"
 #include "LevelParser.h"
-
+#include "Log.h"
 #include <string>
 #include <iostream>
 
@@ -61,8 +61,7 @@ bool PlayState::onEnter(){
 
 	LevelParser levelParser;
 	pLevel = levelParser.parseLevel("assets/mapadoidao.tmx");
-
-	cout <<	"Entering PlayState" << endl;
+	INFO("Entering PlayState");
 	return true;
 }
 
@@ -70,8 +69,7 @@ bool PlayState::onExit(){
 	GameState::onExit();
 
 	TextureManager::Instance().clearFromTextureMap("helicopter");
-
-	cout << "Exiting PlayState" << endl;	
+	INFO("Exiting PlayState");
 	return true;
 }
 

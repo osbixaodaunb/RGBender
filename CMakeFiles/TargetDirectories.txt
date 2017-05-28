@@ -1,2 +1,0 @@
-/home/felipe/Documents/C-C++/SDL/livro/engine/CMakeFiles/engine.dir
-/home/felipe/Documents/C-C++/SDL/livro/CMakeFiles/rgbender.dir
