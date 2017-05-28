@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="2">
+<map version="2017.05.02" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="3">
  <properties>
   <property name="helicopter" value="assets/player-topdown.png"/>
+  <property name="helicopterreal" value="assets/anim.png"/>
  </properties>
- <tileset firstgid="1" name="tibiasheet" tilewidth="32" tileheight="32" spacing="2" margin="2" tilecount="256">
+ <tileset firstgid="1" name="tibiasheet" tilewidth="32" tileheight="32" spacing="2" margin="2" tilecount="256" columns="16">
   <image source="tibiasheet.png" width="544" height="544"/>
  </tileset>
  <layer name="Tile Layer 1" width="20" height="20">
@@ -12,7 +13,15 @@
   </data>
  </layer>
  <objectgroup name="Object Layer 1">
-  <object id="1" name="Helicopter1" type="Player" x="302" y="531">
+  <object id="1" name="Xuxa" type="Enemy" x="320" y="100">
+   <properties>
+    <property name="numFrames" value="5"/>
+    <property name="textureHeight" value="128"/>
+    <property name="textureID" value="helicopterreal"/>
+    <property name="textureWidth" value="56"/>
+   </properties>
+  </object>
+  <object id="2" name="Helicopter1" type="Player" x="302" y="531">
    <properties>
     <property name="numFrames" value="7"/>
     <property name="textureHeight" value="150"/>
