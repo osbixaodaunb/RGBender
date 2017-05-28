@@ -27,8 +27,7 @@ void Player::draw(){
 }
 
 void Player::update(){
-	m_currentFrame = int(((SDL_GetTicks() / 300) % 6));
-
+	m_currentFrame = int(((SDL_GetTicks() / 400) % m_numFrames));
 
 	handleInput();
 

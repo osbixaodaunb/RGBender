@@ -16,11 +16,10 @@ Enemy::Enemy() : SDLGameObject(){
 
 void Enemy::load(const LoaderParams* pParams){
 	SDLGameObject::load(pParams);
-
-	}
+}
 
 void Enemy::update(){
-	m_currentFrame = int(((SDL_GetTicks() / 100) % 6));
+	m_currentFrame = int(((SDL_GetTicks() / 200) % m_numFrames));
 	updateHealth();
 	changeAttack();
 
