@@ -12,33 +12,24 @@ class Enemy : public engine::SDLGameObject{
 public:
 	Enemy();
 
-	void load(const engine::LoaderParams* pParams);
-
-	void draw();
-	void update();
-	void clean();
+	virtual void load(const engine::LoaderParams* pParams);
+	virtual void draw();
+	virtual void update();
+	virtual void clean();
 
 private:
-	enum BossHealth{
-		FULL = 1,
-		MEDIUM = 2,
-		LOW = 3,
-		DEAD = 4
-	};
 
 	int m_totalHealth;
 	int m_actualHealth;
-	int m_state;
 
-	void changeAttack();
-	void updateHealth();
-	void changeState();
 };
 
+/*
 class EnemyCreator : public engine::BaseCreator{
 	engine::GameObject* createGameObject() const{
 		return new Enemy();
 	}
 };
+*/
 
 #endif

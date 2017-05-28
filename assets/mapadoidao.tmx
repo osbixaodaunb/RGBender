@@ -13,7 +13,7 @@
   </data>
  </layer>
  <objectgroup name="Object Layer 1">
-  <object id="1" name="Xuxa" type="Enemy" x="141" y="34">
+  <object id="1" name="Xuxa" type="XuxaBoss" x="141" y="34">
    <properties>
     <property name="numFrames" value="8"/>
     <property name="textureHeight" value="235"/>

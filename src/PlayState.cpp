@@ -69,6 +69,7 @@ bool PlayState::onExit(){
 	GameState::onExit();
 
 	TextureManager::Instance().clearFromTextureMap("helicopter");
+	TextureManager::Instance().clearFromTextureMap("RAG");
 	INFO("Exiting PlayState");
 	return true;
 }
