@@ -39,6 +39,8 @@ AnimatedGraphic.h
 /home/harrison/Documents/UnB/IJE/RGBender/engine/src/AnimatedGraphic.h
 Timer.h
 /home/harrison/Documents/UnB/IJE/RGBender/engine/src/Timer.h
+Log.h
+/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Log.h
 iostream
 -
 vector
@@ -51,6 +53,8 @@ GameObjectFactory.h
 /home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameObjectFactory.h
 BaseCreator.h
 /home/harrison/Documents/UnB/IJE/RGBender/engine/src/BaseCreator.h
+Log.h
+/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Log.h
 string
 -
 iostream
@@ -67,6 +71,8 @@ TextureManager.h
 /home/harrison/Documents/UnB/IJE/RGBender/engine/src/TextureManager.h
 iostream
 -
+Log.h
+/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Log.h
 
 /home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameStateMachine.cpp
 GameStateMachine.h
@@ -85,6 +91,8 @@ Timer.h
 /home/harrison/Documents/UnB/IJE/RGBender/engine/src/Timer.h
 Game.h
 /home/harrison/Documents/UnB/IJE/RGBender/engine/src/Game.h
+Log.h
+/home/harrison/Documents/UnB/IJE/RGBender/engine/src/Log.h
 
 /home/harrison/Documents/UnB/IJE/RGBender/engine/src/Level.cpp
 Level.h
@@ -308,6 +316,12 @@ engine/inc/LoaderParams.h
 string
 -
 
+engine/inc/Log.h
+iostream
+-
+cstdlib
+-
+
 engine/inc/ObjectLayer.h
 Layer.h
 engine/inc/Layer.h
@@ -405,6 +419,8 @@ Vector2D.h
 inc/Vector2D.h
 BaseCreator.h
 inc/BaseCreator.h
+Log.h
+inc/Log.h
 iostream
 -
 vector

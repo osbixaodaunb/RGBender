@@ -5,7 +5,7 @@
 
 #include "Timer.h"
 #include "Game.h"
-
+#include "Log.h"
 using namespace std;
 using namespace engine;
 
@@ -40,8 +40,7 @@ void InputHandler::initialiseJoysticks(){
 		}
 		SDL_JoystickEventState(SDL_ENABLE);
 		m_bJoysticksInitialised = true;
-
-		cout << "Initialised " << m_joysticks.size() << " joystick(s)" << endl;
+		INFO("Initialised joysticks: " + m_joysticks.size());
 	} else {
 		m_bJoysticksInitialised = false;
 	}

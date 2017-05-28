@@ -23,6 +23,8 @@ Game.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/Game.h
 InputHandler.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/InputHandler.h
+Log.h
+/home/harrison/Documents/UnB/IJE/RGBender/src/Log.h
 iostream
 -
 
@@ -31,6 +33,8 @@ Enemy.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/Enemy.h
 InputHandler.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/InputHandler.h
+Log.h
+/home/harrison/Documents/UnB/IJE/RGBender/src/Log.h
 iostream
 -
 string
@@ -57,6 +61,8 @@ PlayState.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/PlayState.h
 StateParser.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/StateParser.h
+Log.h
+/home/harrison/Documents/UnB/IJE/RGBender/src/Log.h
 iostream
 -
 
@@ -79,6 +85,8 @@ Player.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/Player.h
 StateParser.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/StateParser.h
+Log.h
+/home/harrison/Documents/UnB/IJE/RGBender/src/Log.h
 vector
 -
 iostream
@@ -109,6 +117,8 @@ InputHandler.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/InputHandler.h
 StateParser.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/StateParser.h
+Log.h
+/home/harrison/Documents/UnB/IJE/RGBender/src/Log.h
 iostream
 -
 string
@@ -143,6 +153,8 @@ Level.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/Level.h
 LevelParser.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/LevelParser.h
+Log.h
+/home/harrison/Documents/UnB/IJE/RGBender/src/Log.h
 string
 -
 iostream
@@ -161,6 +173,8 @@ Bullet.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/Bullet.h
 Game.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/Game.h
+Log.h
+/home/harrison/Documents/UnB/IJE/RGBender/src/Log.h
 string
 -
 SDL2/SDL.h
@@ -173,6 +187,8 @@ cmath
 /home/harrison/Documents/UnB/IJE/RGBender/src/SkillManager.cpp
 SkillManager.h
 /home/harrison/Documents/UnB/IJE/RGBender/src/SkillManager.h
+Log.h
+/home/harrison/Documents/UnB/IJE/RGBender/src/Log.h
 utility
 -
 iostream
@@ -268,6 +284,12 @@ engine/inc/LoaderParams.h
 string
 -
 
+engine/inc/Log.h
+iostream
+-
+cstdlib
+-
+
 engine/inc/SDLGameObject.h
 GameObject.h
 engine/inc/GameObject.h
@@ -343,6 +365,8 @@ Vector2D.h
 inc/Vector2D.h
 BaseCreator.h
 inc/BaseCreator.h
+Log.h
+inc/Log.h
 iostream
 -
 vector

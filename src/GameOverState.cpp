@@ -8,7 +8,7 @@
 #include "MainMenuState.h"
 #include "PlayState.h"
 #include "StateParser.h"
-
+#include "Log.h"
 
 #include <iostream>
 
@@ -42,15 +42,13 @@ bool GameOverState::onEnter(){
 	
 	// set the callbacks for menu items
 	setCallbacks(m_callbacks);
-
-	std::cout << "Entering GameOverState\n";
+	INFO("Entering GameOverState");
 	return true;
 }
 
 bool GameOverState::onExit(){
 	GameState::onExit();
-
-	std::cout << "Exiting GameOverState\n";
+	INFO("Exiting GameOverState");
 	return true;
 }
 

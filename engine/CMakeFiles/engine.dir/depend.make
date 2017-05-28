@@ -20,6 +20,7 @@ engine/CMakeFiles/engine.dir/src/Game.cpp.o: engine/inc/GameState.h
 engine/CMakeFiles/engine.dir/src/Game.cpp.o: engine/inc/GameStateMachine.h
 engine/CMakeFiles/engine.dir/src/Game.cpp.o: engine/inc/InputHandler.h
 engine/CMakeFiles/engine.dir/src/Game.cpp.o: engine/inc/LoaderParams.h
+engine/CMakeFiles/engine.dir/src/Game.cpp.o: engine/inc/Log.h
 engine/CMakeFiles/engine.dir/src/Game.cpp.o: engine/inc/SDLGameObject.h
 engine/CMakeFiles/engine.dir/src/Game.cpp.o: engine/inc/TextureManager.h
 engine/CMakeFiles/engine.dir/src/Game.cpp.o: engine/inc/Timer.h
@@ -38,11 +39,13 @@ engine/CMakeFiles/engine.dir/src/GameObjectFactory.cpp.o: engine/inc/BaseCreator
 engine/CMakeFiles/engine.dir/src/GameObjectFactory.cpp.o: engine/inc/GameObject.h
 engine/CMakeFiles/engine.dir/src/GameObjectFactory.cpp.o: engine/inc/GameObjectFactory.h
 engine/CMakeFiles/engine.dir/src/GameObjectFactory.cpp.o: engine/inc/LoaderParams.h
+engine/CMakeFiles/engine.dir/src/GameObjectFactory.cpp.o: engine/inc/Log.h
 
 engine/CMakeFiles/engine.dir/src/GameState.cpp.o: engine/src/GameState.cpp
 engine/CMakeFiles/engine.dir/src/GameState.cpp.o: engine/inc/GameObject.h
 engine/CMakeFiles/engine.dir/src/GameState.cpp.o: engine/inc/GameState.h
 engine/CMakeFiles/engine.dir/src/GameState.cpp.o: engine/inc/LoaderParams.h
+engine/CMakeFiles/engine.dir/src/GameState.cpp.o: engine/inc/Log.h
 engine/CMakeFiles/engine.dir/src/GameState.cpp.o: engine/inc/TextureManager.h
 
 engine/CMakeFiles/engine.dir/src/GameStateMachine.cpp.o: engine/src/GameStateMachine.cpp
@@ -58,6 +61,7 @@ engine/CMakeFiles/engine.dir/src/InputHandler.cpp.o: engine/inc/GameState.h
 engine/CMakeFiles/engine.dir/src/InputHandler.cpp.o: engine/inc/GameStateMachine.h
 engine/CMakeFiles/engine.dir/src/InputHandler.cpp.o: engine/inc/InputHandler.h
 engine/CMakeFiles/engine.dir/src/InputHandler.cpp.o: engine/inc/LoaderParams.h
+engine/CMakeFiles/engine.dir/src/InputHandler.cpp.o: engine/inc/Log.h
 engine/CMakeFiles/engine.dir/src/InputHandler.cpp.o: engine/inc/TextureManager.h
 engine/CMakeFiles/engine.dir/src/InputHandler.cpp.o: engine/inc/Timer.h
 engine/CMakeFiles/engine.dir/src/InputHandler.cpp.o: engine/inc/Vector2D.h

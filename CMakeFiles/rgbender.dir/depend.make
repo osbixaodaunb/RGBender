@@ -9,6 +9,7 @@ CMakeFiles/rgbender.dir/src/Bullet.cpp.o: engine/inc/GameState.h
 CMakeFiles/rgbender.dir/src/Bullet.cpp.o: engine/inc/GameStateMachine.h
 CMakeFiles/rgbender.dir/src/Bullet.cpp.o: engine/inc/InputHandler.h
 CMakeFiles/rgbender.dir/src/Bullet.cpp.o: engine/inc/LoaderParams.h
+CMakeFiles/rgbender.dir/src/Bullet.cpp.o: engine/inc/Log.h
 CMakeFiles/rgbender.dir/src/Bullet.cpp.o: engine/inc/SDLGameObject.h
 CMakeFiles/rgbender.dir/src/Bullet.cpp.o: engine/inc/TextureManager.h
 CMakeFiles/rgbender.dir/src/Bullet.cpp.o: engine/inc/Timer.h
@@ -22,6 +23,7 @@ CMakeFiles/rgbender.dir/src/Enemy.cpp.o: engine/inc/BaseCreator.h
 CMakeFiles/rgbender.dir/src/Enemy.cpp.o: engine/inc/GameObject.h
 CMakeFiles/rgbender.dir/src/Enemy.cpp.o: engine/inc/InputHandler.h
 CMakeFiles/rgbender.dir/src/Enemy.cpp.o: engine/inc/LoaderParams.h
+CMakeFiles/rgbender.dir/src/Enemy.cpp.o: engine/inc/Log.h
 CMakeFiles/rgbender.dir/src/Enemy.cpp.o: engine/inc/SDLGameObject.h
 CMakeFiles/rgbender.dir/src/Enemy.cpp.o: engine/inc/TextureManager.h
 CMakeFiles/rgbender.dir/src/Enemy.cpp.o: engine/inc/Vector2D.h
@@ -35,6 +37,7 @@ CMakeFiles/rgbender.dir/src/GameOverState.cpp.o: engine/inc/GameObject.h
 CMakeFiles/rgbender.dir/src/GameOverState.cpp.o: engine/inc/GameState.h
 CMakeFiles/rgbender.dir/src/GameOverState.cpp.o: engine/inc/GameStateMachine.h
 CMakeFiles/rgbender.dir/src/GameOverState.cpp.o: engine/inc/LoaderParams.h
+CMakeFiles/rgbender.dir/src/GameOverState.cpp.o: engine/inc/Log.h
 CMakeFiles/rgbender.dir/src/GameOverState.cpp.o: engine/inc/SDLGameObject.h
 CMakeFiles/rgbender.dir/src/GameOverState.cpp.o: engine/inc/StateParser.h
 CMakeFiles/rgbender.dir/src/GameOverState.cpp.o: engine/inc/TextureManager.h
@@ -54,6 +57,7 @@ CMakeFiles/rgbender.dir/src/MainMenuState.cpp.o: engine/inc/GameObject.h
 CMakeFiles/rgbender.dir/src/MainMenuState.cpp.o: engine/inc/GameState.h
 CMakeFiles/rgbender.dir/src/MainMenuState.cpp.o: engine/inc/GameStateMachine.h
 CMakeFiles/rgbender.dir/src/MainMenuState.cpp.o: engine/inc/LoaderParams.h
+CMakeFiles/rgbender.dir/src/MainMenuState.cpp.o: engine/inc/Log.h
 CMakeFiles/rgbender.dir/src/MainMenuState.cpp.o: engine/inc/SDLGameObject.h
 CMakeFiles/rgbender.dir/src/MainMenuState.cpp.o: engine/inc/StateParser.h
 CMakeFiles/rgbender.dir/src/MainMenuState.cpp.o: engine/inc/TextureManager.h
@@ -87,6 +91,7 @@ CMakeFiles/rgbender.dir/src/PauseState.cpp.o: engine/inc/GameState.h
 CMakeFiles/rgbender.dir/src/PauseState.cpp.o: engine/inc/GameStateMachine.h
 CMakeFiles/rgbender.dir/src/PauseState.cpp.o: engine/inc/InputHandler.h
 CMakeFiles/rgbender.dir/src/PauseState.cpp.o: engine/inc/LoaderParams.h
+CMakeFiles/rgbender.dir/src/PauseState.cpp.o: engine/inc/Log.h
 CMakeFiles/rgbender.dir/src/PauseState.cpp.o: engine/inc/SDLGameObject.h
 CMakeFiles/rgbender.dir/src/PauseState.cpp.o: engine/inc/StateParser.h
 CMakeFiles/rgbender.dir/src/PauseState.cpp.o: engine/inc/TextureManager.h
@@ -109,6 +114,7 @@ CMakeFiles/rgbender.dir/src/PlayState.cpp.o: engine/inc/Layer.h
 CMakeFiles/rgbender.dir/src/PlayState.cpp.o: engine/inc/Level.h
 CMakeFiles/rgbender.dir/src/PlayState.cpp.o: engine/inc/LevelParser.h
 CMakeFiles/rgbender.dir/src/PlayState.cpp.o: engine/inc/LoaderParams.h
+CMakeFiles/rgbender.dir/src/PlayState.cpp.o: engine/inc/Log.h
 CMakeFiles/rgbender.dir/src/PlayState.cpp.o: engine/inc/SDLGameObject.h
 CMakeFiles/rgbender.dir/src/PlayState.cpp.o: engine/inc/StateParser.h
 CMakeFiles/rgbender.dir/src/PlayState.cpp.o: engine/inc/TextureManager.h
@@ -133,6 +139,7 @@ CMakeFiles/rgbender.dir/src/Player.cpp.o: engine/inc/GameState.h
 CMakeFiles/rgbender.dir/src/Player.cpp.o: engine/inc/GameStateMachine.h
 CMakeFiles/rgbender.dir/src/Player.cpp.o: engine/inc/InputHandler.h
 CMakeFiles/rgbender.dir/src/Player.cpp.o: engine/inc/LoaderParams.h
+CMakeFiles/rgbender.dir/src/Player.cpp.o: engine/inc/Log.h
 CMakeFiles/rgbender.dir/src/Player.cpp.o: engine/inc/SDLGameObject.h
 CMakeFiles/rgbender.dir/src/Player.cpp.o: engine/inc/TextureManager.h
 CMakeFiles/rgbender.dir/src/Player.cpp.o: engine/inc/Timer.h
@@ -142,6 +149,7 @@ CMakeFiles/rgbender.dir/src/Player.cpp.o: inc/Player.h
 CMakeFiles/rgbender.dir/src/Player.cpp.o: inc/SkillManager.h
 
 CMakeFiles/rgbender.dir/src/SkillManager.cpp.o: src/SkillManager.cpp
+CMakeFiles/rgbender.dir/src/SkillManager.cpp.o: engine/inc/Log.h
 CMakeFiles/rgbender.dir/src/SkillManager.cpp.o: inc/SkillManager.h
 
 CMakeFiles/rgbender.dir/src/main.cpp.o: src/main.cpp

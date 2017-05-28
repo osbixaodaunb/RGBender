@@ -6,13 +6,13 @@
 #include "Player.h"
 #include "Game.h"
 #include "InputHandler.h"
-
+#include "Log.h"
 #include <iostream>
 
 using namespace engine;
 
 Bullet::~Bullet(){
-	std::cout << "Destruiu\n";
+	INFO("Bullet destroyed")
 }
 
 Bullet::Bullet() : SDLGameObject(){

@@ -21,6 +21,7 @@ engine/CMakeFiles/engine.dir/src/Game.cpp.o
  engine/inc/GameStateMachine.h
  engine/inc/InputHandler.h
  engine/inc/LoaderParams.h
+ engine/inc/Log.h
  engine/inc/SDLGameObject.h
  engine/inc/TextureManager.h
  engine/inc/Timer.h
@@ -39,11 +40,13 @@ engine/CMakeFiles/engine.dir/src/GameObjectFactory.cpp.o
  engine/inc/GameObject.h
  engine/inc/GameObjectFactory.h
  engine/inc/LoaderParams.h
+ engine/inc/Log.h
 engine/CMakeFiles/engine.dir/src/GameState.cpp.o
  /home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameState.cpp
  engine/inc/GameObject.h
  engine/inc/GameState.h
  engine/inc/LoaderParams.h
+ engine/inc/Log.h
  engine/inc/TextureManager.h
 engine/CMakeFiles/engine.dir/src/GameStateMachine.cpp.o
  /home/harrison/Documents/UnB/IJE/RGBender/engine/src/GameStateMachine.cpp
@@ -59,6 +62,7 @@ engine/CMakeFiles/engine.dir/src/InputHandler.cpp.o
  engine/inc/GameStateMachine.h
  engine/inc/InputHandler.h
  engine/inc/LoaderParams.h
+ engine/inc/Log.h
  engine/inc/TextureManager.h
  engine/inc/Timer.h
  engine/inc/Vector2D.h

@@ -10,6 +10,7 @@ CMakeFiles/rgbender.dir/src/Bullet.cpp.o
  engine/inc/GameStateMachine.h
  engine/inc/InputHandler.h
  engine/inc/LoaderParams.h
+ engine/inc/Log.h
  engine/inc/SDLGameObject.h
  engine/inc/TextureManager.h
  engine/inc/Timer.h
@@ -23,6 +24,7 @@ CMakeFiles/rgbender.dir/src/Enemy.cpp.o
  engine/inc/GameObject.h
  engine/inc/InputHandler.h
  engine/inc/LoaderParams.h
+ engine/inc/Log.h
  engine/inc/SDLGameObject.h
  engine/inc/TextureManager.h
  engine/inc/Vector2D.h
@@ -36,6 +38,7 @@ CMakeFiles/rgbender.dir/src/GameOverState.cpp.o
  engine/inc/GameState.h
  engine/inc/GameStateMachine.h
  engine/inc/LoaderParams.h
+ engine/inc/Log.h
  engine/inc/SDLGameObject.h
  engine/inc/StateParser.h
  engine/inc/TextureManager.h
@@ -55,6 +58,7 @@ CMakeFiles/rgbender.dir/src/MainMenuState.cpp.o
  engine/inc/GameState.h
  engine/inc/GameStateMachine.h
  engine/inc/LoaderParams.h
+ engine/inc/Log.h
  engine/inc/SDLGameObject.h
  engine/inc/StateParser.h
  engine/inc/TextureManager.h
@@ -88,6 +92,7 @@ CMakeFiles/rgbender.dir/src/PauseState.cpp.o
  engine/inc/GameStateMachine.h
  engine/inc/InputHandler.h
  engine/inc/LoaderParams.h
+ engine/inc/Log.h
  engine/inc/SDLGameObject.h
  engine/inc/StateParser.h
  engine/inc/TextureManager.h
@@ -110,6 +115,7 @@ CMakeFiles/rgbender.dir/src/PlayState.cpp.o
  engine/inc/Level.h
  engine/inc/LevelParser.h
  engine/inc/LoaderParams.h
+ engine/inc/Log.h
  engine/inc/SDLGameObject.h
  engine/inc/StateParser.h
  engine/inc/TextureManager.h
@@ -134,6 +140,7 @@ CMakeFiles/rgbender.dir/src/Player.cpp.o
  engine/inc/GameStateMachine.h
  engine/inc/InputHandler.h
  engine/inc/LoaderParams.h
+ engine/inc/Log.h
  engine/inc/SDLGameObject.h
  engine/inc/TextureManager.h
  engine/inc/Timer.h
@@ -143,6 +150,7 @@ CMakeFiles/rgbender.dir/src/Player.cpp.o
  inc/SkillManager.h
 CMakeFiles/rgbender.dir/src/SkillManager.cpp.o
  /home/harrison/Documents/UnB/IJE/RGBender/src/SkillManager.cpp
+ engine/inc/Log.h
  inc/SkillManager.h
 CMakeFiles/rgbender.dir/src/main.cpp.o
  /home/harrison/Documents/UnB/IJE/RGBender/src/main.cpp

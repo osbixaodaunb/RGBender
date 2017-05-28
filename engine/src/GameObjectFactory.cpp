@@ -1,7 +1,7 @@
 #include "GameObjectFactory.h"
 
 #include "BaseCreator.h"
-
+#include "Log.h"
 #include <string>
 #include <iostream>
 #include <map>
@@ -24,7 +24,7 @@ bool GameObjectFactory::registerType(string typeID, BaseCreator* pCreator){
 GameObject* GameObjectFactory::create(string typeID){
 	map<string, BaseCreator*>::iterator it = m_creators.find(typeID);
 	if(it == m_creators.end()){
-		cout << "Could not find type: " << typeID << endl;
+		INFO("Could not find type " + typeID);
 		return NULL;
 	} else {
 		BaseCreator* pCreator = (*it).second;

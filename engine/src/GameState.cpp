@@ -1,8 +1,8 @@
 #include "GameState.h"
 #include "GameObject.h"
 #include "TextureManager.h"
-
 #include <iostream>
+#include "Log.h"
 using namespace engine;
 void GameState::update(){
 	for(auto gameObject : m_gameObjects){
@@ -27,6 +27,6 @@ bool GameState::onExit(){
 	}
 
 	m_gameObjects.clear();
-
+	INFO("Cleaning gameObjects on GameState");
 	return true;
 }

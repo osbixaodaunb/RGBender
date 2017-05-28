@@ -7,7 +7,7 @@
 #include "GameState.h"
 #include "Player.h"
 #include "StateParser.h"
-
+#include "Log.h"
 #include <vector>
 #include <iostream>
 
@@ -34,8 +34,7 @@ bool MainMenuState::onEnter(){
 	m_callbacks.push_back(s_exitFromMenu);
 
 	setCallbacks(m_callbacks);
-
-	cout << "Entering MainMenuState" << endl;
+	INFO("Entering MainMenuState");
 	return true;
 }
 
@@ -52,8 +51,7 @@ void MainMenuState::setCallbacks(const vector<Callback> &callbacks){
 
 bool MainMenuState::onExit(){
 	GameState::onExit();
-
-	cout << "Exiting MainMenuState" << endl;
+	INFO("Exiting MainMenuState");
 	
 	return true;
 }
