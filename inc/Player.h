@@ -22,6 +22,10 @@ public:
 	void clean();
 	typedef uint8_t*(*Callback) ();
 	uint8_t* pixelColors;
+
+	void setFireRate(int fireRate){
+		m_fireRate = fireRate;
+	}
 private:
 	void handleInput();
 	SkillManager m_skillManager;
@@ -33,7 +37,7 @@ private:
 	void useSkill();
 	bool m_isDashing;
 	Uint32 m_dashTime;
-	int fire_rate;
+	int m_fireRate;
 	BulletCreator bulletCreator;
 };
 

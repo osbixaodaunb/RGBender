@@ -48,8 +48,8 @@ namespace engine{
 			return m_mousePosition;
 		}
 
-		bool isKeyDown(SDL_Scancode key);
-		bool isKeyDown(SDL_Scancode key, Uint32 time);
+		bool isKeyDown(const std::string & key);
+		bool isKeyDown(const std::string & key, Uint32 time);
 		bool getMouseButtonState(mouse_buttons p_button){
 			return m_mouseButtonStates[p_button];
 		}
@@ -60,6 +60,7 @@ namespace engine{
 
 		const Uint8* m_keystates;
 		std::unordered_map<Uint8, Uint32> m_times;
+		std::unordered_map<std::string, int> m_buttons;
 
 		Vector2D m_mousePosition;
 
@@ -77,6 +78,8 @@ namespace engine{
 
 		void onJoystickAxisMove(SDL_Event&);
 		void onJoystickButtonUpDown(SDL_Event&);
+
+		void create_keyboard_mapping();
 	};
 
 }

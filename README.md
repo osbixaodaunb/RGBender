@@ -1,13 +1,46 @@
 # RGBender
 
+## Equipe
+
+### Programadores
+
+* Felipe Osório
+
+* Gustavo Lopes
+
+* Harrison Pedro
+
+### Artistas
+
+* Fernanda Noronha
+
+* Mariana Martins
+
+* Marco Xavier
+
+### Músico
+
+* Henrique
+
 ## Tutorial para executar o jogo
 
 * Digite make clean
 
 * Digite make
 
-* Digite bin/main
+* Digite make run
 
+## Dependências
+
+* SDL2
+
+* SDL2_image, SDL2_mixer
+
+* zlib(latest)
+
+## Gênero
+
+É uma composição de Boss Fighting, top-down shooter
 
 ## Resumo
 
@@ -17,7 +50,27 @@ Protagonista viaja no tempo após pichar um símbolo e vai parar na renascença.
 
 Teclado: WASD + MOUSE + 1 2 3
 
-Controle: À Definir
+W: Move para cima
+
+A: Move para esquerda
+
+S: Move para baixo
+
+D: Move para direita
+
+Espaço: Dash(na direção do movimento)
+
+Mouse cursor: Mira
+
+Botão mouse esquerdo: Atira
+
+1: Seleciona cor verde
+
+2: Seleciona cor vermelho
+
+3: Seleciona cor azul
+
+R: Invoke(Combina cores)
 
 ## Poderes
 
@@ -29,12 +82,15 @@ O personagem ataca utilizando de tintas, essas que podem ser combinadas como mos
 
 Itália Renascentista + Pós-Moderno 
 
-
 ## Organização de elementos do jogo
 
 Vida estilo Zelda (corações)
 
 Área comum: sala de treinamento, mapa simples de navegação entre boss e cutscenes; há um training dummy para testar habilidades
+
+## Condição de vitória e derrota
+
+Após derrotar os 3 bosses, o jogador terá ganhado o jogo. Durante essas lutas caso ele perca todas suas vidas, a personagem morre, e o jogador volta para o início da fase em que ele perdeu a luta.
 
 ## Bosses
 
@@ -77,13 +133,3 @@ Detalhes da batalha:
 	Quebra 4ª parede (desliga tela, picha tela, picha mais rápido, etc.)
 
 	Poder igual ao jogador, porém + refinado
-
-
-
-
-
-
-
-
-
-

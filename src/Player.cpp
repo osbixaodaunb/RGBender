@@ -14,7 +14,7 @@ using namespace std;
 using namespace engine;
 
 Player::Player() : SDLGameObject(){
-	fire_rate = 500;
+	m_fireRate = 500;
 	TextureManager::Instance().load("assets/clash2.png", "bullet", Game::Instance().getRenderer());
 }
 
@@ -48,10 +48,9 @@ void Player::handleInput(){
 	move();
 
 	useSkill();
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_V, fire_rate)){
-		INFO("FIRE RATE: " + fire_rate);
+	if(InputHandler::Instance().isKeyDown("v", m_fireRate)){
+		INFO("FIRE RATE: " + m_fireRate);
 		Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
-
 		Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
 		target = target.norm();
 		Bullet *bullet =  bulletCreator.create();
@@ -71,20 +70,20 @@ void Player::rotateTowards(){
 void Player::move(){
 	Vector2D movement(0, 0);
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_W)){
+	if(InputHandler::Instance().isKeyDown("w")){
 		movement += Vector2D(0, -1);
 	}
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_S)){
+	if(InputHandler::Instance().isKeyDown("s")){
 		movement += Vector2D(0, +1);
 	}
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_D)){
+	if(InputHandler::Instance().isKeyDown("d")){
 		movement += Vector2D(1, 0);
 	}
 
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_A)){
+	if(InputHandler::Instance().isKeyDown("a")){
 		movement += Vector2D(-1, 0);
 	}
 
@@ -100,21 +99,25 @@ void Player::move(){
 }
 
 void Player::useSkill(){
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_1, 200)){
-		fire_rate = 100;
+
+	if(InputHandler::Instance().isKeyDown("1", 200)){
+		setFireRate(100);
 		m_skillManager.setSkillPair(&m_pSkills, RED, &isFirstSkill);
+
+		std::function<void(int)> redSkill = std::bind(&Player::setFireRate, this, 500);
+		Game::Instance().addCooldown(new Cooldown<int>(1000, redSkill, 500));
 	}
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_2, 200)){
+	if(InputHandler::Instance().isKeyDown("2", 200)){
 		m_skillManager.setSkillPair(&m_pSkills, GREEN, &isFirstSkill);
 	}
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_3, 200)){
+	if(InputHandler::Instance().isKeyDown("3", 200)){
 		m_skillManager.setSkillPair(&m_pSkills, BLUE, &isFirstSkill);
 	}
 
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_X, 100)){
+	if(InputHandler::Instance().isKeyDown("x", 100)){
 		std::map<std::pair<default_inks, default_inks>, bool>::iterator it = m_skillManager.getCoolDownMap()->find(m_pSkills);
 		if(it != m_skillManager.getCoolDownMap()->end()){
 			if(it->second == false){
@@ -136,7 +139,7 @@ void Player::useSkill(){
 
 void Player::dash(){
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_SPACE, 1000)){
+	if(InputHandler::Instance().isKeyDown("space", 1000)){
 		m_dashTime = Timer::Instance().step();
 		m_velocity = (m_velocity.norm() * 5);
 		m_isDashing = true;

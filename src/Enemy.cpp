@@ -38,7 +38,7 @@ void Enemy::draw(){
 
 void Enemy::updateHealth(){
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_Z)){
+	if(InputHandler::Instance().isKeyDown("z")){
 		m_actualHealth -= 20;
 	}
 

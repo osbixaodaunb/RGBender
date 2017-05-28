@@ -11,6 +11,7 @@
 #include "AnimatedGraphic.h"
 #include "Timer.h"
 #include "Log.h"
+#include "Cooldown.h"
 #include <iostream>
 #include <vector>
 #include <SDL2/SDL_image.h>
@@ -99,12 +100,26 @@ void Game::render(){
 
 void Game::update(){
 	m_pGameStateMachine->update();
+
+	vector<Cooldown<int>*> doneCooldowns;
+
+	for(auto cooldown : m_cooldowns){
+		if(cooldown->update()){
+			doneCooldowns.push_back(cooldown);
+		}
+	}
+
+	if(!doneCooldowns.empty()){
+		for(auto cooldown : doneCooldowns){
+			m_cooldowns.erase(find(m_cooldowns.begin(), m_cooldowns.end(), cooldown));
+		}
+	}
 }
 
 void Game::handleEvents(){
 	InputHandler::Instance().update();
 
-	if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_LEFT)){
+	if(InputHandler::Instance().isKeyDown("left")){
 		m_pGameStateMachine->changeState(new PlayState());
 	}
 }
