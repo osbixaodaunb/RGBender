@@ -10,8 +10,10 @@ using namespace engine;
 Enemy::Enemy() : SDLGameObject(){
 	m_totalHealth = 1000;
 	m_actualHealth = m_totalHealth;
-	m_state = FULL;
-	
+	m_state.push_back(&Enemy::quarterLife());
+	m_state.push_back(&Enemy::halfLife());
+	m_state.push_back(&Enemy::fullLife());
+	m_state.back()(); //Deve iniciar/executar o primeiro estado "FULL LIFE"
 }
 
 void Enemy::load(const LoaderParams* pParams){
@@ -35,14 +37,14 @@ void Enemy::draw(){
 	SDLGameObject::draw();
 }
 
-void Enemy::updateHealth(){
+/*void Enemy::updateHealth(){
 
 	if(InputHandler::Instance().isKeyDown("z")){
 		m_actualHealth -= 20;
 	}
 
 	changeState();
-}
+}*/
 
 void Enemy::changeAttack(){
 
@@ -71,12 +73,14 @@ void Enemy::changeState(){
 	int quarterHealth = m_totalHealth / 4;
 
 	if(m_actualHealth <= halfHealth and m_actualHealth > quarterHealth){
-		m_state = MEDIUM;
+		m_state.pop_back();
+		m_state.back()(); //Executa a funcao half life
 	}
 	else if(m_actualHealth <= quarterHealth and m_actualHealth > 0){
-		m_state = LOW;
+		m_state.pop_back();
+		m_state.back()(); //Executa a funcao quarter life
 	}
 	else if(m_actualHealth <= 0){
-		m_state = DEAD;
+		//TODO
 	}
 }

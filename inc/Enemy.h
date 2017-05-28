@@ -17,21 +17,20 @@ public:
 	void draw();
 	void update();
 	void clean();
+	virtual void fullLife()=0;
+	virtual void halfLife()=0;
+	virtual void quarterLife()=0;
+	typedef void(*Callback) ();
 
-private:
-	enum BossHealth{
-		FULL = 1,
-		MEDIUM = 2,
-		LOW = 3,
-		DEAD = 4
-	};
+protected:
 
 	int m_totalHealth;
 	int m_actualHealth;
-	int m_state;
+	
+	std::vector<Callback> m_states;
 
-	void changeAttack();
-	void updateHealth();
+	//void changeAttack();
+	void updateHealth()=0;
 	void changeState();
 };
 
