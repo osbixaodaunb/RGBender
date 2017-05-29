@@ -7,6 +7,8 @@
 #include "Game.h"
 #include "InputHandler.h"
 #include "Log.h"
+#include "Enemy.h"
+#include "Physics.h"
 #include <iostream>
 
 using namespace engine;
@@ -15,7 +17,10 @@ Bullet::~Bullet(){
 	INFO("Bullet destroyed")
 }
 
-Bullet::Bullet() : SDLGameObject(){
+Bullet::Bullet(Enemy *p_boss) : SDLGameObject(){
+
+	setBoss(p_boss);
+
 	timeToLive = 1000;
 	m_active = true;
 }
@@ -56,6 +61,22 @@ void Bullet::update(){
 	if(Timer::Instance().step() >= bornTime + timeToLive){
 		m_active = false;
 		Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
+	}
+
+	checkCollision();
+
+}
+
+void Bullet::checkCollision(){
+	if(m_active){
+		Vector2D pos = m_boss->getPosition();
+		Vector2D thisPos = getPosition();
+		
+		if(Physics::Instance().checkCollision(dynamic_cast<SDLGameObject*>(m_boss), dynamic_cast<SDLGameObject*>(this))){
+			m_active = false;
+			Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
+			INFO("Bullet collided");
+		}
 	}
 }
 

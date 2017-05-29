@@ -18,7 +18,6 @@ void Enemy::load(const LoaderParams* pParams){
 
 void Enemy::update(){
 	m_currentFrame = int(((SDL_GetTicks() / 200) % m_numFrames));
-	updateHealth();
 	SDLGameObject::update();
 }
 
@@ -30,13 +29,14 @@ void Enemy::draw(){
 	SDLGameObject::draw();
 }
 
-void Enemy::updateHealth(){
-
-	if(InputHandler::Instance().isKeyDown("z")){
-		m_actualHealth -= 20;
-		INFO("HP ATUAL: ")
-		INFO(m_actualHealth);
+void Enemy::dealDamage(int damage){
+	if(damage >= 0){
+		m_actualHealth -= damage;
+	} else {
+		m_actualHealth = 0;
 	}
+	INFO("HP ATUAL: ")
+	INFO(m_actualHealth);
 
 	changeState();
 }

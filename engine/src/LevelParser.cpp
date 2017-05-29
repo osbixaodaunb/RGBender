@@ -51,7 +51,7 @@ Level* LevelParser::parseLevel(const char *levelFile){
 	for(TiXmlElement* e = pRoot->FirstChildElement(); e != NULL; e = e->NextSiblingElement()){
 		if(e->Value() == std::string("layer") || e->Value() == std::string("objectgroup")){
 			if(e->FirstChildElement()->Value() == std::string("object")){
-				parseObjectLayer(e, pLevel->getLayers());	
+				parseObjectLayer(e, pLevel->getLayers(), pLevel);	
 			} else if(e->FirstChildElement()->Value() == std::string("data")){
 				parseTileLayer(e, pLevel->getLayers(), pLevel->getTilesets());
 			}
@@ -134,7 +134,7 @@ void LevelParser::parseTextures(TiXmlElement* root){
 	TextureManager::Instance().load(root->Attribute("value"), root->Attribute("name"), Game::Instance().getRenderer());
 }
 
-void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Layer*> *pLayers){
+void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Layer*> *pLayers, Level* pLevel){
 	ObjectLayer* pObjectLayer = new ObjectLayer();
 	for(TiXmlElement* e = pObjectElement->FirstChildElement(); e != NULL; e = e->NextSiblingElement()){
 		if(e->Value() == std::string("object")){
@@ -166,7 +166,11 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 						}
 					}
 				}
-				
+
+			if(strcmp(e->Attribute("type"), "XuxaBoss") == 0){
+				pLevel->setXuxa(dynamic_cast<XuxaBoss*>(pGameObject));
+			}
+
 			pGameObject->load(new
 			LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed));
 			pObjectLayer->getGameObjects()->push_back(pGameObject);

@@ -2,6 +2,9 @@
 #define LEVEL_H
 
 #include "Layer.h"
+//migue
+#include "XuxaBoss.h"
+#include "Log.h"
 
 #include <string>
 #include <vector>
@@ -35,9 +38,19 @@ namespace engine{
 			return &m_layers;
 		}
 
+		void setXuxa(XuxaBoss *p_xuxa){
+			m_xuxa = p_xuxa;
+		}
+
+		XuxaBoss* getXuxa(){
+			return m_xuxa;
+		}
+
 	private:
 		std::vector<Tileset> m_tilesets;
 		std::vector<Layer*> m_layers;
+
+		XuxaBoss *m_xuxa = NULL;
 
 		friend class LevelParser;
 		Level(){}

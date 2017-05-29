@@ -4,6 +4,8 @@
 #include "GameState.h"
 #include "SDLGameObject.h"
 #include "GameObject.h"
+#include "Level.h"
+#include "Log.h"
 
 class PlayState : public engine::GameState{
 public:
@@ -17,10 +19,14 @@ public:
 		return s_playID;
 	}
 
+	engine::Level* getLevel(){
+		return pLevel;
+	}
 
 private:
 	static const std::string s_playID;
 
+	engine::Level *pLevel = NULL;
 	bool checkCollision(engine::SDLGameObject *p1, engine::SDLGameObject *p2);
 };
 

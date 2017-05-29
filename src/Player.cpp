@@ -5,6 +5,10 @@
 #include "Bullet.h"
 #include "Game.h"
 #include "Log.h"
+#include "Enemy.h"
+#include "PlayState.h"
+#include "Physics.h"
+
 #include <string>
 #include <SDL2/SDL.h>
 #include <iostream>
@@ -16,6 +20,8 @@ using namespace engine;
 Player::Player() : SDLGameObject(){
 	m_fireRate = 500;
 	TextureManager::Instance().load("assets/clash2.png", "bullet", Game::Instance().getRenderer());
+
+	INFO("Player inicializado");
 }
 
 void Player::load(const LoaderParams* pParams){
@@ -28,12 +34,22 @@ void Player::draw(){
 
 void Player::update(){
 	m_currentFrame = int(((SDL_GetTicks() / 400) % m_numFrames));
+	
+	if(Game::Instance().getStateMachine()->currentState()->getStateID() == "PLAY"){
+		PlayState *playState = dynamic_cast<PlayState*>(Game::Instance().getStateMachine()->currentState());
+		if(playState->getLevel() != NULL && m_boss == NULL){
+			INFO("Xuxa is set");
+			m_boss = playState->getLevel()->getXuxa();
+		}
+	}
 
 	handleInput();
 
 	if(m_velocity == Vector2D(0, 0)){
 		m_currentFrame = 0;
 	}
+
+	
 
 	SDLGameObject::update();
 }
@@ -52,7 +68,7 @@ void Player::handleInput(){
 		Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
 		Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
 		target = target.norm();
-		Bullet *bullet =  bulletCreator.create();
+		Bullet *bullet =  bulletCreator.create(m_boss);
 		bullet->load(target, Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY()));
 		Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
 	}
@@ -89,12 +105,15 @@ void Player::move(){
 	movement = movement.norm();
 
 	if(!m_isDashing){
-		m_velocity = movement;
-		
+		m_velocity = movement * 2;
 	}
 		
 	dash();
+
 	m_position += m_velocity;
+	if(Physics::Instance().checkCollision(this, m_boss)){
+		m_position -= m_velocity;
+	}
 }
 
 void Player::useSkill(){

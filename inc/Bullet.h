@@ -9,9 +9,11 @@
 #include <iostream>
 #include <vector>
 
+class Enemy;
+
 class Bullet : public engine::SDLGameObject{
 public:
-	Bullet();
+	Bullet(Enemy* p_boss);
 	~Bullet();
 
 	void load(engine::Vector2D pVelocity, engine::Vector2D pPosition);
@@ -19,6 +21,7 @@ public:
 	void draw();
 	void update();
 	void clean();
+	void checkCollision();
 
 	bool isActive(){
 		return m_active;
@@ -28,10 +31,16 @@ public:
 		m_active = p_active;
 	}
 
+	void setBoss(Enemy *p_boss){
+		m_boss = p_boss;
+	}
+
 private:
 	double rotateTowards(engine::Vector2D);
 
 	int m_moveSpeed;
+
+	Enemy *m_boss;
 
 	Uint32 timeToLive;
 	Uint32 bornTime;
@@ -41,15 +50,16 @@ private:
 
 class BulletCreator{
 public:
-	Bullet* create(){
+	Bullet* create(Enemy *p_boss){
 		for(auto bullet : bullets){
 			if(!bullet->isActive()){
 				bullet->setActive();
+				bullet->setBoss(p_boss);
 				return bullet;
 			}
 		}
 		INFO("A new bullet was created");
-		bullets.push_back(new Bullet());
+		bullets.push_back(new Bullet(p_boss));
 		return bullets.back();
 	}
 

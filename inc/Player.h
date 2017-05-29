@@ -12,6 +12,8 @@
 #include <string>
 #include <SDL2/SDL.h>
 
+class Enemy;
+
 class Player : public engine::SDLGameObject{
 public:
 	Player();
@@ -39,6 +41,8 @@ private:
 	Uint32 m_dashTime;
 	int m_fireRate;
 	BulletCreator bulletCreator;
+
+	Enemy* m_boss = NULL;
 };
 
 class PlayerCreator : public engine::BaseCreator{

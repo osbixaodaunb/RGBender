@@ -51,6 +51,7 @@ namespace engine{
 			m_cooldowns.push_back(cooldown);
 		}
 
+		std::vector<GameObject*> m_gameObjects;
 	private:
 		Game() {}
 
@@ -64,7 +65,6 @@ namespace engine{
 		GameObject* m_player;
 		GameObject* m_enemy;
 
-		std::vector<GameObject*> m_gameObjects;
 
 		int m_currentFrame;
 		bool m_bRunning;

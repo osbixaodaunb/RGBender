@@ -22,8 +22,6 @@ using namespace engine;
 
 const string PlayState::s_playID = "PLAY";
 
-Level *pLevel = NULL;
-
 void PlayState::update(){
 	//if(InputHandler::Instance().isKeyDown(SDL_SCANCODE_ESCAPE)){
 	//	Game::Instance().getStateMachine()->pushState(new PauseState());
