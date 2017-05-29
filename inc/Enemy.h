@@ -7,6 +7,7 @@
 
 #include <string>
 #include <SDL2/SDL.h>
+#include <vector>
 
 class Enemy : public engine::SDLGameObject{
 public:
@@ -17,27 +18,26 @@ public:
 	void draw();
 	void update();
 	void clean();
-	virtual void fullLife()=0;
-	virtual void halfLife()=0;
-	virtual void quarterLife()=0;
+	// virtual void fullLife();
+	// virtual void halfLife();
+	// virtual void quarterLife();
 	typedef void(*Callback) ();
+	void updateHealth();
 
 protected:
 
 	int m_totalHealth;
 	int m_actualHealth;
-	
 	std::vector<Callback> m_states;
 
 	//void changeAttack();
-	void updateHealth()=0;
 	void changeState();
 };
 
-class EnemyCreator : public engine::BaseCreator{
-	engine::GameObject* createGameObject() const{
-		return new Enemy();
-	}
-};
+// class EnemyCreator : public engine::BaseCreator{
+// 	engine::GameObject* createGameObject() const{
+// 		return new Enemy();
+// 	}
+// };
 
 #endif

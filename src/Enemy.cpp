@@ -10,10 +10,8 @@ using namespace engine;
 Enemy::Enemy() : SDLGameObject(){
 	m_totalHealth = 1000;
 	m_actualHealth = m_totalHealth;
-	m_state.push_back(&Enemy::quarterLife());
-	m_state.push_back(&Enemy::halfLife());
-	m_state.push_back(&Enemy::fullLife());
-	m_state.back()(); //Deve iniciar/executar o primeiro estado "FULL LIFE"
+
+
 }
 
 void Enemy::load(const LoaderParams* pParams){
@@ -23,7 +21,7 @@ void Enemy::load(const LoaderParams* pParams){
 void Enemy::update(){
 	m_currentFrame = int(((SDL_GetTicks() / 200) % m_numFrames));
 	updateHealth();
-	changeAttack();
+	//changeAttack();
 
 	SDLGameObject::update();
 }
@@ -36,16 +34,19 @@ void Enemy::draw(){
 	SDLGameObject::draw();
 }
 
-/*void Enemy::updateHealth(){
+void Enemy::updateHealth(){
 
-	if(InputHandler::Instance().isKeyDown("z")){
+	if(InputHandler::Instance().isKeyDown("y")){
 		m_actualHealth -= 20;
+		printf("ENTROU AQUI REALLY\n");
+		printf("ACTUAL: %d\n", m_actualHealth);
+		printf("TOTAL: %d\n", m_totalHealth);
 	}
 
 	changeState();
-}*/
+}
 
-void Enemy::changeAttack(){
+/*void Enemy::changeAttack(){
 
 	switch(m_state){
 		case FULL:
@@ -65,21 +66,26 @@ void Enemy::changeAttack(){
 		break;
 	}
 
-}
+}*/
 
 void Enemy::changeState(){
 	int halfHealth = m_totalHealth / 2;
 	int quarterHealth = m_totalHealth / 4;
-
 	if(m_actualHealth <= halfHealth and m_actualHealth > quarterHealth){
-		m_state.pop_back();
-		m_state.back()(); //Executa a funcao half life
+		if(m_states.size() == 3){
+			m_states.pop_back();
+			m_states.back()(); //Executa a funcao half life
+		}
+		
 	}
 	else if(m_actualHealth <= quarterHealth and m_actualHealth > 0){
-		m_state.pop_back();
-		m_state.back()(); //Executa a funcao quarter life
+		if(m_states.size() == 2){
+			m_states.pop_back();
+			m_states.back()(); //Executa a funcao quarter life	
+		}
+		
 	}
 	else if(m_actualHealth <= 0){
-		//TODO
+		INFO("XUXA IS DEAD!")
 	}
 }

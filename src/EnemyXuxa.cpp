@@ -1,26 +1,33 @@
 #include "EnemyXuxa.h"
-
+#include "Log.h"
+#include "InputHandler.h"
 EnemyXuxa::EnemyXuxa() : Enemy(){
-
+	m_states.push_back(&EnemyXuxa::quarterLife);
+	m_states.push_back(&EnemyXuxa::halfLife);
+	m_states.push_back(&EnemyXuxa::fullLife);
+	m_states.back()(); //Deve iniciar/executar o primeiro estado "FULL LIFE"
 }
 
-EnemyXuxa::fullLife(){
+void EnemyXuxa::fullLife(){
 	//TODO
 	INFO("Xuxa está com HP cheio!")
 }
 
-EnemyXuxa::halfLife(){
+void EnemyXuxa::halfLife(){
 	//TODO
 	INFO("Xuxa perdeu metade do HP!")
 }
 
-EnemyXuxa::quarterLife(){
+void EnemyXuxa::quarterLife(){
 	//TODO
-	INFO("Xuxa perdeu 75%% do HP!")
+	INFO("Xuxa perdeu 3/4 do HP!")
 }
-
-EnemyXuxa::updateHealth(){
-	if(InputHandler::Instance().isKeyDown("z")){
-		m_actualHealth -= 20;
-	}
+void EnemyXuxa::draw(){
+	Enemy::draw();
+}
+void EnemyXuxa::update(){
+	Enemy::update();
+}
+void EnemyXuxa::clean(){
+	Enemy::clean();
 }
