@@ -13,14 +13,11 @@ class Enemy : public engine::SDLGameObject{
 public:
 	Enemy();
 
-	void load(const engine::LoaderParams* pParams);
+	virtual void load(const engine::LoaderParams* pParams);
+	virtual void draw();
+	virtual void update();
+	virtual void clean();
 
-	void draw();
-	void update();
-	void clean();
-	// virtual void fullLife();
-	// virtual void halfLife();
-	// virtual void quarterLife();
 	typedef void(*Callback) ();
 	void updateHealth();
 
@@ -32,12 +29,15 @@ protected:
 
 	//void changeAttack();
 	void changeState();
+
 };
 
-// class EnemyCreator : public engine::BaseCreator{
-// 	engine::GameObject* createGameObject() const{
-// 		return new Enemy();
-// 	}
-// };
+/*
+class EnemyCreator : public engine::BaseCreator{
+	engine::GameObject* createGameObject() const{
+		return new Enemy();
+	}
+};
+*/
 
 #endif

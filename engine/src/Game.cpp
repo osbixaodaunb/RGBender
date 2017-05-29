@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Player.h"
-//#include "Enemy.h"
+#include "Enemy.h"
+#include "XuxaBoss.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
 #include "GameStateMachine.h"
@@ -10,7 +11,6 @@
 #include "GameObjectFactory.h"
 #include "AnimatedGraphic.h"
 #include "Timer.h"
-#include "EnemyXuxa.h"
 #include "Log.h"
 #include "Cooldown.h"
 #include <iostream>
@@ -71,8 +71,8 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	m_bRunning = true;
 
 	GameObjectFactory::Instance().registerType("MenuButton", new MenuButtonCreator());
+	GameObjectFactory::Instance().registerType("XuxaBoss", new XuxaBossCreator());
 	GameObjectFactory::Instance().registerType("Player", new PlayerCreator());
-	GameObjectFactory::Instance().registerType("Enemy", new EnemyCreator());
 	GameObjectFactory::Instance().registerType("AnimatedGraphic", new AnimatedGraphicCreator());
 
 

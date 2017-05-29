@@ -10,8 +10,6 @@ using namespace engine;
 Enemy::Enemy() : SDLGameObject(){
 	m_totalHealth = 1000;
 	m_actualHealth = m_totalHealth;
-
-
 }
 
 void Enemy::load(const LoaderParams* pParams){
@@ -21,8 +19,6 @@ void Enemy::load(const LoaderParams* pParams){
 void Enemy::update(){
 	m_currentFrame = int(((SDL_GetTicks() / 200) % m_numFrames));
 	updateHealth();
-	//changeAttack();
-
 	SDLGameObject::update();
 }
 
@@ -36,37 +32,15 @@ void Enemy::draw(){
 
 void Enemy::updateHealth(){
 
-	if(InputHandler::Instance().isKeyDown("y")){
+	if(InputHandler::Instance().isKeyDown("z")){
 		m_actualHealth -= 20;
-		printf("ENTROU AQUI REALLY\n");
-		printf("ACTUAL: %d\n", m_actualHealth);
-		printf("TOTAL: %d\n", m_totalHealth);
+		INFO("HP ATUAL: ")
+		INFO(m_actualHealth);
 	}
 
 	changeState();
 }
 
-/*void Enemy::changeAttack(){
-
-	switch(m_state){
-		case FULL:
-			//cout << "TO FULL VIDA MANE" << endl;
-		break;
-
-		case MEDIUM:
-			//cout << "TA ME DEIXANDO PISTOLA" << endl;
-		break;
-
-		case LOW:
-			//cout << "Ta fudido!" << endl;
-		break;
-
-		case DEAD:
-			//cout << "RIP BOSS" << endl;
-		break;
-	}
-
-}*/
 
 void Enemy::changeState(){
 	int halfHealth = m_totalHealth / 2;
@@ -86,6 +60,8 @@ void Enemy::changeState(){
 		
 	}
 	else if(m_actualHealth <= 0){
-		INFO("XUXA IS DEAD!")
+		INFO("XUXA IS DEAD!");
+		TextureManager::Instance().clearFromTextureMap("RAG"); //Só pra ter um feedback inicial, mas pode remover isso
+
 	}
 }
