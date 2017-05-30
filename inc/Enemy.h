@@ -19,7 +19,7 @@ public:
 	virtual void clean();
 
 	typedef void(*Callback) ();
-	void dealDamage(int);
+	void takeDamage(int);
 
 protected:
 

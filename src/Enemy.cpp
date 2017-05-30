@@ -29,7 +29,7 @@ void Enemy::draw(){
 	SDLGameObject::draw();
 }
 
-void Enemy::dealDamage(int damage){
+void Enemy::takeDamage(int damage){
 	if(damage >= 0){
 		m_actualHealth -= damage;
 	} else {

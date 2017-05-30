@@ -4,6 +4,7 @@
 #include "Layer.h"
 //migue
 #include "XuxaBoss.h"
+#include "Player.h"
 #include "Log.h"
 
 #include <string>
@@ -38,6 +39,15 @@ namespace engine{
 			return &m_layers;
 		}
 
+
+		void setPlayer(Player *p_player){
+			m_player = p_player;
+		}
+
+		Player* getPlayer(){
+			return m_player;
+		}
+
 		void setXuxa(XuxaBoss *p_xuxa){
 			m_xuxa = p_xuxa;
 		}
@@ -51,6 +61,7 @@ namespace engine{
 		std::vector<Layer*> m_layers;
 
 		XuxaBoss *m_xuxa = NULL;
+		Player *m_player = NULL;
 
 		friend class LevelParser;
 		Level(){}

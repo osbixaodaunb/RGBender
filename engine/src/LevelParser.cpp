@@ -171,6 +171,11 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				pLevel->setXuxa(dynamic_cast<XuxaBoss*>(pGameObject));
 			}
 
+
+			if(strcmp(e->Attribute("type"), "Player") == 0){
+				pLevel->setPlayer(dynamic_cast<Player*>(pGameObject));
+			}
+
 			pGameObject->load(new
 			LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed));
 			pObjectLayer->getGameObjects()->push_back(pGameObject);
