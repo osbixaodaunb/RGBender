@@ -2,6 +2,10 @@
 #define XUXA_BOSS_H
 
 #include "Enemy.h"
+#include "Player.h"
+#include "BossBullet.h"
+
+class Player;
 
 class XuxaBoss : public Enemy{
 
@@ -15,6 +19,11 @@ public:
 	static void halfLife();
 	static void quarterLife();
 
+private:
+	virtual void attack();
+	Player *m_player = NULL	;
+	int m_fireRate;
+	BossBulletCreator bulletCreator;
 };
 
 

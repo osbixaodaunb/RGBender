@@ -61,6 +61,11 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 		destRect.h = destRect.h/10;
 	}
 
+	if(id == "bulletboss"){
+		destRect.w = destRect.w/10;
+		destRect.h = destRect.h/10;
+	}
+
 	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, angle, 0, flip);
 }
 
