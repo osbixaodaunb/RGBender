@@ -15,6 +15,7 @@
 #include "Cooldown.h"
 #include <iostream>
 #include <vector>
+#include "AudioManager.h"
 #include <SDL2/SDL_image.h>
 
 using namespace std;
@@ -62,6 +63,11 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 		return false;
 	}
 
+	if(!(AudioManager::Instance().init()))
+		return false;
+
+	INFO("AudioManager init success")
+
 	InputHandler::Instance().initialiseJoysticks();
 	INFO("Init success");
 
@@ -101,7 +107,6 @@ void Game::render(){
 
 void Game::update(){
 	m_pGameStateMachine->update();
-
 	vector<Cooldown<int>*> doneCooldowns;
 
 	for(auto cooldown : m_cooldowns){
