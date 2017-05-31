@@ -56,7 +56,8 @@ void PlayState::render(){
 bool PlayState::onEnter(){	
 	//StateParser stateParser;
 	//stateParser.parseState("test.xml", s_playID, &m_gameObjects, &m_textureIDList);
-
+	Game::Instance().setScore(0);
+	TextureManager::Instance().loadText(to_string(Game::Instance().getScore()), "assets/fonts/Lato-Regular.ttf", "score", {255,255,255}, 50, Game::Instance().getRenderer());
 	LevelParser levelParser;
 	pLevel = levelParser.parseLevel("assets/mapadoidao.tmx");
 	INFO("Entering PlayState");

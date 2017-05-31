@@ -21,6 +21,8 @@ Player::Player() : SDLGameObject(){
 	m_fireRate = 500;
 	TextureManager::Instance().load("assets/clash2.png", "bullet", Game::Instance().getRenderer());
 	INFO("Player inicializado");
+	m_velocity.setX(0);
+	m_velocity.setY(0);
 
 }
 
@@ -86,6 +88,8 @@ void Player::move(){
 
 	if(InputHandler::Instance().isKeyDown("w")){
 		movement += Vector2D(0, -1);
+		m_velocity = movement * 2;
+		printf("ENTROU NO W\n");
 	}
 
 	if(InputHandler::Instance().isKeyDown("s")){
@@ -100,9 +104,7 @@ void Player::move(){
 	if(InputHandler::Instance().isKeyDown("a")){
 		movement += Vector2D(-1, 0);
 	}
-
 	movement = movement.norm();
-
 	if(!m_isDashing){
 		m_velocity = movement * 2;
 	}
