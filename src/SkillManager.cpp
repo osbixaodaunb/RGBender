@@ -32,7 +32,7 @@ SkillManager::SkillManager(Player* p_player){
 uint8_t* SkillManager::redPlus(){
 	INFO("RED PLUS");
 
-	m_player->setFireRate(100);
+	m_player->setFireRate(10);
 	std::function<void(int)> redSkill = std::bind(&Player::setFireRate, m_player, 500);
 	std::function<void(int)> reset = std::bind(&SkillManager::resetCooldown, this, 1);
 	std::function<void(int)> setBlank = std::bind(&SkillManager::blank, this, 255);
