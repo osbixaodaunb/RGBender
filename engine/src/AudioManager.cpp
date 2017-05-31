@@ -1,5 +1,5 @@
 #include "AudioManager.h"
-
+#include "Log.h"
 
 using namespace engine;
 
@@ -27,7 +27,7 @@ void AudioManager::playMusic(std::string file, int loops, int channel){
 void AudioManager::playChunk(std::string file, int loops, int channel){
 	m_sound = Mix_LoadWAV(file.c_str());
 
-	Mix_PlayChannel( channel, m_sound, 0 );
+	Mix_PlayChannel( channel, m_sound, 0); 
 }
 
 void AudioManager::stop(int channel){

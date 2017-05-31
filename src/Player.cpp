@@ -8,6 +8,7 @@
 #include "Enemy.h"
 #include "PlayState.h"
 #include "Physics.h"
+#include "AudioManager.h"
 
 #include <string>
 #include <SDL2/SDL.h>
@@ -65,6 +66,8 @@ void Player::handleInput(){
 
 	useSkill();
 	if(InputHandler::Instance().getMouseButtonState(LEFT, m_fireRate)){
+
+		AudioManager::Instance().playChunk("assets/sounds/shot.wav");
 		INFO("FIRE RATE: " + m_fireRate);
 		Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
 		Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
@@ -89,6 +92,7 @@ void Player::move(){
 	if(InputHandler::Instance().isKeyDown("w")){
 		movement += Vector2D(0, -1);
 		m_velocity = new Vector2D(0, -1);
+
 	}
 
 	if(InputHandler::Instance().isKeyDown("s")){
