@@ -19,8 +19,6 @@ namespace engine{
 
 		bool update(){
 			if(Timer::Instance().step() > m_seconds){
-				std::cout << "oaoisdjoja" << std::endl;
-
 				m_callback(m_value);
 				return true;
 			}

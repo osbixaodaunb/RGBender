@@ -20,8 +20,8 @@ using namespace engine;
 Player::Player() : SDLGameObject(){
 	m_fireRate = 500;
 	TextureManager::Instance().load("assets/clash2.png", "bullet", Game::Instance().getRenderer());
-
 	INFO("Player inicializado");
+
 }
 
 void Player::load(const LoaderParams* pParams){
@@ -34,7 +34,6 @@ void Player::draw(){
 
 void Player::update(){
 	m_currentFrame = int(((SDL_GetTicks() / 400) % m_numFrames));
-	
 	if(Game::Instance().getStateMachine()->currentState()->getStateID() == "PLAY"){
 		PlayState *playState = dynamic_cast<PlayState*>(Game::Instance().getStateMachine()->currentState());
 		if(playState->getLevel() != NULL && m_boss == NULL){
@@ -119,11 +118,7 @@ void Player::move(){
 void Player::useSkill(){
 
 	if(InputHandler::Instance().isKeyDown("1", 200)){
-		setFireRate(100);
 		m_skillManager.setSkillPair(&m_pSkills, RED, &isFirstSkill);
-
-		std::function<void(int)> redSkill = std::bind(&Player::setFireRate, this, 500);
-		Game::Instance().addCooldown(new Cooldown<int>(1000, redSkill, 500));
 	}
 
 	if(InputHandler::Instance().isKeyDown("2", 200)){
