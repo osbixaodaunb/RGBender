@@ -10,7 +10,7 @@
 #include "Enemy.h"
 #include "Physics.h"
 #include <iostream>
-
+#include <string>   
 using namespace engine;
 
 Bullet::~Bullet(){
@@ -74,7 +74,11 @@ void Bullet::checkCollision(){
 		
 		if(Physics::Instance().checkCollision(dynamic_cast<SDLGameObject*>(m_boss), dynamic_cast<SDLGameObject*>(this))){
 			m_active = false;
+			m_boss->dealDamage(50);
 			Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
+			int score = Game::Instance().getScore();
+			Game::Instance().setScore(score + 10);
+			TextureManager::Instance().loadText(std::to_string(Game::Instance().getScore()), "assets/fonts/Lato-Regular.ttf", "score", {255,255,255}, 50, Game::Instance().getRenderer());
 			INFO("Bullet collided");
 		}
 	}

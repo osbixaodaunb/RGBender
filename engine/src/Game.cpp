@@ -94,6 +94,7 @@ void Game::render(){
 	SDL_RenderClear(m_pRenderer);
 
 	m_pGameStateMachine->render();
+	TextureManager::Instance().draw("score", 240, 300, 200, 200, Game::Instance().getRenderer());
 
 	// draw to screen
 	SDL_RenderPresent(m_pRenderer);
@@ -109,7 +110,6 @@ void Game::update(){
 			doneCooldowns.push_back(cooldown);
 		}
 	}
-
 	if(!doneCooldowns.empty()){
 		for(auto cooldown : doneCooldowns){
 			m_cooldowns.erase(find(m_cooldowns.begin(), m_cooldowns.end(), cooldown));
