@@ -9,7 +9,9 @@ int main(int argc, char* argv[]){
 
 	Uint32 frameStart, frameTime;
 
-	Game::Instance().init("Chapter 1", 100, 100, 640, 480, false);
+	const int center = Game::Instance().getCenterScreen();
+	Game::Instance().init("Chapter 1", center, center,
+						  1366, 768, false);
 
 	while(Game::Instance().running()){
 		frameStart = SDL_GetTicks();

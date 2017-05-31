@@ -26,26 +26,60 @@ bool TextureManager::load(std::string fileName, std::string id, SDL_Renderer* pR
 	return false;
 }
 
+bool TextureManager::loadText(std::string message, const char* fontFile, std::string id, SDL_Color color, int fontSize, SDL_Renderer* pRenderer){
+	if( TTF_Init() == -1 )
+	{
+		return false;    
+	}
+
+	printf("%s\n", fontFile);
+	TTF_Font *font = TTF_OpenFont(fontFile, fontSize);
+	SDL_Surface *pTempSurface = TTF_RenderText_Blended(font, message.c_str(), color);
+	if(pTempSurface == 0)
+		return false;
+
+	SDL_Texture* pTexture = SDL_CreateTextureFromSurface(pRenderer, pTempSurface);
+
+	SDL_FreeSurface(pTempSurface);
+	
+	// everything went ok, add the texture to our list
+	if(pTexture != 0){
+		m_textureMap[id] = pTexture;
+		return true;
+	}
+
+	//TTF_CloseFont(font);
+	return false;	
+}
+
 void TextureManager::draw(std::string id, int x, int y, int width, int height, 
-						  SDL_Renderer* pRenderer, 
-						  SDL_RendererFlip flip){
+	SDL_Renderer* pRenderer, 
+	SDL_RendererFlip flip){
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
 
+	// if(id == "score"){
+	// 	std::map<std::string, SDL_Texture*>::iterator it;
+	// 	it = m_textureMap.find(id);
+	// 	if(it != m_textureMap.end())
+	// 		printf("Score esta no mapa das texturas\n"); 
+	// }
 	srcRect.x = 0;
 	srcRect.y = 0;
-	destRect.x = x;
-	destRect.y = y;
+	srcRect.w = 100;
+	srcRect.h = 100;
+	// destRect.x = x;
+	// destRect.y = y;
 
-	srcRect.w = destRect.w = width;
-	srcRect.h = destRect.h = height;
-
-	SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
+	// srcRect.w = destRect.w = width;
+	// srcRect.h = destRect.h = height;
+	SDL_RenderCopy(pRenderer, m_textureMap[id], NULL, &srcRect);
+	//SDL_RenderCopyEx(pRenderer, m_textureMap[id], &srcRect, &destRect, 0, 0, flip);
 }
 
 void TextureManager::drawFrame(std::string id, int x, int y, int width, int height, 
-							   int currentRow, int currentFrame, SDL_Renderer* pRenderer, 
-							   SDL_RendererFlip flip, double angle){
+	int currentRow, int currentFrame, SDL_Renderer* pRenderer, 
+	SDL_RendererFlip flip, double angle){
 
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
@@ -57,6 +91,11 @@ void TextureManager::drawFrame(std::string id, int x, int y, int width, int heig
 	destRect.y = y;
 
 	if(id == "bullet"){
+		destRect.w = destRect.w/10;
+		destRect.h = destRect.h/10;
+	}
+
+	if(id == "bulletboss"){
 		destRect.w = destRect.w/10;
 		destRect.h = destRect.h/10;
 	}

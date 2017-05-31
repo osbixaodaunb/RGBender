@@ -52,8 +52,23 @@ namespace engine{
 		}
 
 		std::vector<GameObject*> m_gameObjects;
+		
+		void setScore(int score){
+			m_score = score;
+		}
+
+		int getScore(){
+			return m_score;
+		}
+
+		int getCenterScreen(){
+			return SDL_WINDOWPOS_CENTERED;
+		}
+
 	private:
-		Game() {}
+		Game() {
+			m_score = 0;
+		}
 
 		int m_gameWidth;
 		int m_gameHeight;
@@ -65,7 +80,7 @@ namespace engine{
 		GameObject* m_player;
 		GameObject* m_enemy;
 
-
+		int m_score;
 		int m_currentFrame;
 		bool m_bRunning;
 

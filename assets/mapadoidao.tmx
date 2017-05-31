@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="32" tileheight="32" nextobjectid="3">
+<map version="2017.05.02" orientation="orthogonal" renderorder="right-down" width="43" height="24" tilewidth="32" tileheight="32" nextobjectid="3">
  <properties>
   <property name="RAG" value="assets/RAG.png"/>
   <property name="helicopter" value="assets/player-topdown.png"/>
  </properties>
- <tileset firstgid="1" name="tibiasheet" tilewidth="32" tileheight="32" spacing="2" margin="2">
-  <image source="tibiasheet.png" width="544" height="544"/>
+ <tileset firstgid="1" name="tilesheet" tilewidth="32" tileheight="32" spacing="2" margin="5" tilecount="98" columns="14">
+  <image source="tilesheet.jpeg" width="480" height="256"/>
  </tileset>
- <layer name="Tile Layer 1" width="20" height="20">
+ <layer name="Tile Layer 1" width="43" height="24">
   <data encoding="base64" compression="zlib">
-   eJzzY2Bg+ArF/mRimH4/IL5GgTno+AoS24oCc3DpvUGGWTep6D964e9A/AOIf9JJ33DDIy38Rpp/YZia5QEtyitqYD8qmwUAExGMxQ==
+   eJztzqENADAIRFHW6iAk7D9JTWUFiruQL55/FRH1pLn6OIY2XB2/XLly5cp19qp+da/qE1ftVf3ZeFVfOtc0eHDluvF6AXP3+F0=
   </data>
  </layer>
  <objectgroup name="Object Layer 1">
-  <object id="1" name="Xuxa" type="XuxaBoss" x="141" y="34">
+  <object id="1" name="Xuxa" type="XuxaBoss" x="703" y="52">
    <properties>
     <property name="numFrames" value="8"/>
     <property name="textureHeight" value="235"/>
@@ -21,7 +21,7 @@
     <property name="textureWidth" value="243"/>
    </properties>
   </object>
-  <object id="2" name="Player" type="Player" x="302" y="531">
+  <object id="2" name="Player" type="Player" x="737" y="623">
    <properties>
     <property name="numFrames" value="7"/>
     <property name="textureHeight" value="150"/>
