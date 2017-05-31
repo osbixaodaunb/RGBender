@@ -37,7 +37,8 @@ void PlayState::update(){
 	if(InputHandler::Instance().isKeyDown("q")){
 		Game::Instance().getStateMachine()->pushState(new GameOverState());
 	}
-
+	m_playerLife = m_player->getLife();
+	
 	//if(checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[0]), dynamic_cast<SDLGameObject*>(m_gameObjects[1]))){
 	//	Game::Instance().getStateMachine()->pushState(new GameOverState());
 	//}
@@ -48,8 +49,7 @@ void PlayState::render(){
 	if(pLevel != NULL){
 		pLevel->render();
 	}
-
-
+	TextureManager::Instance().draw("health", 0, 0, m_playerLife, 32, Game::Instance().getRenderer());
 	GameState::render();
 }
 
@@ -60,6 +60,7 @@ bool PlayState::onEnter(){
 	TextureManager::Instance().loadText(to_string(Game::Instance().getScore()), "assets/fonts/Lato-Regular.ttf", "score", {255,255,255}, 50, Game::Instance().getRenderer());
 	LevelParser levelParser;
 	pLevel = levelParser.parseLevel("assets/mapadoidao.tmx");
+	m_player = pLevel->getPlayer();
 	INFO("Entering PlayState");
 	return true;
 }

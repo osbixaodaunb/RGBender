@@ -77,7 +77,8 @@ void BossBullet::checkCollision(){
 			Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
 			INFO("Bullet collided");
 			INFO("PLAYER LOST THE GAME");
-			Game::Instance().getStateMachine()->changeState(new GameOverState());
+			m_player->setLife((m_player->getLife()) - 15);
+			//Game::Instance().getStateMachine()->changeState(new GameOverState());
 		}
 	}
 }

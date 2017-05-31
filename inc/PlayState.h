@@ -25,7 +25,8 @@ public:
 
 private:
 	static const std::string s_playID;
-
+	Player* m_player;
+	int m_playerLife = 100;
 	engine::Level *pLevel = NULL;
 	bool checkCollision(engine::SDLGameObject *p1, engine::SDLGameObject *p2);
 };

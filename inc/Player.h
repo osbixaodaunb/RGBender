@@ -24,9 +24,15 @@ public:
 	void clean();
 	typedef uint8_t*(*Callback) ();
 	uint8_t* pixelColors;
-
 	void setFireRate(int fireRate){
 		m_fireRate = fireRate;
+	}
+	//void setLife(int life, Uint32 time);
+	void setLife(int life){
+		m_life = life;
+	}
+	int getLife(){
+		return m_life;
 	}
 private:
 	void handleInput();
@@ -37,6 +43,8 @@ private:
 	void rotateTowards();
 	void dash();
 	void useSkill();
+	int m_life;
+	Uint32 m_time;
 	bool m_isDashing;
 	Uint32 m_dashTime;
 	int m_fireRate;

@@ -31,7 +31,6 @@ namespace engine{
 			SDL_Texture* pTexture = m_textureMap["bullet"];
 			SDL_SetTextureColorMod( pTexture, pixelColors[0],pixelColors[1], pixelColors[2] );
 		}
-
 		bool loadText(std::string message, const char* fontFile, std::string id, SDL_Color color, int fontSize, SDL_Renderer* renderer);
 	private:
 		std::map<std::string, SDL_Texture*> m_textureMap;
