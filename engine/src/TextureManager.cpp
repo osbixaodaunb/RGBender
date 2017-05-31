@@ -64,10 +64,10 @@ void TextureManager::draw(std::string id, int x, int y, int width, int height,
 	// 	if(it != m_textureMap.end())
 	// 		printf("Score esta no mapa das texturas\n"); 
 	// }
-	srcRect.x = 0;
-	srcRect.y = 0;
-	srcRect.w = 100;
-	srcRect.h = 100;
+	srcRect.x = x;
+	srcRect.y = y;
+	srcRect.w = width;
+	srcRect.h = height;
 	// destRect.x = x;
 	// destRect.y = y;
 

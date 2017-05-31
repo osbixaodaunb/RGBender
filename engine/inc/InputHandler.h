@@ -6,6 +6,7 @@
 #include <unordered_map>
 #include <iostream>
 #include "Timer.h"
+#include "Log.h"
 #include "Vector2D.h"
 
 #define JOYSTICK_DEAD_ZONE 10000
@@ -56,6 +57,7 @@ namespace engine{
 		bool getMouseButtonState(mouse_buttons p_button, Uint32 time){
 			if(m_mouseButtonStates[p_button]){
 				if(m_times[LEFT] == 0){
+					INFO("asd");
 					m_times[LEFT] = Timer::Instance().step() + time;
 					return true;
 				} else if(Timer::Instance().step() <= m_times[LEFT]){

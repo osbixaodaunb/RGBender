@@ -9,6 +9,7 @@
 #include "PlayState.h"
 #include "Physics.h"
 #include "AudioManager.h"
+#include "GameOverState.h"
 
 #include <string>
 #include <SDL2/SDL.h>
@@ -21,9 +22,9 @@ using namespace engine;
 Player::Player() : SDLGameObject(){
 	m_fireRate = 500;
 	TextureManager::Instance().load("assets/clash2.png", "bullet", Game::Instance().getRenderer());
+	TextureManager::Instance().load("assets/health.png", "health", Game::Instance().getRenderer());
 	INFO("Player inicializado");
-	m_velocity.setX(0);
-	m_velocity.setY(0);
+	m_life = 100;
 
 }
 
@@ -36,6 +37,9 @@ void Player::draw(){
 }
 
 void Player::update(){
+	if(m_life <= 0){
+		Game::Instance().getStateMachine()->changeState(new GameOverState());
+	}
 	m_currentFrame = int(((SDL_GetTicks() / 400) % m_numFrames));
 	if(Game::Instance().getStateMachine()->currentState()->getStateID() == "PLAY"){
 		PlayState *playState = dynamic_cast<PlayState*>(Game::Instance().getStateMachine()->currentState());
@@ -117,6 +121,7 @@ void Player::move(){
 	m_position += m_velocity;
 	if(Physics::Instance().checkCollision(this, m_boss)){
 		m_position -= m_velocity;
+		setLife(m_life - 1);
 	}
 }
 
@@ -168,3 +173,16 @@ void Player::dash(){
 	}
 	
 }
+
+// void Player::setLife(int life, Uint32 time){
+// 	if( m_time == 0){
+// 			m_time = Timer::Instance().step() + time;
+// 			m_life = life;
+// 		}
+// 		else if(Timer::Instance().step() <= m_time){
+// 			// do nothing
+// 		}
+// 		else{
+// 			m_time = 0;
+// 		}
+// }

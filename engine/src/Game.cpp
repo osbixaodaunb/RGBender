@@ -99,7 +99,7 @@ void Game::render(){
 	SDL_RenderClear(m_pRenderer);
 
 	m_pGameStateMachine->render();
-	TextureManager::Instance().draw("score", 240, 300, 200, 200, Game::Instance().getRenderer());
+	TextureManager::Instance().draw("score", 640, 0, 100, 100, Game::Instance().getRenderer());
 
 	// draw to screen
 	SDL_RenderPresent(m_pRenderer);
