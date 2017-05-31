@@ -2,8 +2,6 @@
 
 #include <SDL2/SDL.h>
 #include <iostream>
-
-#include "Timer.h"
 #include "Game.h"
 #include "Log.h"
 using namespace std;

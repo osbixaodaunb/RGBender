@@ -21,6 +21,8 @@ Player::Player() : SDLGameObject(){
 	m_fireRate = 500;
 	TextureManager::Instance().load("assets/clash2.png", "bullet", Game::Instance().getRenderer());
 	INFO("Player inicializado");
+	m_velocity.setX(0);
+	m_velocity.setY(0);
 
 }
 
@@ -62,7 +64,7 @@ void Player::handleInput(){
 	move();
 
 	useSkill();
-	if(InputHandler::Instance().isKeyDown("v", m_fireRate)){
+	if(InputHandler::Instance().getMouseButtonState(LEFT, m_fireRate)){
 		INFO("FIRE RATE: " + m_fireRate);
 		Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
 		Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
@@ -86,6 +88,7 @@ void Player::move(){
 
 	if(InputHandler::Instance().isKeyDown("w")){
 		movement += Vector2D(0, -1);
+		m_velocity = new Vector2D(0, -1);
 	}
 
 	if(InputHandler::Instance().isKeyDown("s")){
@@ -100,9 +103,7 @@ void Player::move(){
 	if(InputHandler::Instance().isKeyDown("a")){
 		movement += Vector2D(-1, 0);
 	}
-
 	movement = movement.norm();
-
 	if(!m_isDashing){
 		m_velocity = movement * 2;
 	}
