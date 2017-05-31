@@ -119,11 +119,7 @@ void Player::move(){
 void Player::useSkill(){
 
 	if(InputHandler::Instance().isKeyDown("1", 200)){
-		setFireRate(100);
 		m_skillManager.setSkillPair(&m_pSkills, RED, &isFirstSkill);
-
-		std::function<void(int)> redSkill = std::bind(&Player::setFireRate, this, 500);
-		Game::Instance().addCooldown(new Cooldown<int>(1000, redSkill, 500));
 	}
 
 	if(InputHandler::Instance().isKeyDown("2", 200)){

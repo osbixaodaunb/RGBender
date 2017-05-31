@@ -3,6 +3,9 @@
 
 #include <stdint.h>
 #include <map>
+#include <functional>
+
+class Player;
 
 enum default_inks{
 	BLANK = 0,
@@ -14,25 +17,31 @@ enum default_inks{
 class SkillManager{
 
 public:
-	SkillManager();
-	typedef uint8_t*(*Callback) ();
-	void setSkillPair(std::pair<default_inks, default_inks>* combinedSkills, 
-		default_inks, bool* isFirst);
-	Callback getSkill(std::pair<default_inks, default_inks> combinedSkills);
+	SkillManager(Player *p_Player);
+
+	void setSkillPair(std::pair<default_inks, default_inks>* combinedSkills, default_inks, bool* isFirst);
+
+	std::function<uint8_t*()> getSkill(std::pair<default_inks, default_inks> combinedSkills);
+
 	void setCoolDownTrigger(std::pair<default_inks, default_inks> combinedSkills);
-	void setCoolDownTimer(std::pair<default_inks, default_inks> combinedSkills);
+
+	void resetCooldown(int);
+
 	std::map<std::pair<default_inks, default_inks>, bool>* getCoolDownMap(){
 		return &m_coolDownMap;
 	}
 private:
+	Player *m_player;
 
-	static uint8_t* purple();
-	static uint8_t* brown();
-	static uint8_t* cyan();
-	static uint8_t* redPlus();
-	static uint8_t* greenPlus();
-	static uint8_t* bluePlus();
-	std::map<std::pair<default_inks, default_inks>, Callback> m_skills;
+	uint8_t* purple();
+	uint8_t* brown();
+	uint8_t* cyan();
+	uint8_t* redPlus();
+	uint8_t* greenPlus();
+	uint8_t* bluePlus();
+	uint8_t* blank(int);
+
+	std::map<std::pair<default_inks, default_inks>, std::function< uint8_t*()> > m_skills;
 	std::map<std::pair<default_inks, default_inks>, bool> m_coolDownMap;
 
 };
