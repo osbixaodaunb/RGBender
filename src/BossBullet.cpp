@@ -20,7 +20,7 @@ BossBullet::~BossBullet(){
 
 BossBullet::BossBullet(Player *target) : SDLGameObject(){
 	setPlayer(target);
-	timeToLive = 1000;
+	timeToLive = 5000;
 	m_active = true;
 }
 
@@ -41,7 +41,7 @@ double BossBullet::rotateTowards(Vector2D pPosition){
 void BossBullet::load(Vector2D pVelocity, Vector2D pPosition){
 	double angle = rotateTowards(pPosition);
 
-	m_moveSpeed = 5;
+	m_moveSpeed = 1;
 	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 80, 80, "bulletboss", 0, 0, 0, angle);
 	SDLGameObject::load(pParams);
 

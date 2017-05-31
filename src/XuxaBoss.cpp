@@ -1,12 +1,14 @@
 #include "XuxaBoss.h"
 #include "Log.h"
 #include "Game.h"
+#include "Cooldown.h"
 #include "PlayState.h"
 
 using namespace engine;
 bool tilt = false;
 XuxaBoss::XuxaBoss() : Enemy(){
 	m_fireRate = 1;
+
 	TextureManager::Instance().load("assets/clash2.png", "bulletboss", Game::Instance().getRenderer());
 	m_states.push_back(&XuxaBoss::quarterLife);
 	m_states.push_back(&XuxaBoss::halfLife);
@@ -57,13 +59,26 @@ void XuxaBoss::update(){
 	Enemy::update();
 }
 
+void XuxaBoss::untilt(int placeholder){
+	tilt = false;
+}
+
 void XuxaBoss::attack(){
-	//Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
-	Vector2D target = m_player->getPosition();
-	target = target.norm();
+	Vector2D pos = m_player->getPosition();
+	Vector2D playerPivot = Vector2D(m_player->getWidth()/2+pos.getX(), m_player->getHeight()/2 + pos.getY());
+	
+	pos = getPosition();
+	Vector2D bossPivot = Vector2D(getWidth()/2+pos.getX(), getHeight()/2 + pos.getY());
+
+
+	Vector2D velocity = playerPivot - bossPivot;
+ 	velocity = velocity.norm();
 	BossBullet *bullet =  bulletCreator.create(m_player);
-	bullet->load(target, Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY()));
+	bullet->load(velocity, bossPivot);
 	Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
+
+	std::function<void(int)> callback = std::bind(&XuxaBoss::untilt, this, 0);
+	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(3000, callback, 0));
 }
 
 void XuxaBoss::clean(){

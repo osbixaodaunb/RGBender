@@ -127,6 +127,30 @@ engine/fast:
 	$(MAKE) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/build
 .PHONY : engine/fast
 
+src/BossBullet.o: src/BossBullet.cpp.o
+.PHONY : src/BossBullet.o
+
+# target to build an object file
+src/BossBullet.cpp.o:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/BossBullet.cpp.o
+.PHONY : src/BossBullet.cpp.o
+
+src/BossBullet.i: src/BossBullet.cpp.i
+.PHONY : src/BossBullet.i
+
+# target to preprocess a source file
+src/BossBullet.cpp.i:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/BossBullet.cpp.i
+.PHONY : src/BossBullet.cpp.i
+
+src/BossBullet.s: src/BossBullet.cpp.s
+.PHONY : src/BossBullet.s
+
+# target to generate assembly for a file
+src/BossBullet.cpp.s:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/BossBullet.cpp.s
+.PHONY : src/BossBullet.cpp.s
+
 src/Bullet.o: src/Bullet.cpp.o
 .PHONY : src/Bullet.o
 
@@ -401,6 +425,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... rgbender"
 	@echo "... engine"
+	@echo "... src/BossBullet.o"
+	@echo "... src/BossBullet.i"
+	@echo "... src/BossBullet.s"
 	@echo "... src/Bullet.o"
 	@echo "... src/Bullet.i"
 	@echo "... src/Bullet.s"

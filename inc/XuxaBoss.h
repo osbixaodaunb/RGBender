@@ -15,6 +15,7 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual void clean();
+	void untilt(int);
 	static void fullLife();
 	static void halfLife();
 	static void quarterLife();
