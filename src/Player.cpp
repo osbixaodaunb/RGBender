@@ -23,6 +23,8 @@ Player::Player() : SDLGameObject(){
 	m_fireRate = 500;
 	TextureManager::Instance().load("assets/clash2.png", "bullet", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/health.png", "health", Game::Instance().getRenderer());
+	TextureManager::Instance().load("assets/circle.png", "instance", Game::Instance().getRenderer());
+	
 	INFO("Player inicializado");
 	m_life = 100;
 
@@ -147,7 +149,8 @@ void Player::useSkill(){
 				m_skillManager.setCoolDownTrigger(m_pSkills);
 				if(m_pSkills.first != BLANK and m_pSkills.second != BLANK){
 					pixelColors = m_skillManager.getSkill(m_pSkills)();
-					TheTextureManager::Instance().changeColorPixels(pixelColors);
+					TheTextureManager::Instance().changeColorPixels(pixelColors, "bullet");
+					TheTextureManager::Instance().changeColorPixels(pixelColors, "instance");
 				}
 			}
 			else

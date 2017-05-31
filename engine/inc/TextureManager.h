@@ -27,8 +27,8 @@ namespace engine{
 			m_textureMap.erase(id);
 		}
 
-		void changeColorPixels(uint8_t* pixelColors){
-			SDL_Texture* pTexture = m_textureMap["bullet"];
+		void changeColorPixels(uint8_t* pixelColors, std::string key){
+			SDL_Texture* pTexture = m_textureMap[key];
 			SDL_SetTextureColorMod( pTexture, pixelColors[0],pixelColors[1], pixelColors[2] );
 		}
 		bool loadText(std::string message, const char* fontFile, std::string id, SDL_Color color, int fontSize, SDL_Renderer* renderer);

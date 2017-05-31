@@ -50,8 +50,10 @@ void PlayState::render(){
 		pLevel->render();
 	}
 	TextureManager::Instance().draw("health", 0, 0, m_playerLife, 32, Game::Instance().getRenderer());
+	TextureManager::Instance().draw("instance", 100, 600, 100, 100, Game::Instance().getRenderer());
 	GameState::render();
 }
+
 
 bool PlayState::onEnter(){	
 	//StateParser stateParser;

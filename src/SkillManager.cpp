@@ -101,7 +101,8 @@ uint8_t* SkillManager::blank(int placeholder){
 	pixels[1] = 255;
 	pixels[2] = 255;
 
-	engine::TextureManager::Instance().changeColorPixels(pixels);
+	engine::TextureManager::Instance().changeColorPixels(pixels, "bullet");
+	engine::TextureManager::Instance().changeColorPixels(pixels, "instance");
 
 	return pixels;
 }
