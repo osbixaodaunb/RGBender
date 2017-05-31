@@ -21,7 +21,7 @@
     <property name="textureWidth" value="243"/>
    </properties>
   </object>
-  <object id="2" name="Helicopter1" type="Player" x="302" y="531">
+  <object id="2" name="Player" type="Player" x="302" y="531">
    <properties>
     <property name="numFrames" value="7"/>
     <property name="textureHeight" value="150"/>

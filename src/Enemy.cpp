@@ -1,6 +1,9 @@
 #include "Enemy.h"
 #include "InputHandler.h"
+#include "Game.h"
+#include "MainMenuState.h"
 #include "Log.h"
+
 #include <iostream>
 #include <string>
 
@@ -29,7 +32,7 @@ void Enemy::draw(){
 	SDLGameObject::draw();
 }
 
-void Enemy::dealDamage(int damage){
+void Enemy::takeDamage(int damage){
 	if(damage >= 0){
 		m_actualHealth -= damage;
 	} else {
@@ -62,6 +65,7 @@ void Enemy::changeState(){
 	else if(m_actualHealth <= 0){
 		INFO("XUXA IS DEAD!");
 		TextureManager::Instance().clearFromTextureMap("RAG"); //Só pra ter um feedback inicial, mas pode remover isso
-
+		
+		Game::Instance().getStateMachine()->changeState(new MainMenuState());
 	}
 }
