@@ -139,6 +139,30 @@ src/AnimatedGraphic.cpp.s:
 	cd /home/felipe/Documents/C-C++/SDL/livro && $(MAKE) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/AnimatedGraphic.cpp.s
 .PHONY : src/AnimatedGraphic.cpp.s
 
+src/AudioManager.o: src/AudioManager.cpp.o
+.PHONY : src/AudioManager.o
+
+# target to build an object file
+src/AudioManager.cpp.o:
+	cd /home/felipe/Documents/C-C++/SDL/livro && $(MAKE) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/AudioManager.cpp.o
+.PHONY : src/AudioManager.cpp.o
+
+src/AudioManager.i: src/AudioManager.cpp.i
+.PHONY : src/AudioManager.i
+
+# target to preprocess a source file
+src/AudioManager.cpp.i:
+	cd /home/felipe/Documents/C-C++/SDL/livro && $(MAKE) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/AudioManager.cpp.i
+.PHONY : src/AudioManager.cpp.i
+
+src/AudioManager.s: src/AudioManager.cpp.s
+.PHONY : src/AudioManager.s
+
+# target to generate assembly for a file
+src/AudioManager.cpp.s:
+	cd /home/felipe/Documents/C-C++/SDL/livro && $(MAKE) -f engine/CMakeFiles/engine.dir/build.make engine/CMakeFiles/engine.dir/src/AudioManager.cpp.s
+.PHONY : src/AudioManager.cpp.s
+
 src/Game.o: src/Game.cpp.o
 .PHONY : src/Game.o
 
@@ -607,6 +631,9 @@ help:
 	@echo "... src/AnimatedGraphic.o"
 	@echo "... src/AnimatedGraphic.i"
 	@echo "... src/AnimatedGraphic.s"
+	@echo "... src/AudioManager.o"
+	@echo "... src/AudioManager.i"
+	@echo "... src/AudioManager.s"
 	@echo "... src/Game.o"
 	@echo "... src/Game.i"
 	@echo "... src/Game.s"

@@ -5,6 +5,7 @@
 #include "LoaderParams.h"
 #include "TextureManager.h"
 #include "Vector2D.h"
+#include "Collider.h"
 
 #include <string>
 
@@ -36,6 +37,10 @@ namespace engine{
 			return m_height;
 		}
 
+		Collider getCollider(){
+			return m_collider;
+		}
+
 	protected:
 
 		Vector2D m_position;	
@@ -53,6 +58,7 @@ namespace engine{
 		std::string m_textureID;
 
 		double m_angle;
+		Collider m_collider;
 	};
 }
 #endif

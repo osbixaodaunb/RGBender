@@ -138,7 +138,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 	ObjectLayer* pObjectLayer = new ObjectLayer();
 	for(TiXmlElement* e = pObjectElement->FirstChildElement(); e != NULL; e = e->NextSiblingElement()){
 		if(e->Value() == std::string("object")){
-			int x, y, width, height, numFrames, callbackID, animSpeed;
+			int x, y, width, height, numFrames, callbackID, animSpeed, colliderWidth, colliderHeight;
 			std::string textureID;
 			// get the initial node values type, x and y
 			e->Attribute("x", &x);
@@ -149,7 +149,13 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				if(properties->Value() == std::string("properties")){
 					for(TiXmlElement* property = properties->FirstChildElement(); property != NULL; property = property->NextSiblingElement()){
 							if(property->Value() == std::string("property")){
-								if(property->Attribute("name") == std::string("numFrames")){
+								std::cout << property->Attribute("name") << std::endl;
+
+								if(property->Attribute("name") == std::string("colliderHeight")){
+									property->Attribute("value", &colliderHeight);
+								} else if(property->Attribute("name") == std::string("colliderWidth")){
+									property->Attribute("value", &colliderWidth);
+								} else if(property->Attribute("name") == std::string("numFrames")){
 									property->Attribute("value", &numFrames);
 								} else if(property->Attribute("name") == std::string("textureHeight")){
 									property->Attribute("value", &height);
@@ -161,7 +167,7 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 									property->Attribute("value", &callbackID);
 								} else if(e->Attribute("name") == std::string("animSpeed")){
 									property->Attribute("value", &animSpeed);
-								}
+								} 
 							}
 						}
 					}
@@ -176,8 +182,9 @@ void LevelParser::parseObjectLayer(TiXmlElement* pObjectElement, std::vector<Lay
 				pLevel->setPlayer(dynamic_cast<Player*>(pGameObject));
 			}
 
+
 			pGameObject->load(new
-			LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed));
+			LoaderParams(x, y, width, height, textureID, numFrames, callbackID, animSpeed, 0, colliderWidth, colliderHeight));
 			pObjectLayer->getGameObjects()->push_back(pGameObject);
 		}
 	}

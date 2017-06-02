@@ -17,6 +17,7 @@ void SDLGameObject::load(const LoaderParams *pParams){
 	m_currentFrame = 1;
 	m_numFrames = pParams->getNumFrames();
 	m_angle = pParams->getAngle();
+	m_collider = pParams->getCollider();
 }
 
 void SDLGameObject::draw(){
