@@ -1,5 +1,7 @@
 # RGBender
 
+[![Build Status](https://travis-ci.org/lucasBrilhante/RGBender.svg?branch=master)](https://travis-ci.org/lucasBrilhante/RGBender)
+
 ## Equipe
 
 ### Programadores
