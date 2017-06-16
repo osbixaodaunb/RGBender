@@ -43,7 +43,7 @@ void Bullet::load(Vector2D pVelocity, Vector2D pPosition){
 	double angle = rotateTowards(pPosition);
 
 	m_moveSpeed = 5;
-	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 100, 357, "bullet", 0, 0, 0, angle);
+	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 16, 16, "bullet", 0, 0, 0, angle);
 	SDLGameObject::load(pParams);
 
 	m_currentFrame = 0;
@@ -56,6 +56,7 @@ void Bullet::draw(){
 }
 
 void Bullet::update(){
+	std::cout << "Bullet top: " << getPosition().getY() + (getHeight() - getCollider().getHeight())/2 << std::endl;
 	m_position += m_velocity;
 
 	if(Timer::Instance().step() >= bornTime + timeToLive){
