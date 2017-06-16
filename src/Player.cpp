@@ -21,7 +21,7 @@ using namespace engine;
 
 Player::Player() : SDLGameObject(){
 	m_fireRate = 500;
-	TextureManager::Instance().load("assets/clash2.png", "bullet", Game::Instance().getRenderer());
+	TextureManager::Instance().load("assets/bullet.png", "bullet", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/health.png", "health", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/circle.png", "instance", Game::Instance().getRenderer());
 	
@@ -39,6 +39,8 @@ void Player::draw(){
 }
 
 void Player::update(){
+	std::cout << "Player top: " << getPosition().getY() + (getHeight() - getCollider().getHeight())/2 << std::endl;
+
 	if(m_life <= 0){
 		Game::Instance().getStateMachine()->changeState(new GameOverState());
 	}

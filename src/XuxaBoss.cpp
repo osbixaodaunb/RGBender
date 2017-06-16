@@ -8,7 +8,7 @@ using namespace engine;
 bool tilt = false;
 XuxaBoss::XuxaBoss() : Enemy(){
 	m_fireRate = 1;
-	TextureManager::Instance().load("assets/clash2.png", "bulletboss", Game::Instance().getRenderer());
+	TextureManager::Instance().load("assets/bullet.png", "bulletboss", Game::Instance().getRenderer());
 	m_states.push_back(&XuxaBoss::quarterLife);
 	m_states.push_back(&XuxaBoss::halfLife);
 	m_states.push_back(&XuxaBoss::fullLife);
@@ -41,6 +41,7 @@ void XuxaBoss::draw(){
 }
 
 void XuxaBoss::update(){
+	std::cout << "Xuxa bottom: " << getPosition().getY() + (getHeight() + getCollider().getHeight())/2 << std::endl;
 
 	if(Game::Instance().getStateMachine()->currentState()->getStateID() == "PLAY"){
 		PlayState *playState = dynamic_cast<PlayState*>(Game::Instance().getStateMachine()->currentState());

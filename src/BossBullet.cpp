@@ -42,7 +42,7 @@ void BossBullet::load(Vector2D pVelocity, Vector2D pPosition){
 	double angle = rotateTowards(pPosition);
 
 	m_moveSpeed = 3;
-	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 80, 80, "bulletboss", 0, 0, 0, angle);
+	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 16, 16, "bulletboss", 0, 0, 0, angle);
 	SDLGameObject::load(pParams);
 
 	m_currentFrame = 0;
