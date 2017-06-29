@@ -99,7 +99,6 @@ void Player::move(){
 
 	if(InputHandler::Instance().isKeyDown("w")){
 		movement += Vector2D(0, -1);
-		m_velocity = new Vector2D(0, -1);
 
 	}
 
@@ -169,7 +168,7 @@ void Player::dash(){
 
 	if(InputHandler::Instance().isKeyDown("space", 1000)){
 		m_dashTime = Timer::Instance().step();
-		m_velocity = (m_velocity.norm() * 5);
+		m_velocity = (m_velocity.norm() * 15);
 		m_isDashing = true;
 	}
 

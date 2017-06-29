@@ -70,7 +70,7 @@ void XuxaBoss::attack(){
 	pos = getPosition();
 	Vector2D bossPivot = Vector2D(getWidth()/2+pos.getX(), getHeight()/2 + pos.getY());
 
-
+	
 	Vector2D velocity = playerPivot - bossPivot;
  	velocity = velocity.norm();
 	BossBullet *bullet =  bulletCreator.create(m_player);
@@ -78,7 +78,7 @@ void XuxaBoss::attack(){
 	Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
 
 	std::function<void(int)> callback = std::bind(&XuxaBoss::untilt, this, 0);
-	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(3000, callback, 0));
+	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(250, callback, 0));
 }
 
 void XuxaBoss::clean(){
