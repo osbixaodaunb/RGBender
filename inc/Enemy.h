@@ -4,6 +4,7 @@
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
 #include "BaseCreator.h"
+#include "Timer.h"
 
 #include <string>
 #include <SDL2/SDL.h>
@@ -20,11 +21,22 @@ public:
 
 	typedef void(*Callback) ();
 	void takeDamage(int);
+	void takeDamage(int, Uint32);
+	Uint32 getEnemyTime(){
+		return m_times;
+	}
 
+	void setEnemyTime(Uint32 time){
+		m_times = engine::Timer::Instance().step() + time;
+	}
+	int getHealth(){
+		return m_actualHealth;
+	}
 protected:
 
 	int m_totalHealth;
 	int m_actualHealth;
+	Uint32 m_times;
 	std::vector<Callback> m_states;
 
 	//void changeAttack();

@@ -39,7 +39,7 @@ void Player::draw(){
 }
 
 void Player::update(){
-	std::cout << "Player top: " << getPosition().getY() + (getHeight() - getCollider().getHeight())/2 << std::endl;
+	//std::cout << "Player top: " << getPosition().getY() + (getHeight() - getCollider().getHeight())/2 << std::endl;
 
 	if(m_life <= 0){
 		Game::Instance().getStateMachine()->changeState(new GameOverState());
@@ -59,9 +59,27 @@ void Player::update(){
 		m_currentFrame = 0;
 	}
 
-	
+	setPoison();	
+
+	INFO(m_boss->getHealth());
 
 	SDLGameObject::update();
+}
+
+void Player::setBulletVenemous(bool isVenemous){
+	bullet->setVenemous(isVenemous);
+}
+
+void Player::setPoison(){
+	if(bullet != NULL && bullet->getVenemous()){
+		if(Timer::Instance().step() <= m_boss->getEnemyTime() && bullet->m_collided){
+			m_boss->takeDamage(3);
+			INFO(m_boss->getHealth());
+		}else if(Timer::Instance().step() >= m_boss->getEnemyTime()){
+			//bullet->m_collided = false;
+			//bullet->setVenemous(false);
+		}
+	}
 }
 
 void Player::clean(){
@@ -80,7 +98,8 @@ void Player::handleInput(){
 		Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
 		Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
 		target = target.norm();
-		Bullet *bullet =  bulletCreator.create(m_boss);
+		bullet =  bulletCreator.create(m_boss);
+		//bullet->setVenemous(m_bulletVenemous);
 		bullet->load(target, Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY()));
 		Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
 	}
@@ -93,6 +112,7 @@ void Player::rotateTowards(){
 
 	m_angle = Vector2D::angle(target, Vector2D(0, 1));
 }
+
 
 void Player::move(){
 	Vector2D movement(0, 0);
@@ -118,7 +138,7 @@ void Player::move(){
 	if(!m_isDashing){
 		m_velocity = movement * 2;
 	}
-		
+
 	dash();
 
 	m_position += m_velocity;

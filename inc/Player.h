@@ -34,7 +34,11 @@ public:
 	int getLife(){
 		return m_life;
 	}
+	Bullet *bullet = NULL;
+	void setBulletVenemous(bool isVenemous);
+	void setPoison();
 private:
+	bool m_bulletVenemous = false;
 	void handleInput();
 	SkillManager m_skillManager = SkillManager(this);
 	std::pair<default_inks, default_inks> m_pSkills;
