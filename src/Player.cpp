@@ -39,7 +39,7 @@ void Player::draw(){
 }
 
 void Player::update(){
-	std::cout << "Player top: " << getPosition().getY() + (getHeight() - getCollider().getHeight())/2 << std::endl;
+	//std::cout << "Player top: " << getPosition().getY() + (getHeight() - getCollider().getHeight())/2 << std::endl;
 
 	if(m_life <= 0){
 		Game::Instance().getStateMachine()->changeState(new GameOverState());

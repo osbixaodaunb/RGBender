@@ -13,6 +13,14 @@ public:
 	virtual void update();
 	virtual void clean();
 
+	void setVisibility(bool visibility){
+		isVisible = visibility;
+	}
+
+	bool getVisibility(){
+		return isVisible;
+	}
+
 private:
 	bool isVisible;
 	int phi;

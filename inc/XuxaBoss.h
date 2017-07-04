@@ -16,9 +16,11 @@ public:
 	virtual void update();
 	virtual void clean();
 	void untilt(int);
+	void protect(int);
 	static void fullLife();
 	static void halfLife();
 	static void quarterLife();
+	void shieldStatus(bool);
 
 private:
 	virtual void attack();

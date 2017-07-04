@@ -3,9 +3,11 @@
 #include "Game.h"
 #include "Cooldown.h"
 #include "PlayState.h"
+#include "Childmaiden.h"
 
 using namespace engine;
 bool tilt = false;
+bool protection = true;
 XuxaBoss::XuxaBoss() : Enemy(){
 	m_fireRate = 1;
 	TextureManager::Instance().load("assets/bullet.png", "bulletboss", Game::Instance().getRenderer());
@@ -16,7 +18,6 @@ XuxaBoss::XuxaBoss() : Enemy(){
 }
 
 void XuxaBoss::fullLife(){
-	//TODO
 	INFO("Xuxa está com HP cheio!")
 }
 
@@ -41,7 +42,7 @@ void XuxaBoss::draw(){
 }
 
 void XuxaBoss::update(){
-	std::cout << "Xuxa bottom: " << getPosition().getY() + (getHeight() + getCollider().getHeight())/2 << std::endl;
+	//std::cout << "Xuxa bottom: " << getPosition().getY() + (getHeight() + getCollider().getHeight())/2 << std::endl;
 
 	if(Game::Instance().getStateMachine()->currentState()->getStateID() == "PLAY"){
 		PlayState *playState = dynamic_cast<PlayState*>(Game::Instance().getStateMachine()->currentState());
@@ -61,6 +62,21 @@ void XuxaBoss::update(){
 
 void XuxaBoss::untilt(int placeholder){
 	tilt = false;
+}
+
+void XuxaBoss::protect(int placeholder){
+	protection = true;
+	INFO(protection);
+}
+
+void XuxaBoss::shieldStatus(bool param){
+	for(auto x : engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects()){
+		dynamic_cast<Childmaiden*>(x)->setVisibility(param);
+	}
+
+	
+	std::function<void(int)> callback = std::bind(&XuxaBoss::protect, this, 0);
+	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(100, callback, 0));
 }
 
 void XuxaBoss::attack(){

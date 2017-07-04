@@ -10,7 +10,8 @@
 #include "Enemy.h"
 #include "Physics.h"
 #include <iostream>
-#include <string>   
+#include <string>
+#include "Childmaiden.h"
 using namespace engine;
 
 Bullet::~Bullet(){
@@ -56,7 +57,7 @@ void Bullet::draw(){
 }
 
 void Bullet::update(){
-	std::cout << "Bullet top: " << getPosition().getY() + (getHeight() - getCollider().getHeight())/2 << std::endl;
+	//std::cout << "Bullet top: " << getPosition().getY() + (getHeight() - getCollider().getHeight())/2 << std::endl;
 	m_position += m_velocity;
 
 	if(Timer::Instance().step() >= bornTime + timeToLive){
@@ -73,6 +74,18 @@ void Bullet::checkCollision(){
 		Vector2D pos = m_boss->getPosition();
 		Vector2D thisPos = getPosition();
 		
+		
+		for(auto obj : engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects()){
+			if(Physics::Instance().checkCollision(dynamic_cast<SDLGameObject*>(obj), dynamic_cast<SDLGameObject*>(this))){
+				if(dynamic_cast<Childmaiden*>(obj)->getVisibility()){
+					INFO("REMOVENDO BALA");
+					m_active = false;
+					Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
+					INFO("Bullet collided with shield");
+				}
+			}
+		}
+
 		if(Physics::Instance().checkCollision(dynamic_cast<SDLGameObject*>(m_boss), dynamic_cast<SDLGameObject*>(this))){
 			m_active = false;
 			Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
@@ -80,8 +93,10 @@ void Bullet::checkCollision(){
 			int score = Game::Instance().getScore();
 			Game::Instance().setScore(score + 10);
 			TextureManager::Instance().loadText(std::to_string(Game::Instance().getScore()), "assets/fonts/Lato-Regular.ttf", "score", {255,255,255}, 50, Game::Instance().getRenderer());
-			INFO("Bullet collided");
+			INFO("Bullet collided with boss");
 		}
+
+
 	}
 }
 
