@@ -27,17 +27,19 @@ public:
 	void setFireRate(int fireRate){
 		m_fireRate = fireRate;
 	}
-	//void setLife(int life, Uint32 time);
 	void setLife(int life){
 		m_life = life;
 	}
 	int getLife(){
 		return m_life;
 	}
-	Bullet *bullet = NULL;
+	Bullet* getPlayerBullet(){
+		return bullet;
+	}
 	void setBulletVenemous(bool isVenemous);
 	void setPoison();
 private:
+	Bullet *bullet = NULL;
 	bool m_bulletVenemous = false;
 	void handleInput();
 	SkillManager m_skillManager = SkillManager(this);

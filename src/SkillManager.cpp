@@ -51,7 +51,7 @@ uint8_t* SkillManager::redPlus(){
 
 uint8_t* SkillManager::greenPlus(){
 	INFO("GREEN PLUS");
-	m_player->bullet->setVenemous(true);
+	m_player->getPlayerBullet()->setVenemous(true);
 
 	std::function<void(bool)> greenSkill = std::bind(&Player::setBulletVenemous, m_player, false);
 	std::function<void(int)> reset = std::bind(&SkillManager::resetCooldown, this, 2);
