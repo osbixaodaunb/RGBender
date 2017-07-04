@@ -44,7 +44,7 @@ void Player::update(){
 	if(m_life <= 0){
 		Game::Instance().getStateMachine()->changeState(new GameOverState());
 	}
-	m_currentFrame = int(((SDL_GetTicks() / 400) % m_numFrames));
+	m_currentFrame = int(((SDL_GetTicks() / 100) % m_numFrames));
 	if(Game::Instance().getStateMachine()->currentState()->getStateID() == "PLAY"){
 		PlayState *playState = dynamic_cast<PlayState*>(Game::Instance().getStateMachine()->currentState());
 		if(playState->getLevel() != NULL && m_boss == NULL){

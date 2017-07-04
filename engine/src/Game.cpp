@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "XuxaBoss.h"
+#include "Childmaiden.h"
 #include "LoaderParams.h"
 #include "InputHandler.h"
 #include "GameStateMachine.h"
@@ -80,7 +81,7 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	GameObjectFactory::Instance().registerType("XuxaBoss", new XuxaBossCreator());
 	GameObjectFactory::Instance().registerType("Player", new PlayerCreator());
 	GameObjectFactory::Instance().registerType("AnimatedGraphic", new AnimatedGraphicCreator());
-
+	GameObjectFactory::Instance().registerType("Childmaiden", new ChildmaidenCreator());
 
 	m_pGameStateMachine = new GameStateMachine();
 	m_pGameStateMachine->changeState(new MainMenuState());

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="129" height="72" tilewidth="96" tileheight="96" nextobjectid="3">
+<map version="2017.05.02" orientation="orthogonal" renderorder="right-down" width="129" height="72" tilewidth="96" tileheight="96" nextobjectid="14">
  <properties>
-  <property name="RAG" value="assets/RAG.png"/>
+  <property name="RAG" value="assets/bosszika.png"/>
+  <property name="child" value="assets/teste.png"/>
   <property name="helicopter" value="assets/protagonista_up.png"/>
  </properties>
- <tileset firstgid="1" name="tile_azulejo_1" tilewidth="96" tileheight="96" tilecount="1">
+ <tileset firstgid="1" name="tile_azulejo_1" tilewidth="96" tileheight="96" tilecount="1" columns="1">
   <image source="tile_azulejo_1.png" width="96" height="96"/>
  </tileset>
  <layer name="Tile Layer 1" width="129" height="72">
@@ -17,10 +18,10 @@
    <properties>
     <property name="colliderHeight" value="200"/>
     <property name="colliderWidth" value="200"/>
-    <property name="numFrames" value="8"/>
-    <property name="textureHeight" value="235"/>
+    <property name="numFrames" value="6"/>
+    <property name="textureHeight" value="223"/>
     <property name="textureID" value="RAG"/>
-    <property name="textureWidth" value="243"/>
+    <property name="textureWidth" value="223"/>
    </properties>
   </object>
   <object id="2" name="Player" type="Player" x="737" y="623">
@@ -30,6 +31,96 @@
     <property name="numFrames" value="5"/>
     <property name="textureHeight" value="92"/>
     <property name="textureID" value="helicopter"/>
+    <property name="textureWidth" value="42"/>
+   </properties>
+  </object>
+  <object id="3" name="Child" type="Childmaiden" x="520" y="52">
+   <properties>
+    <property name="colliderHeight" value="34"/>
+    <property name="colliderWidth" value="28"/>
+    <property name="numFrames" value="3"/>
+    <property name="textureHeight" value="46"/>
+    <property name="textureID" value="child"/>
+    <property name="textureWidth" value="42"/>
+   </properties>
+  </object>
+  <object id="4" name="Child" type="Childmaiden" x="783" y="280">
+   <properties>
+    <property name="colliderHeight" value="34"/>
+    <property name="colliderWidth" value="28"/>
+    <property name="numFrames" value="3"/>
+    <property name="textureHeight" value="46"/>
+    <property name="textureID" value="child"/>
+    <property name="textureWidth" value="42"/>
+   </properties>
+  </object>
+  <object id="6" name="Child" type="Childmaiden" x="921" y="170">
+   <properties>
+    <property name="colliderHeight" value="34"/>
+    <property name="colliderWidth" value="28"/>
+    <property name="numFrames" value="3"/>
+    <property name="textureHeight" value="46"/>
+    <property name="textureID" value="child"/>
+    <property name="textureWidth" value="42"/>
+   </properties>
+  </object>
+  <object id="8" name="Child" type="Childmaiden" x="779" y="29">
+   <properties>
+    <property name="colliderHeight" value="34"/>
+    <property name="colliderWidth" value="28"/>
+    <property name="numFrames" value="3"/>
+    <property name="textureHeight" value="46"/>
+    <property name="textureID" value="child"/>
+    <property name="textureWidth" value="42"/>
+   </properties>
+  </object>
+  <object id="9" name="Child" type="Childmaiden" x="593" y="137">
+   <properties>
+    <property name="colliderHeight" value="34"/>
+    <property name="colliderWidth" value="28"/>
+    <property name="numFrames" value="3"/>
+    <property name="textureHeight" value="46"/>
+    <property name="textureID" value="child"/>
+    <property name="textureWidth" value="42"/>
+   </properties>
+  </object>
+  <object id="10" name="Child" type="Childmaiden" x="675" y="213">
+   <properties>
+    <property name="colliderHeight" value="34"/>
+    <property name="colliderWidth" value="28"/>
+    <property name="numFrames" value="3"/>
+    <property name="textureHeight" value="46"/>
+    <property name="textureID" value="child"/>
+    <property name="textureWidth" value="42"/>
+   </properties>
+  </object>
+  <object id="11" name="Child" type="Childmaiden" x="587" y="11">
+   <properties>
+    <property name="colliderHeight" value="34"/>
+    <property name="colliderWidth" value="28"/>
+    <property name="numFrames" value="3"/>
+    <property name="textureHeight" value="46"/>
+    <property name="textureID" value="child"/>
+    <property name="textureWidth" value="42"/>
+   </properties>
+  </object>
+  <object id="12" name="Child" type="Childmaiden" x="860" y="87">
+   <properties>
+    <property name="colliderHeight" value="34"/>
+    <property name="colliderWidth" value="28"/>
+    <property name="numFrames" value="3"/>
+    <property name="textureHeight" value="46"/>
+    <property name="textureID" value="child"/>
+    <property name="textureWidth" value="42"/>
+   </properties>
+  </object>
+  <object id="13" name="Child" type="Childmaiden" x="853" y="221">
+   <properties>
+    <property name="colliderHeight" value="34"/>
+    <property name="colliderWidth" value="28"/>
+    <property name="numFrames" value="3"/>
+    <property name="textureHeight" value="46"/>
+    <property name="textureID" value="child"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
