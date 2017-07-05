@@ -34,6 +34,16 @@ public:
 	int getLife(){
 		return m_life;
 	}
+
+
+	void setPlayerMoves(bool);
+	int setStunTime(int value){
+		stunTime = value;
+	}
+
+	int getStunTime(){
+		return stunTime;
+	}
 private:
 	void handleInput();
 	SkillManager m_skillManager = SkillManager(this);
@@ -43,6 +53,8 @@ private:
 	void rotateTowards();
 	void dash();
 	void useSkill();
+	bool canMove;
+	int stunTime;
 	int m_life;
 	Uint32 m_time;
 	bool m_isDashing;

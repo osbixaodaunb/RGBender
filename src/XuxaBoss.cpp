@@ -5,10 +5,13 @@
 #include "PlayState.h"
 #include "Childmaiden.h"
 #include <iostream>
+#include "ChairBullet.h"
+#include "Vector2D.h"
 
 using namespace std;
 using namespace engine;
 bool tilt = false;
+bool tilt_chair = false;
 bool protection = true;
 XuxaBoss::XuxaBoss() : Enemy(){
 	m_fireRate = 1;
@@ -55,8 +58,15 @@ void XuxaBoss::update(){
 	}
 
 	if(!tilt){
-		attack();
+		//attack();
 		tilt = true;
+	}
+	int half = m_totalHealth / 2;
+	int quarter = m_totalHealth / 4;
+
+	if(!tilt_chair and m_actualHealth <= half and m_actualHealth >= quarter){
+		throwChair();
+		tilt_chair = true;
 	}
 
 	Enemy::update();
@@ -64,6 +74,10 @@ void XuxaBoss::update(){
 
 void XuxaBoss::untilt(int placeholder){
 	tilt = false;
+}
+
+void XuxaBoss::untiltChair(int placeholder){
+	tilt_chair = false;
 }
 
 void XuxaBoss::protect(int placeholder){
@@ -96,6 +110,24 @@ void XuxaBoss::attack(){
 
 	std::function<void(int)> callback = std::bind(&XuxaBoss::untilt, this, 0);
 	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(250, callback, 0));
+}
+
+void XuxaBoss::throwChair(){
+	Vector2D pos = m_player->getPosition();
+	Vector2D playerPivot = Vector2D(m_player->getWidth()/2+pos.getX(), m_player->getHeight()/2 + pos.getY());
+	
+	pos = getPosition();
+	Vector2D bossPivot = Vector2D(getWidth()/2+pos.getX(), getHeight()/2 + pos.getY());
+
+	
+	Vector2D velocity = playerPivot - bossPivot;
+ 	velocity = velocity.norm();
+	ChairBullet *chair =  chairBulletCreator.create(m_player);
+	chair->load(velocity, bossPivot);
+	Game::Instance().getStateMachine()->currentState()->addGameObject(chair);
+
+	std::function<void(int)> callback = std::bind(&XuxaBoss::untiltChair, this, 0);
+	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(3000, callback, 0));
 }
 
 void XuxaBoss::clean(){

@@ -77,11 +77,14 @@ void Bullet::checkCollision(){
 		
 		for(auto obj : engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects()){
 			if(Physics::Instance().checkCollision(dynamic_cast<SDLGameObject*>(obj), dynamic_cast<SDLGameObject*>(this))){
-				if(dynamic_cast<Childmaiden*>(obj)->getVisibility()){
+				if(false){
 					INFO("REMOVENDO BALA");
 					m_active = false;
-					Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
+					//Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
 					INFO("Bullet collided with shield");
+				}
+				else{
+					break;
 				}
 			}
 		}

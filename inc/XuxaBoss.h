@@ -4,6 +4,7 @@
 #include "Enemy.h"
 #include "Player.h"
 #include "BossBullet.h"
+#include "ChairBullet.h"
 
 class Player;
 
@@ -17,16 +18,19 @@ public:
 	virtual void clean();
 	void untilt(int);
 	void protect(int);
+	void untiltChair(int);
 	static void fullLife();
 	static void halfLife();
 	static void quarterLife();
 	void shieldStatus(bool);
+	void throwChair();
 
 private:
 	virtual void attack();
 	Player *m_player = NULL	;
 	int m_fireRate;
 	BossBulletCreator bulletCreator;
+	ChairBulletCreator chairBulletCreator;
 };
 
 

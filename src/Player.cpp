@@ -27,7 +27,7 @@ Player::Player() : SDLGameObject(){
 	
 	INFO("Player inicializado");
 	m_life = 100;
-
+	canMove = true;
 }
 
 void Player::load(const LoaderParams* pParams){
@@ -53,7 +53,17 @@ void Player::update(){
 		}
 	}
 
-	handleInput();
+
+	if(!canMove){
+		int time = Timer::Instance().step() - getStunTime();
+		if(time >= 700){
+			canMove = true;
+		}
+	}
+
+	if(canMove){
+		handleInput();
+	}
 
 	if(m_velocity == Vector2D(0, 0)){
 		m_currentFrame = 2;
@@ -183,6 +193,11 @@ void Player::dash(){
 		m_isDashing = false;
 	}
 	
+}
+
+void Player::setPlayerMoves(bool value){
+	canMove = value;
+
 }
 
 // void Player::setLife(int life, Uint32 time){
