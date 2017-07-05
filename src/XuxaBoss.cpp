@@ -4,7 +4,9 @@
 #include "Cooldown.h"
 #include "PlayState.h"
 #include "Childmaiden.h"
+#include <iostream>
 
+using namespace std;
 using namespace engine;
 bool tilt = false;
 bool protection = true;
@@ -66,7 +68,6 @@ void XuxaBoss::untilt(int placeholder){
 
 void XuxaBoss::protect(int placeholder){
 	protection = true;
-	INFO(protection);
 }
 
 void XuxaBoss::shieldStatus(bool param){

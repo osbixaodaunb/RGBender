@@ -56,7 +56,7 @@ void Player::update(){
 	handleInput();
 
 	if(m_velocity == Vector2D(0, 0)){
-		m_currentFrame = 0;
+		m_currentFrame = 2;
 	}
 
 	
@@ -125,6 +125,13 @@ void Player::move(){
 	if(Physics::Instance().checkCollision(this, m_boss)){
 		m_position -= m_velocity;
 		setLife(m_life - 1);
+	}
+
+	for(auto x: engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects()){
+		if(Physics::Instance().checkCollision(this, x)){
+			m_position -= m_velocity;
+			//setLife(m_life - 1);
+		}	
 	}
 }
 

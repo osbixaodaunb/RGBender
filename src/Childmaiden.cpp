@@ -2,53 +2,49 @@
 #include <math.h>
 #include "Vector2D.h"
 #include "Game.h"
+#include "SDLGameObject.h"
 #include <iostream>
+#include "Timer.h"
 using namespace std;
+using namespace engine;
 
 Childmaiden::Childmaiden(){
 	isVisible = true;
-	phi = 180;
 	sinalx = 1;
 	sinaly = 1;
 	engine::Game::Instance().getStateMachine()->currentState()->addShieldObject(this);
 	m_velocity = engine::Vector2D(0, 0);
+	originTime = engine::Timer::Instance().step();
+}
+
+engine::Vector2D rotateVec(engine::Vector2D vec, double ang){
+	engine::Vector2D result;
+	
+	result.setX(vec.getX() * cos(ang) - vec.getY() * sin(ang));
+	result.setY(vec.getX() * sin(ang) + vec.getY() * cos(ang));
+
+	return result;
 }
 
 void Childmaiden::update(){
 	m_currentFrame = int(((SDL_GetTicks() / 300) % m_numFrames));
-	engine::Vector2D ctr(814, 163);
-	int radius = 180;
-	phi = (phi + 1) % 360;
-	engine::Vector2D aux;
-
-	//	aux.setX((radius*cos(engine::Vector2D::angle(m_position, ctr)) + 814) * sinalx);
-	//aux.setY(((radius*cos(engine::Vector2D::angle(m_position, ctr)) + 163) * sinaly));
-	//aux = aux.norm();
-	aux += engine::Vector2D(5 * sinalx, 5 * sinaly);
-
-	if(m_position.getY() >= 280 and m_position.getX() > 780 and m_velocity.getY() > 0){
-		sinaly = -1;
-		sinalx = 1;
-	}
-	else if(m_position.getY() >= 85 and m_position.getX() >= 980 and m_velocity.getX() > 0){
-		sinalx = -1;
-		sinaly = -1;
-	}
-	else if(m_position.getX() < 780 and m_position.getY() < 30 and m_velocity.getY() < 0){
-		sinaly = 1;
-		sinalx = -1;
-	}
-	else if(m_position.getX() < 600 and m_position.getY() >= 85 and m_velocity.getX() < 0){
-		sinalx = 1;
-		sinaly = 1;
-	}
-
-	m_velocity = aux;
-	m_position += m_velocity;
+	m_position = Vector2D(780, 163) + rotateVec(startPoint,
+				(engine::Timer::Instance().step() - originTime) / 1000.0);
+	
 }
 
 void Childmaiden::load(const engine::LoaderParams *pParams){
 	SDLGameObject::load(pParams);
+	std::vector<SDLGameObject*> v = engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects();
+	for(int i = 0; i < v.size(); i++){
+		if(this == dynamic_cast<Childmaiden*>(v[i])){
+			Vector2D vec(0,130);
+			m_position = Vector2D(780,163) + rotateVec(vec, 72 * i);
+			cout << v.size() << endl;
+		}
+	}
+
+	startPoint = m_position - Vector2D(780, 163);
 }
 
 void Childmaiden::draw(){

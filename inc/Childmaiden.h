@@ -3,6 +3,7 @@
 
 #include "SDLGameObject.h"
 #include "BaseCreator.h"
+#include "Vector2D.h"
 
 class Childmaiden : public engine::SDLGameObject{
 
@@ -23,8 +24,9 @@ public:
 
 private:
 	bool isVisible;
-	int phi;
 	int sinalx, sinaly;
+	int originTime;
+	engine::Vector2D startPoint;
 };
 
 class ChildmaidenCreator : public engine::BaseCreator{
