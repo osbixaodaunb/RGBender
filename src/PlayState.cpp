@@ -27,8 +27,6 @@ void PlayState::update(){
 	//	Game::Instance().getStateMachine()->pushState(new PauseState());
 	//}
 
-	//for(auto x: m_shieldObjects)
-	//	x->update();
 	
 	if(InputHandler::Instance().isKeyDown("p"))
 		Game::Instance().getStateMachine()->pushState(new PauseState());

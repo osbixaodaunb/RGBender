@@ -168,6 +168,11 @@ void XuxaBoss::childAttack(){
 		}
 	}
 
+	if(cont >= v.size() - 1){
+		show = true;
+		cont = 0;
+	}
+
 	bullet->load(velocity, bossPivot);
 	Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
 
@@ -198,7 +203,7 @@ void XuxaBoss::throwChair(){
 	Game::Instance().getStateMachine()->currentState()->addGameObject(chair);
 
 	std::function<void(int)> callback = std::bind(&XuxaBoss::untiltChair, this, 0);
-	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(3000, callback, 0));
+	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(2500, callback, 0));
 }
 
 void XuxaBoss::clean(){

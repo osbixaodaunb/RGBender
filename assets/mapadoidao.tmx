@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="129" height="72" tilewidth="96" tileheight="96" nextobjectid="22">
+<map version="2017.05.02" orientation="orthogonal" renderorder="right-down" width="129" height="72" tilewidth="96" tileheight="96" nextobjectid="41">
  <properties>
   <property name="RAG" value="assets/bosszika.png"/>
+  <property name="chair" value="assets/Cadeira_frente.png"/>
   <property name="child" value="assets/teste.png"/>
   <property name="down" value="assets/down.png"/>
   <property name="downattack" value="assets/downattack.png"/>
@@ -20,8 +21,8 @@
   <property name="uprightstun" value="assets/uprightstun.png"/>
   <property name="upstun" value="assets/upstun.png"/>
  </properties>
- <tileset firstgid="1" name="tile_azulejo_1" tilewidth="96" tileheight="96">
-  <image source="tile_azulejo_1.png" width="96" height="96"/>
+ <tileset firstgid="1" name="tile_azulejo_final" tilewidth="96" tileheight="96" tilecount="1" columns="1">
+  <image source="tile_azulejo_final.png" width="96" height="96"/>
  </tileset>
  <layer name="Tile Layer 1" width="129" height="72">
   <data encoding="base64" compression="zlib">
@@ -29,16 +30,6 @@
   </data>
  </layer>
  <objectgroup name="Object Layer 1">
-  <object id="2" name="Player" type="Player" x="737" y="623">
-   <properties>
-    <property name="colliderHeight" value="50"/>
-    <property name="colliderWidth" value="50"/>
-    <property name="numFrames" value="5"/>
-    <property name="textureHeight" value="96"/>
-    <property name="textureID" value="helicopter"/>
-    <property name="textureWidth" value="79"/>
-   </properties>
-  </object>
   <object id="4" name="Child" type="Childmaiden" x="783" y="280">
    <properties>
     <property name="colliderHeight" value="34"/>
@@ -169,7 +160,17 @@
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
-  <object id="1" name="Xuxa" type="XuxaBoss" x="703" y="52">
+  <object id="2" name="Player" type="Player" x="737" y="613">
+   <properties>
+    <property name="colliderHeight" value="50"/>
+    <property name="colliderWidth" value="50"/>
+    <property name="numFrames" value="5"/>
+    <property name="textureHeight" value="96"/>
+    <property name="textureID" value="helicopter"/>
+    <property name="textureWidth" value="79"/>
+   </properties>
+  </object>
+  <object id="1" name="Xuxa" type="XuxaBoss" x="603" y="80">
    <properties>
     <property name="colliderHeight" value="200"/>
     <property name="colliderWidth" value="200"/>

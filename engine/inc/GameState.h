@@ -41,11 +41,11 @@ namespace engine{
 		std::vector<SDLGameObject*> getShieldObjects(){
 			return m_shieldObjects;
 		}
+
 	protected:
 		std::vector<GameObject*> m_gameObjects;
 		std::vector<std::string> m_textureIDList;
 		std::vector<SDLGameObject*> m_shieldObjects;
-		
 	};
 }
 #endif

@@ -29,6 +29,7 @@ Player::Player() : SDLGameObject(){
 	TextureManager::Instance().load("assets/health.png", "health", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/circle.png", "instance", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/teste.png", "childBullet", Game::Instance().getRenderer());
+	TextureManager::Instance().load("assets/Cadeira_frente.png", "chairBullet", Game::Instance().getRenderer());
 
 	INFO("Player inicializado");
 	m_life = 100;
@@ -57,7 +58,7 @@ void Player::draw(){
 }
 
 void Player::update(){
-	//std::cout << "Player top: " << getPosition().getY() + (getHeight() - getCollider().getHeight())/2 << std::endl;
+	std::cout << "Player top: " << getPosition().getX() << std::endl;
 
 	if(m_life <= 0){
 		Game::Instance().getStateMachine()->changeState(new GameOverState());
@@ -221,20 +222,29 @@ void Player::move(){
 
 	if(InputHandler::Instance().isKeyDown("w")){
 		movement += Vector2D(0, -1);
+		if(getPosition().getY() <= 3)
+			movement += Vector2D(0, +1);
 
 	}
 
 	if(InputHandler::Instance().isKeyDown("s")){
 		movement += Vector2D(0, +1);
+		if(getPosition().getY() + (getHeight()) >= 705)
+			movement += Vector2D(0, -1);
 	}
 
 	if(InputHandler::Instance().isKeyDown("d")){
 		movement += Vector2D(1, 0);
+		if(getPosition().getX() + getWidth() >= 1382)
+			movement += Vector2D(-1 , 0);
 	}
 
 
 	if(InputHandler::Instance().isKeyDown("a")){
 		movement += Vector2D(-1, 0);
+
+		if(getPosition().getX() <= -17)
+			movement += Vector2D(1, 0);
 	}
 	movement = movement.norm();
 	if(!m_isDashing){

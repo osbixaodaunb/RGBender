@@ -41,8 +41,8 @@ double ChairBullet::rotateTowards(Vector2D pPosition){
 void ChairBullet::load(Vector2D pVelocity, Vector2D pPosition){
 	double angle = rotateTowards(pPosition);
 
-	m_moveSpeed = 5;
-	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 100, 80, "bulletboss", 0, 0, 0, angle);
+	m_moveSpeed = 7;
+	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 60, 96, "chairBullet", 0, 0, 0, angle, 55, 80);
 	SDLGameObject::load(pParams);
 
 	m_currentFrame = 0;
