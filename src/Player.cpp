@@ -10,6 +10,7 @@
 #include "Physics.h"
 #include "AudioManager.h"
 #include "GameOverState.h"
+#include "Childmaiden.h"
 
 #include <string>
 #include <SDL2/SDL.h>
@@ -24,7 +25,8 @@ Player::Player() : SDLGameObject(){
 	TextureManager::Instance().load("assets/bullet.png", "bullet", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/health.png", "health", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/circle.png", "instance", Game::Instance().getRenderer());
-	
+	TextureManager::Instance().load("assets/teste.png", "childBullet", Game::Instance().getRenderer());
+
 	INFO("Player inicializado");
 	m_life = 100;
 	canMove = true;
@@ -139,7 +141,8 @@ void Player::move(){
 
 	for(auto x: engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects()){
 		if(Physics::Instance().checkCollision(this, x)){
-			m_position -= m_velocity;
+			if(dynamic_cast<Childmaiden*>(x)->getVisibility())
+				m_position -= m_velocity;
 			//setLife(m_life - 1);
 		}	
 	}

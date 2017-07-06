@@ -1,4 +1,4 @@
-#include "ChairBullet.h"
+#include "ChildBullet.h"
 #include "SDLGameObject.h"
 #include "Vector2D.h"
 #include "LoaderParams.h"
@@ -14,23 +14,23 @@
 
 using namespace engine;
 
-ChairBullet::~ChairBullet(){
+ChildBullet::~ChildBullet(){
 	INFO("REMOVE CHAIR BULLET");
 }
 
-ChairBullet::ChairBullet(Player *target) : SDLGameObject(){
+ChildBullet::ChildBullet(Player *target) : SDLGameObject(){
 	setPlayer(target);
 	timeToLive = 5000;
 	m_active = true;
 }
 
-void ChairBullet::load(const LoaderParams* pParams){
+void ChildBullet::load(const LoaderParams* pParams){
 	m_velocity = Vector2D(0,0);
 
 	SDLGameObject::load(pParams);
 }
 
-double ChairBullet::rotateTowards(Vector2D pPosition){
+double ChildBullet::rotateTowards(Vector2D pPosition){
 	Vector2D target = InputHandler::Instance().getMousePosition() - pPosition;
 	target = target.norm();
 
@@ -38,11 +38,11 @@ double ChairBullet::rotateTowards(Vector2D pPosition){
 
 	return Vector2D::angle(target, Vector2D(0, 1));
 }
-void ChairBullet::load(Vector2D pVelocity, Vector2D pPosition){
+void ChildBullet::load(Vector2D pVelocity, Vector2D pPosition){
 	double angle = rotateTowards(pPosition);
 
-	m_moveSpeed = 5;
-	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 100, 80, "bulletboss", 0, 0, 0, angle);
+	m_moveSpeed = 8;
+	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 40, 60, "childBullet", 0, 0, 0, angle);
 	SDLGameObject::load(pParams);
 
 	m_currentFrame = 0;
@@ -51,12 +51,12 @@ void ChairBullet::load(Vector2D pVelocity, Vector2D pPosition){
 	//m_velocity = Vector2D(0.5, 0.5);
 }
 
-void ChairBullet::draw(){
+void ChildBullet::draw(){
 	SDLGameObject::draw();
 }
 
-void ChairBullet::update(){
-
+void ChildBullet::update(){
+	m_textureID = "child";
 	m_position += m_velocity;
 
 	if(Timer::Instance().step() >= bornTime + timeToLive){
@@ -68,7 +68,7 @@ void ChairBullet::update(){
 
 }
 
-void ChairBullet::checkCollision(){
+void ChildBullet::checkCollision(){
 	if(m_active){
 		Vector2D pos = m_player->getPosition();
 		Vector2D thisPos = getPosition();
@@ -78,15 +78,12 @@ void ChairBullet::checkCollision(){
 			Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
 			INFO("Bullet collided");
 			INFO("PLAYER LOST THE GAME");
-			m_player->setLife((m_player->getLife()) - 30);
-			m_player->setPlayerMoves(false);
-			m_player->setStunTime(Timer::Instance().step());
-			//Game::Instance().getStateMachine()->changeState(new GameOverState());
+			m_player->setLife((m_player->getLife()) - 50);
 		}
 	}
 }
 
-void ChairBullet::clean(){
+void ChildBullet::clean(){
 	SDLGameObject::clean();
 }
 

@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "BossBullet.h"
 #include "ChairBullet.h"	
+#include "ChildBullet.h"
 
 class Player;
 
@@ -19,11 +20,13 @@ public:
 	void untilt(int);
 	void protect(int);
 	void untiltChair(int);
+	void untiltChild(int);
 	static void fullLife();
 	static void halfLife();
 	static void quarterLife();
 	void shieldStatus(bool);
 	void throwChair();
+	void childAttack();
 
 	int getShieldTime(){
 		return shieldTime;
@@ -40,6 +43,7 @@ private:
 	int shieldTime;
 	BossBulletCreator bulletCreator;
 	ChairBulletCreator chairBulletCreator;
+	ChildBulletCreator childBulletCreator;
 };
 
 
