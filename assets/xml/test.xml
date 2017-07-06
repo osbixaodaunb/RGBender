@@ -37,7 +37,7 @@
 
 		<OBJECTS>
 			<object type="MenuButton" x="483" y="250" width="400" height="82" textureID="resumebutton" numFrames="0" callbackID="1"/>
-			<object type="MenuButton" x="483" y="400" width="400" height="82" textureID="mainbutton" numFrames="0" callbackID="2"/>
+			<object type="MenuButton" x="483" y="400" width="400" height="58" textureID="mainbutton" numFrames="0" callbackID="2"/>
 		</OBJECTS>
 	</PAUSE>
 
@@ -49,8 +49,8 @@
 		</TEXTURES>
 		<OBJECTS>
 			<object type="AnimatedGraphic" x="588" y="200" width="190" height="30" textureID="gameovertext" numFrames="2" animSpeed="2"/>
-			<object type="MenuButton" x="483" y="300" width="400" height="82" textureID="mainbutton" numFrames="0" callbackID="1"/>
-			<object type="MenuButton" x="583" y="450" width="200" height="80" textureID="restartbutton" numFrames="0" callbackID="2"/>
+			<object type="MenuButton" x="483" y="300" width="400" height="58" textureID="mainbutton" numFrames="0" callbackID="1"/>
+			<object type="MenuButton" x="483" y="450" width="400" height="90" textureID="restartbutton" numFrames="0" callbackID="2"/>
 		</OBJECTS>
 	</GAMEOVER>
 </STATES>
