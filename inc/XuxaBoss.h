@@ -4,7 +4,7 @@
 #include "Enemy.h"
 #include "Player.h"
 #include "BossBullet.h"
-#include "ChairBullet.h"
+#include "ChairBullet.h"	
 
 class Player;
 
@@ -25,10 +25,19 @@ public:
 	void shieldStatus(bool);
 	void throwChair();
 
+	int getShieldTime(){
+		return shieldTime;
+	}
+
+	void setShieldTime(int value){
+		shieldTime = value;
+	}
+
 private:
 	virtual void attack();
 	Player *m_player = NULL	;
 	int m_fireRate;
+	int shieldTime;
 	BossBulletCreator bulletCreator;
 	ChairBulletCreator chairBulletCreator;
 };

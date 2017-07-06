@@ -7,6 +7,7 @@
 #include <iostream>
 #include "ChairBullet.h"
 #include "Vector2D.h"
+#include "Timer.h"
 
 using namespace std;
 using namespace engine;
@@ -58,9 +59,21 @@ void XuxaBoss::update(){
 	}
 
 	if(!tilt){
-		//attack();
+		attack();
 		tilt = true;
 	}
+
+	if(!protection and (Timer::Instance().step() - getShieldTime()) > 3000){
+		shieldStatus(true);
+		setShieldTime(Timer::Instance().step());
+		protection = true;
+	}else if(protection and (Timer::Instance().step() - getShieldTime()) > 7000){
+		shieldStatus(false);
+		setShieldTime(Timer::Instance().step());
+		protection = false;
+	}
+	
+
 	int half = m_totalHealth / 2;
 	int quarter = m_totalHealth / 4;
 
@@ -84,14 +97,14 @@ void XuxaBoss::protect(int placeholder){
 	protection = true;
 }
 
-void XuxaBoss::shieldStatus(bool param){
+
+void XuxaBoss::shieldStatus(bool param){	
 	for(auto x : engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects()){
 		dynamic_cast<Childmaiden*>(x)->setVisibility(param);
 	}
-
 	
-	std::function<void(int)> callback = std::bind(&XuxaBoss::protect, this, 0);
-	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(100, callback, 0));
+	//std::function<void(int)> callback = std::bind(&XuxaBoss::protect, this, 0);
+	//engine::Game::Instance().addCooldown(new engine::Cooldown<int>(2000, callback, 0));	
 }
 
 void XuxaBoss::attack(){
