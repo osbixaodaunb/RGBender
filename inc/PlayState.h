@@ -6,7 +6,7 @@
 #include "GameObject.h"
 #include "Level.h"
 #include "Log.h"
-
+#include "XuxaBoss.h"
 class PlayState : public engine::GameState{
 public:
 	virtual void update();
@@ -26,6 +26,7 @@ public:
 private:
 	static const std::string s_playID;
 	Player* m_player;
+	XuxaBoss* m_boss;
 	int m_playerLife = 100;
 	engine::Level *pLevel = NULL;
 	bool checkCollision(engine::SDLGameObject *p1, engine::SDLGameObject *p2);

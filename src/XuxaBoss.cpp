@@ -23,6 +23,8 @@ int cont = 0;
 XuxaBoss::XuxaBoss() : Enemy(){
 	m_fireRate = 1;
 	TextureManager::Instance().load("assets/bullet.png", "bulletboss", Game::Instance().getRenderer());
+	TextureManager::Instance().load("assets/Boss_Empty_Health.png", "emptyhealthboss", Game::Instance().getRenderer());
+	TextureManager::Instance().load("assets/Boss_Health.png", "healthboss", Game::Instance().getRenderer());
 	m_states.push_back(&XuxaBoss::quarterLife);
 	m_states.push_back(&XuxaBoss::halfLife);
 	m_states.push_back(&XuxaBoss::fullLife);
