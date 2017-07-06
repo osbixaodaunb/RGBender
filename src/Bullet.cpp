@@ -91,7 +91,7 @@ void Bullet::checkCollision(){
 		if(Physics::Instance().checkCollision(dynamic_cast<SDLGameObject*>(m_boss), dynamic_cast<SDLGameObject*>(this))){
 			m_active = false;
 			Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
-			m_boss->takeDamage(10);
+			m_boss->takeDamage(100);
 			if(m_venemous){
 				INFO("VENEMOUS TRUE");
 				m_collided = true;

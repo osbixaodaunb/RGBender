@@ -59,11 +59,14 @@ public:
 	int getStunTime(){
 		return stunTime;
 	}
+	bool getBulletVenemous(){
+		return m_bulletVenemous;
+	}
 private:
 	Bullet *bullet = NULL;
 	bool m_isShieldActive;
 	int shieldHits = 0;
-	bool m_bulletVenemous = false;
+	bool m_bulletVenemous;
 	int count = 0;
 	void handleInput();
 	SkillManager m_skillManager = SkillManager(this);
