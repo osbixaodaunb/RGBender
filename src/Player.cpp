@@ -10,6 +10,7 @@
 #include "Physics.h"
 #include "AudioManager.h"
 #include "GameOverState.h"
+#include "Childmaiden.h"
 
 #include <string>
 #include <SDL2/SDL.h>
@@ -24,10 +25,11 @@ Player::Player() : SDLGameObject(){
 	TextureManager::Instance().load("assets/bullet.png", "bullet", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/health.png", "health", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/circle.png", "instance", Game::Instance().getRenderer());
-	
+	TextureManager::Instance().load("assets/teste.png", "childBullet", Game::Instance().getRenderer());
+
 	INFO("Player inicializado");
 	m_life = 100;
-
+	canMove = true;
 }
 
 void Player::load(const LoaderParams* pParams){
@@ -39,12 +41,12 @@ void Player::draw(){
 }
 
 void Player::update(){
-	std::cout << "Player top: " << getPosition().getY() + (getHeight() - getCollider().getHeight())/2 << std::endl;
+	//std::cout << "Player top: " << getPosition().getY() + (getHeight() - getCollider().getHeight())/2 << std::endl;
 
 	if(m_life <= 0){
 		Game::Instance().getStateMachine()->changeState(new GameOverState());
 	}
-	m_currentFrame = int(((SDL_GetTicks() / 400) % m_numFrames));
+	m_currentFrame = int(((SDL_GetTicks() / 100) % m_numFrames));
 	if(Game::Instance().getStateMachine()->currentState()->getStateID() == "PLAY"){
 		PlayState *playState = dynamic_cast<PlayState*>(Game::Instance().getStateMachine()->currentState());
 		if(playState->getLevel() != NULL && m_boss == NULL){
@@ -53,10 +55,20 @@ void Player::update(){
 		}
 	}
 
-	handleInput();
+
+	if(!canMove){
+		int time = Timer::Instance().step() - getStunTime();
+		if(time >= 700){
+			canMove = true;
+		}
+	}
+
+	if(canMove){
+		handleInput();
+	}
 
 	if(m_velocity == Vector2D(0, 0)){
-		m_currentFrame = 0;
+		m_currentFrame = 2;
 	}
 
 	
@@ -126,6 +138,14 @@ void Player::move(){
 		m_position -= m_velocity;
 		setLife(m_life - 1);
 	}
+
+	for(auto x: engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects()){
+		if(Physics::Instance().checkCollision(this, x)){
+			if(dynamic_cast<Childmaiden*>(x)->getVisibility())
+				m_position -= m_velocity;
+			//setLife(m_life - 1);
+		}	
+	}
 }
 
 void Player::useSkill(){
@@ -176,6 +196,11 @@ void Player::dash(){
 		m_isDashing = false;
 	}
 	
+}
+
+void Player::setPlayerMoves(bool value){
+	canMove = value;
+
 }
 
 // void Player::setLife(int life, Uint32 time){
