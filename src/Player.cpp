@@ -24,6 +24,7 @@ using namespace engine;
 Player::Player() : SDLGameObject(){
 	m_fireRate = 500;
 	m_isShieldActive = false;
+	m_bulletVenemous = false;
 	TextureManager::Instance().load("assets/bullet.png", "bullet", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/health.png", "health", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/circle.png", "instance", Game::Instance().getRenderer());
@@ -39,6 +40,19 @@ void Player::load(const LoaderParams* pParams){
 }
 
 void Player::draw(){
+	TextureManager::Instance().draw("instance", 100, 600, 100, 100, Game::Instance().getRenderer());
+	if(m_isShieldActive){
+		TextureManager::Instance().draw("shield", getPosition().getX()-17, getPosition().getY()-10, 110, 110, Game::Instance().getRenderer());
+		TextureManager::Instance().draw("brownskill", 110, 610, 80, 80, Game::Instance().getRenderer());
+	}
+	if(m_fireRate != 500){
+		TextureManager::Instance().draw("redskill", 110, 610, 80, 80, Game::Instance().getRenderer());
+	}
+	if(bullet!= NULL && bullet->getVenemous() == true){
+		INFO("EASDJADJADJAIDJAI{PDJAPDJASD");
+		TextureManager::Instance().draw("greenskill", 110, 610, 80, 80, Game::Instance().getRenderer());
+	}
+	TextureManager::Instance().draw("health", 0, 0, m_life, 32, Game::Instance().getRenderer());
 	SDLGameObject::draw();
 }
 
@@ -77,11 +91,17 @@ void Player::update(){
 		handleInput();
 	}
 
+	// if(m_bulletVenemous == true)
+	// 	INFO("FOI");
+
 	SDLGameObject::update();
 }
 
 void Player::setBulletVenemous(bool isVenemous){
+	m_bulletVenemous = isVenemous;
 	bullet->setVenemous(isVenemous);
+	
+
 }
 
 void Player::setPoison(){
@@ -261,7 +281,7 @@ void Player::useSkill(){
 				if(m_pSkills.first != BLANK and m_pSkills.second != BLANK){
 					pixelColors = m_skillManager.getSkill(m_pSkills)();
 					TheTextureManager::Instance().changeColorPixels(pixelColors, "bullet");
-					TheTextureManager::Instance().changeColorPixels(pixelColors, "instance");
+					//TheTextureManager::Instance().changeColorPixels(pixelColors, "instance");
 				}
 			}
 			else

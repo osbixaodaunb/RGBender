@@ -52,13 +52,7 @@ void PlayState::render(){
 	if(pLevel != NULL){
 		pLevel->render();
 	}
-	TextureManager::Instance().draw("health", 0, 0, m_playerLife, 32, Game::Instance().getRenderer());
-	TextureManager::Instance().draw("instance", 100, 600, 100, 100, Game::Instance().getRenderer());
-	TextureManager::Instance().draw("emptyhealthboss", m_boss->getPosition().getX(), m_boss->getPosition().getY()+20, 106, 60, Game::Instance().getRenderer());
-	TextureManager::Instance().draw("healthboss", m_boss->getPosition().getX()+3, m_boss->getPosition().getY()+37, m_boss->getHealth()/10,28, Game::Instance().getRenderer());
-	if(m_player->getShieldActive()){
-		TextureManager::Instance().draw("shield", m_player->getPosition().getX()-20, m_player->getPosition().getY()-13, 110, 110, Game::Instance().getRenderer());
-	}
+	
 	GameState::render();
 }
 
