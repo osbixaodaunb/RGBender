@@ -21,6 +21,7 @@ using namespace engine;
 
 Player::Player() : SDLGameObject(){
 	m_fireRate = 500;
+	m_isShieldActive = false;
 	TextureManager::Instance().load("assets/bullet.png", "bullet", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/health.png", "health", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/circle.png", "instance", Game::Instance().getRenderer());
@@ -59,9 +60,14 @@ void Player::update(){
 		m_currentFrame = 0;
 	}
 
+	if(shieldHits > 5 && m_isShieldActive){
+		TextureManager::Instance().clearFromTextureMap("shield");
+		shieldHits = 0;
+		m_isShieldActive = false;
+	}
 	setPoison();	
 
-	INFO(m_boss->getHealth());
+	//INFO(m_boss->getHealth());
 
 	SDLGameObject::update();
 }
@@ -71,7 +77,7 @@ void Player::setBulletVenemous(bool isVenemous){
 }
 
 void Player::setPoison(){
-	if(bullet != NULL && bullet->getVenemous()){
+	if(bullet != NULL && bullet->getVenemous() && bullet->isActive()){
 		if(Timer::Instance().step() <= m_boss->getEnemyTime() && bullet->m_collided){
 			m_boss->takeDamage(3);
 			INFO(m_boss->getHealth());

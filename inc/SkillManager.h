@@ -26,7 +26,6 @@ public:
 	void setCoolDownTrigger(std::pair<default_inks, default_inks> combinedSkills);
 
 	void resetCooldown(int);
-
 	std::map<std::pair<default_inks, default_inks>, bool>* getCoolDownMap(){
 		return &m_coolDownMap;
 	}

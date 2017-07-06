@@ -17,7 +17,6 @@
 #include <vector>
 #include "AudioManager.h"
 #include <SDL2/SDL_image.h>
-
 using namespace std;
 using namespace engine;
 
@@ -80,7 +79,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	GameObjectFactory::Instance().registerType("XuxaBoss", new XuxaBossCreator());
 	GameObjectFactory::Instance().registerType("Player", new PlayerCreator());
 	GameObjectFactory::Instance().registerType("AnimatedGraphic", new AnimatedGraphicCreator());
-
 
 	m_pGameStateMachine = new GameStateMachine();
 	m_pGameStateMachine->changeState(new MainMenuState());

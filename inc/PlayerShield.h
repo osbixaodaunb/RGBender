@@ -7,12 +7,11 @@
 #include "BaseCreator.h"
 #include "Log.h"
 #include "Player.h"
-
+#include "Enemy.h"
+#inc
 class PlayerShield : public engine::SDLGameObject{
 public:
-	PlayerShield(Player* p_player){
-		setPlayer(p_player);
-	}
+	PlayerShield();
 	~PlayerShield();
 
 	void load(engine::Vector2D pVelocity, engine::Vector2D pPosition);
@@ -21,17 +20,20 @@ public:
 	void update();
 	void clean();
 	void checkCollision();
+	// void setPlayer(Player* p_player){
+	// 	m_player = p_player;
+	// }
 
 private:
-	void setPlayer(Player* p_player){
-		m_player = p_player;
-	}
-	Player* m_player;
+	
+	Enemy* m_boss = NULL;
+	bool m_active;
+	int numberHits;
 };
 
 class PlayerShieldCreator{
-	PlayerShield* create(Player *p_player){
-		return new PlayerShield(p_player);
+	PlayerShield* create(){
+		return new PlayerShield();
 	}
 };
 #endif

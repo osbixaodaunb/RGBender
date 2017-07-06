@@ -8,7 +8,7 @@
 #include <iostream>
 #include <functional>
 
-//using namespace engine;
+using namespace engine;
 
 using namespace std;
 
@@ -98,6 +98,18 @@ uint8_t* SkillManager::cyan(){
 
 uint8_t* SkillManager::brown(){
 	INFO("BROWN PLUS");
+	TextureManager::Instance().load("assets/Shield1.png", "shield", Game::Instance().getRenderer());
+	m_player->setActiveShield(true);
+
+	std::function<void(bool)> brownSkill = std::bind(&Player::setActiveShield, m_player, false);
+	std::function<void(int)> reset = std::bind(&SkillManager::resetCooldown, this, 3);
+	std::function<void(int)> setBlank = std::bind(&SkillManager::blank, this, 255);
+
+	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(3000, brownSkill, false));
+	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(3000, setBlank, 255));
+
+	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(5000, reset, 3));
+
 	uint8_t* pixels = new uint8_t[3];
 	pixels[0] = 190;
 	pixels[1] = 105;
@@ -135,6 +147,7 @@ void SkillManager::resetCooldown(int index){
 	switch(index){
 		case 1: m_coolDownMap[make_pair(RED, RED)] = false; break;
 		case 2: m_coolDownMap[make_pair(GREEN, GREEN)] = false; break;
+		case 3: m_coolDownMap[std::make_pair(RED, GREEN)] = m_coolDownMap[std::make_pair(GREEN, RED)] = false; break;
 	}
 
 }

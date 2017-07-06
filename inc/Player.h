@@ -36,10 +36,24 @@ public:
 	Bullet* getPlayerBullet(){
 		return bullet;
 	}
+	void setShieldHits(){
+		shieldHits++;
+	}
+	int getShieldHits(){
+		return shieldHits;
+	}
+	void setActiveShield(bool isActive){
+		m_isShieldActive = isActive;
+	}
+	bool getShieldActive(){
+		return m_isShieldActive;
+	}
 	void setBulletVenemous(bool isVenemous);
 	void setPoison();
 private:
 	Bullet *bullet = NULL;
+	bool m_isShieldActive;
+	int shieldHits = 0;
 	bool m_bulletVenemous = false;
 	void handleInput();
 	SkillManager m_skillManager = SkillManager(this);
