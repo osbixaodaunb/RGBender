@@ -27,6 +27,9 @@ void PlayState::update(){
 	//	Game::Instance().getStateMachine()->pushState(new PauseState());
 	//}
 
+	//for(auto x: m_shieldObjects)
+	//	x->update();
+	
 	if(InputHandler::Instance().isKeyDown("p"))
 		Game::Instance().getStateMachine()->pushState(new PauseState());
 
@@ -52,7 +55,7 @@ void PlayState::render(){
 	TextureManager::Instance().draw("health", 0, 0, m_playerLife, 32, Game::Instance().getRenderer());
 	TextureManager::Instance().draw("instance", 100, 600, 100, 100, Game::Instance().getRenderer());
 	if(m_player->getShieldActive()){
-		TextureManager::Instance().draw("shield", m_player->getPosition().getX()-37, m_player->getPosition().getY()-13, 110, 110, Game::Instance().getRenderer());
+		TextureManager::Instance().draw("shield", m_player->getPosition().getX()-20, m_player->getPosition().getY()-13, 110, 110, Game::Instance().getRenderer());
 	}
 	GameState::render();
 }

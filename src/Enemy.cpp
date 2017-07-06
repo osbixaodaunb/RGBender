@@ -34,6 +34,7 @@ void Enemy::draw(){
 void Enemy::takeDamage(int damage){
 	if(damage >= 0){
 		m_actualHealth -= damage;
+		INFO(m_actualHealth);
 	} else {
 		m_actualHealth = 0;
 	}
@@ -42,66 +43,6 @@ void Enemy::takeDamage(int damage){
 
 	changeState();
 }
-
-// void Enemy::takeDamage(int damage, Uint32 time){
-// 	if(damage >= 0){
-// 		if(m_times == 0){
-// 			m_times = Timer::Instance().step() + time;
-// 			m_actualHealth -= damage;
-// 		}else if(Timer::Instance().step() <= m_times){
-// 			m_actualHealth -= damage;
-// 		}
-// 		else{
-// 			m_times = 0;
-// 		}
-// 	} else {
-// 		m_actualHealth = 0;
-// 	}
-// 	INFO("HP ATUAL: ")
-// 	INFO(m_actualHealth);
-
-// 	changeState();
-// }
-
-void Enemy::takeDamage(int damage, Uint32 time){ //ISSO NAO VAI DA CERTO, PQ ESSA FUNCAO TERIA QUE FICAR SENDO CHAMADA SEMPRE, 
-												//PRA ARRUMAR TEM Q ACHAR JEITO DE DEIXAR A LOGICA DE DAMAGE OVER TIME NO UPDATE
-	if(damage >= 0){
-		if(m_times == 0){
-			m_times = Timer::Instance().step() + time;
-			//m_actualHealth -= damage;
-		}else if(Timer::Instance().step() <= m_times){
-			//m_actualHealth -= damage;
-		}
-		else{
-			m_times = 0;
-		}
-	} else {
-		m_actualHealth = 0;
-	}
-	INFO("HP ATUAL: ")
-	INFO(m_actualHealth);
-
-	changeState();
-}
-
-/*bool InputHandler::isKeyDown(const std::string & key, Uint32 time){
-
-	if(m_keystates != 0){
-		if(m_keystates[m_buttons[key]] == 1 ){
-			if(m_times[m_buttons[key]] == 0){
-				m_times[m_buttons[key]] = Timer::Instance().step() + time;
-				return true;
-			} else if(Timer::Instance().step() <= m_times[m_buttons[key]]){
-				return false;
-			} else {
-				m_times[m_buttons[key]] = 0;
-			}
-		}
-	}
-
-	return false;
-}*/
-
 
 void Enemy::changeState(){
 	int halfHealth = m_totalHealth / 2;

@@ -18,6 +18,7 @@ class Player : public engine::SDLGameObject{
 public:
 	Player();
 
+	void changeSprite(int);
 	void load(const engine::LoaderParams* pParams);
 	void draw();
 	void update();
@@ -50,11 +51,20 @@ public:
 	}
 	void setBulletVenemous(bool isVenemous);
 	void setPoison();
+	void setPlayerMoves(bool);
+	int setStunTime(int value){
+		stunTime = value;
+	}
+
+	int getStunTime(){
+		return stunTime;
+	}
 private:
 	Bullet *bullet = NULL;
 	bool m_isShieldActive;
 	int shieldHits = 0;
 	bool m_bulletVenemous = false;
+	int count = 0;
 	void handleInput();
 	SkillManager m_skillManager = SkillManager(this);
 	std::pair<default_inks, default_inks> m_pSkills;
@@ -63,6 +73,8 @@ private:
 	void rotateTowards();
 	void dash();
 	void useSkill();
+	bool canMove;
+	int stunTime;
 	int m_life;
 	Uint32 m_time;
 	bool m_isDashing;

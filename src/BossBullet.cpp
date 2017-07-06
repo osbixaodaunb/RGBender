@@ -49,6 +49,10 @@ void BossBullet::load(Vector2D pVelocity, Vector2D pPosition){
 	bornTime = Timer::Instance().step();
 	m_velocity = pVelocity.norm() * m_moveSpeed;
 	//m_velocity = Vector2D(0.5, 0.5);
+	
+	Vector2D norm = pVelocity.norm();
+	normal = Vector2D(norm.getY(), -norm.getX());
+	originTime = Timer::Instance().step();
 }
 
 void BossBullet::draw(){
@@ -56,7 +60,18 @@ void BossBullet::draw(){
 }
 
 void BossBullet::update(){
+	Vector2D tmp = m_velocity;
+	
+	double sign = sin((Timer::Instance().step() - originTime)/125);
+	sign /= fabs(sign);
+
+	sign *= 1;
+	m_velocity += Vector2D(normal.getX()*sign, normal.getY()*sign);
+
 	m_position += m_velocity;
+	m_velocity = tmp;
+
+	
 
 	if(Timer::Instance().step() >= bornTime + timeToLive){
 		m_active = false;

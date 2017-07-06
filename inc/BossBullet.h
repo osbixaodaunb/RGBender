@@ -38,6 +38,8 @@ public:
 private:
 	double rotateTowards(engine::Vector2D);
 
+	engine::Vector2D normal;
+	double originTime;
 	int m_moveSpeed;
 
 	Player *m_player;

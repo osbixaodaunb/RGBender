@@ -21,7 +21,6 @@ public:
 
 	typedef void(*Callback) ();
 	void takeDamage(int);
-	void takeDamage(int, Uint32);
 	Uint32 getEnemyTime(){
 		return m_times;
 	}

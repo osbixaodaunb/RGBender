@@ -3,9 +3,23 @@
 #include "Game.h"
 #include "Cooldown.h"
 #include "PlayState.h"
+#include "Childmaiden.h"
+#include <iostream>
+#include "ChairBullet.h"
+#include "ChildBullet.h"
+#include "Vector2D.h"
+#include "Timer.h"
+#include "SDLGameObject.h"
 
+using namespace std;
 using namespace engine;
 bool tilt = false;
+bool tilt_chair = false;
+bool tilt_child = false;
+bool protection = true;
+int show = true;
+
+int cont = 0;
 XuxaBoss::XuxaBoss() : Enemy(){
 	m_fireRate = 1;
 	TextureManager::Instance().load("assets/bullet.png", "bulletboss", Game::Instance().getRenderer());
@@ -16,7 +30,6 @@ XuxaBoss::XuxaBoss() : Enemy(){
 }
 
 void XuxaBoss::fullLife(){
-	//TODO
 	INFO("Xuxa está com HP cheio!")
 }
 
@@ -55,12 +68,59 @@ void XuxaBoss::update(){
 		attack();
 		tilt = true;
 	}
+	
+	int half = m_totalHealth / 2;
+	int quarter = m_totalHealth / 4;
 
+	if(m_actualHealth > quarter){		
+		if(!protection and (Timer::Instance().step() - getShieldTime()) > 3000){
+			shieldStatus(true);
+			setShieldTime(Timer::Instance().step());
+			protection = true;
+		}else if(protection and (Timer::Instance().step() - getShieldTime()) > 7000){
+			shieldStatus(false);
+			setShieldTime(Timer::Instance().step());
+			protection = false;
+		}
+	}else if(!tilt_child and m_actualHealth <= quarter){
+		if(show or cont == engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects().size() - 1){
+			show = false;
+			for(auto x : engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects()){
+				dynamic_cast<Childmaiden*>(x)->setVisibility(true);
+			}
+		}
+		childAttack();
+		tilt_child = true;
+	}
+
+	if(!tilt_chair and m_actualHealth <= half and m_actualHealth >= quarter){
+		throwChair();
+		tilt_chair = true;
+	}
+	//INFO(m_actualHealth);
 	Enemy::update();
 }
 
 void XuxaBoss::untilt(int placeholder){
 	tilt = false;
+}
+
+void XuxaBoss::untiltChair(int placeholder){
+	tilt_chair = false;
+}
+
+void XuxaBoss::protect(int placeholder){
+	protection = true;
+}
+
+
+void XuxaBoss::shieldStatus(bool param){	
+	for(auto x : engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects()){
+		dynamic_cast<Childmaiden*>(x)->setVisibility(param);
+	}
+	
+	//std::function<void(int)> callback = std::bind(&XuxaBoss::protect, this, 0);
+	//engine::Game::Instance().addCooldown(new engine::Cooldown<int>(2000, callback, 0));	
 }
 
 void XuxaBoss::attack(){
@@ -78,7 +138,62 @@ void XuxaBoss::attack(){
 	Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
 
 	std::function<void(int)> callback = std::bind(&XuxaBoss::untilt, this, 0);
-	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(250, callback, 0));
+	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(1000, callback, 0));
+}
+
+void XuxaBoss::childAttack(){
+	Vector2D pos = m_player->getPosition();
+	Vector2D playerPivot = Vector2D(m_player->getWidth()/2+pos.getX(), m_player->getHeight()/2 + pos.getY());
+	
+	pos = getPosition();
+	Vector2D bossPivot = Vector2D(getWidth()/2+pos.getX(), getHeight()/2 + pos.getY());
+
+	Vector2D velocity = playerPivot - bossPivot;
+ 	velocity = velocity.norm();
+	ChildBullet *bullet = childBulletCreator.create(m_player);
+	
+	vector<SDLGameObject*> v = Game::Instance().getStateMachine()->currentState()->getShieldObjects();
+	
+	for(auto x : Game::Instance().getStateMachine()->currentState()->getShieldObjects()){
+		if(dynamic_cast<Childmaiden*>(x)->getVisibility()){
+			dynamic_cast<Childmaiden*>(x)->setVisibility(false);
+
+			cont++;
+			break;
+		}
+	}
+
+	bullet->load(velocity, bossPivot);
+	Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
+
+	std::function<void(int)> callback = std::bind(&XuxaBoss::untiltChild, this, 0);
+	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(2000, callback, 0));
+
+	
+	//std::function<void(int)> callback = std::bind(&XuxaBoss::untiltChair, this, 0);
+	//engine::Game::Instance().addCooldown(new engine::Cooldown<int>(3000, callback, 0));
+}
+
+void XuxaBoss::untiltChild(int placeholder){
+	tilt_child = false;
+}
+
+void XuxaBoss::throwChair(){
+	Vector2D pos = m_player->getPosition();
+	Vector2D playerPivot = Vector2D(m_player->getWidth()/2+pos.getX(), m_player->getHeight()/2 + pos.getY());
+	
+	pos = getPosition();
+	Vector2D bossPivot = Vector2D(getWidth()/2+pos.getX(), getHeight()/2 + pos.getY());
+
+	
+	Vector2D velocity = playerPivot - bossPivot;
+ 	velocity = velocity.norm();
+	ChairBullet *chair =  chairBulletCreator.create(m_player);
+	chair->load(velocity, bossPivot);
+	Game::Instance().getStateMachine()->currentState()->addGameObject(chair);
+
+	std::function<void(int)> callback = std::bind(&XuxaBoss::untiltChair, this, 0);
+	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(3000, callback, 0));
 }
 
 void XuxaBoss::clean(){

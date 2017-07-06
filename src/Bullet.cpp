@@ -10,7 +10,8 @@
 #include "Enemy.h"
 #include "Physics.h"
 #include <iostream>
-#include <string>   
+#include <string>
+#include "Childmaiden.h"
 using namespace engine;
 
 Bullet::~Bullet(){
@@ -65,20 +66,6 @@ void Bullet::update(){
 	}
 	checkCollision();
 
-
-	// if(m_venemous && m_collided){
-	// 	if(Timer::Instance().step() <= m_boss->getEnemyTime() && m_collided){
-	// 		INFO("ENTROU NO TIMER ENEMY");
-	// 		m_boss->takeDamage(10);
-	// 		INFO(m_boss->getHealth());
-	// 	}else if(Timer::Instance().step() >= m_boss->getEnemyTime()){
-	// 		m_collided = false;
-	// 	}
-	// }
-	
-	//m_collided = false;
-
-
 }
 
 void Bullet::checkCollision(){
@@ -86,28 +73,38 @@ void Bullet::checkCollision(){
 		Vector2D pos = m_boss->getPosition();
 		Vector2D thisPos = getPosition();
 		
+		
+		for(auto obj : engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects()){
+			if(Physics::Instance().checkCollision(dynamic_cast<SDLGameObject*>(obj), dynamic_cast<SDLGameObject*>(this))){
+				if(dynamic_cast<Childmaiden*>(obj)->getVisibility()){
+					INFO("REMOVENDO BALA");
+					m_active = false;
+					Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
+					INFO("Bullet collided with shield");
+				}
+				else{
+					break;
+				}
+			}
+		}
+
 		if(Physics::Instance().checkCollision(dynamic_cast<SDLGameObject*>(m_boss), dynamic_cast<SDLGameObject*>(this))){
 			m_active = false;
 			Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
+			m_boss->takeDamage(10);
 			if(m_venemous){
 				INFO("VENEMOUS TRUE");
 				m_collided = true;
 				m_boss->setEnemyTime(300);
-				//INFO("ENTROU AQUI!!!");
-				//INFO(m_boss->getEnemyTime());
-				// if(Timer::Instance().step() <= m_boss->getEnemyTime()){
-				// 	INFO("ENTROU NO TIMER ENEMY");
-				// 	m_boss->takeDamage(10);
-				// 	INFO(m_boss->getHealth());
-				// }
-				//m_collided == false;	
 			}
 			
 			int score = Game::Instance().getScore();
 			Game::Instance().setScore(score + 10);
 			TextureManager::Instance().loadText(std::to_string(Game::Instance().getScore()), "assets/fonts/Lato-Regular.ttf", "score", {255,255,255}, 50, Game::Instance().getRenderer());
-			INFO("Bullet collided");
+			INFO("Bullet collided with boss");
 		}
+
+
 	}
 }
 

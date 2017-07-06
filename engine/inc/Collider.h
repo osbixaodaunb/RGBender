@@ -22,6 +22,14 @@ namespace engine{
 		int getHeight(){
 			return m_height;
 		}
+
+		void setWidth(int value){
+			m_width = value;
+		}
+
+		void setHeight(int value){
+			m_height = value;
+		}
 	private:
 		int m_width;
 		int m_height;

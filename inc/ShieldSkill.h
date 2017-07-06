@@ -1,4 +1,4 @@
-#ifndef SHIELDSKILL_H
+/*#ifndef SHIELDSKILL_H
 #define SHIELDSKILL_H
 
 #include "SDLGameObject.h"
@@ -28,4 +28,4 @@ private:
 	int numberHits;
 };
 
-#endif
+#endif*/

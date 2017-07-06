@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <string>
 #include <vector>
+#include "SDLGameObject.h"
 
 namespace engine{
 
@@ -32,9 +33,18 @@ namespace engine{
 			}
 		}
 		bool can_update = true;
+
+		void addShieldObject(SDLGameObject *obj){
+			m_shieldObjects.push_back(obj);
+		}
+
+		std::vector<SDLGameObject*> getShieldObjects(){
+			return m_shieldObjects;
+		}
 	protected:
 		std::vector<GameObject*> m_gameObjects;
 		std::vector<std::string> m_textureIDList;
+		std::vector<SDLGameObject*> m_shieldObjects;
 		
 	};
 }

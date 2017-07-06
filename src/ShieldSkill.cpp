@@ -1,4 +1,4 @@
-#include "ShieldSkill.h"
+/*#include "ShieldSkill.h"
 #include "SDLGameObject.h"
 #include "LoaderParams.h"
 
@@ -85,4 +85,4 @@ void ShieldSkill::checkCollision(){
 
 void ShieldSkill::clean(){
 	SDLGameObject::clean();
-}
+}*/
