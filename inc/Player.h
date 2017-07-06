@@ -46,6 +46,7 @@ public:
 		return stunTime;
 	}
 private:
+	int count = 0;
 	void handleInput();
 	SkillManager m_skillManager = SkillManager(this);
 	std::pair<default_inks, default_inks> m_pSkills;

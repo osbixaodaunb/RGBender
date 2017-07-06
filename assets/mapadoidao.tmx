@@ -4,11 +4,21 @@
   <property name="RAG" value="assets/bosszika.png"/>
   <property name="child" value="assets/teste.png"/>
   <property name="down" value="assets/down.png"/>
+  <property name="downattack" value="assets/downattack.png"/>
   <property name="downleft" value="assets/downleft.png"/>
+  <property name="downleftattack" value="assets/downleftattack.png"/>
+  <property name="downleftstun" value="assets/downleftstun.png"/>
+  <property name="downstun" value="assets/downstun.png"/>
   <property name="helicopter" value="assets/protagonista_up.png"/>
   <property name="left" value="assets/left.png"/>
+  <property name="leftattack" value="assets/leftattack.png"/>
+  <property name="leftstun" value="assets/leftstun.png"/>
   <property name="up" value="assets/up.png"/>
+  <property name="upattack" value="assets/upattack.png"/>
   <property name="upright" value="assets/upright.png"/>
+  <property name="uprightattack" value="assets/uprightattack.png"/>
+  <property name="uprightstun" value="assets/uprightstun.png"/>
+  <property name="upstun" value="assets/upstun.png"/>
  </properties>
  <tileset firstgid="1" name="tile_azulejo_1" tilewidth="96" tileheight="96">
   <image source="tile_azulejo_1.png" width="96" height="96"/>
@@ -25,7 +35,7 @@
     <property name="colliderWidth" value="50"/>
     <property name="numFrames" value="5"/>
     <property name="textureHeight" value="96"/>
-    <property name="textureID" value="up"/>
+    <property name="textureID" value="helicopter"/>
     <property name="textureWidth" value="79"/>
    </properties>
   </object>

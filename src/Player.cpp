@@ -11,6 +11,7 @@
 #include "AudioManager.h"
 #include "GameOverState.h"
 #include "Childmaiden.h"
+#include "Timer.h"
 
 #include <string>
 #include <SDL2/SDL.h>
@@ -60,6 +61,8 @@ void Player::update(){
 		if(time >= 700){
 			canMove = true;
 		}
+
+		rotateTowards();
 	}
 
 	if(canMove){
@@ -88,11 +91,12 @@ void Player::handleInput(){
 				changeSprite(i);
 			}
 		}
+		int tmp = m_currentFrame;
 		m_currentFrame = 1 + int(((SDL_GetTicks() / 100) % (m_numFrames-1)));
 	}
 	useSkill();
 	if(InputHandler::Instance().getMouseButtonState(LEFT, m_fireRate)){
-
+		count = Timer::Instance().step() + 300;
 		AudioManager::Instance().playChunk("assets/sounds/shot.wav");
 		INFO("FIRE RATE: " + m_fireRate);
 		Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
@@ -138,6 +142,11 @@ void Player::changeSprite(int index){
 			m_flip = true;
 			m_textureID = "upright";
 			break;
+	}
+	if(!canMove){
+		m_textureID += "stun";
+	} else if(Timer::Instance().step() < count){
+		m_textureID += "attack";
 	}
 }
 
