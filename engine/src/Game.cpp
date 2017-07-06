@@ -18,7 +18,6 @@
 #include <vector>
 #include "AudioManager.h"
 #include <SDL2/SDL_image.h>
-
 using namespace std;
 using namespace engine;
 

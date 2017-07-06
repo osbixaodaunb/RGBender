@@ -3,7 +3,6 @@
 #include "Game.h"
 #include "MainMenuState.h"
 #include "Log.h"
-
 #include <iostream>
 #include <string>
 
@@ -35,6 +34,7 @@ void Enemy::draw(){
 void Enemy::takeDamage(int damage){
 	if(damage >= 0){
 		m_actualHealth -= damage;
+		INFO(m_actualHealth);
 	} else {
 		m_actualHealth = 0;
 	}
@@ -43,7 +43,6 @@ void Enemy::takeDamage(int damage){
 
 	changeState();
 }
-
 
 void Enemy::changeState(){
 	int halfHealth = m_totalHealth / 2;

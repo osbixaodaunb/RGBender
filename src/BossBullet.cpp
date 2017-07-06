@@ -90,9 +90,12 @@ void BossBullet::checkCollision(){
 		if(Physics::Instance().checkCollision(dynamic_cast<SDLGameObject*>(m_player), dynamic_cast<SDLGameObject*>(this))){
 			m_active = false;
 			Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
-			INFO("Bullet collided");
-			INFO("PLAYER LOST THE GAME");
-			m_player->setLife((m_player->getLife()) - 15);
+			//INFO("Bullet collided");
+			//INFO("PLAYER LOST THE GAME");
+			if(!m_player->getShieldActive())
+				m_player->setLife((m_player->getLife()) - 15);
+			else if(m_player->getShieldActive())
+				m_player->setShieldHits();
 			//Game::Instance().getStateMachine()->changeState(new GameOverState());
 		}
 	}

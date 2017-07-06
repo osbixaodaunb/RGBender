@@ -23,6 +23,7 @@ using namespace engine;
 
 Player::Player() : SDLGameObject(){
 	m_fireRate = 500;
+	m_isShieldActive = false;
 	TextureManager::Instance().load("assets/bullet.png", "bullet", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/health.png", "health", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/circle.png", "instance", Game::Instance().getRenderer());
@@ -65,11 +66,34 @@ void Player::update(){
 		rotateTowards();
 	}
 
+	if(shieldHits > 5 && m_isShieldActive){
+		TextureManager::Instance().clearFromTextureMap("shield");
+		shieldHits = 0;
+		m_isShieldActive = false;
+	}
+	setPoison();	
+
 	if(canMove){
 		handleInput();
 	}
 
 	SDLGameObject::update();
+}
+
+void Player::setBulletVenemous(bool isVenemous){
+	bullet->setVenemous(isVenemous);
+}
+
+void Player::setPoison(){
+	if(bullet != NULL && bullet->getVenemous() && bullet->isActive()){
+		if(Timer::Instance().step() <= m_boss->getEnemyTime() && bullet->m_collided){
+			m_boss->takeDamage(3);
+			INFO(m_boss->getHealth());
+		}else if(Timer::Instance().step() >= m_boss->getEnemyTime()){
+			//bullet->m_collided = false;
+			//bullet->setVenemous(false);
+		}
+	}
 }
 
 void Player::clean(){
@@ -102,7 +126,8 @@ void Player::handleInput(){
 		Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
 		Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
 		target = target.norm();
-		Bullet *bullet =  bulletCreator.create(m_boss);
+		bullet =  bulletCreator.create(m_boss);
+		//bullet->setVenemous(m_bulletVenemous);
 		bullet->load(target, Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY()));
 		Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
 	}
@@ -170,6 +195,7 @@ void Player::rotateTowards(){
 
 }
 
+
 void Player::move(){
 	Vector2D movement(0, 0);
 
@@ -194,7 +220,7 @@ void Player::move(){
 	if(!m_isDashing){
 		m_velocity = movement * 2;
 	}
-		
+
 	dash();
 
 	m_position += m_velocity;
@@ -266,16 +292,3 @@ void Player::setPlayerMoves(bool value){
 	canMove = value;
 
 }
-
-// void Player::setLife(int life, Uint32 time){
-// 	if( m_time == 0){
-// 			m_time = Timer::Instance().step() + time;
-// 			m_life = life;
-// 		}
-// 		else if(Timer::Instance().step() <= m_time){
-// 			// do nothing
-// 		}
-// 		else{
-// 			m_time = 0;
-// 		}
-// }

@@ -97,7 +97,7 @@ void XuxaBoss::update(){
 		throwChair();
 		tilt_chair = true;
 	}
-
+	//INFO(m_actualHealth);
 	Enemy::update();
 }
 

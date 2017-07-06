@@ -64,7 +64,6 @@ void Bullet::update(){
 		m_active = false;
 		Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
 	}
-
 	checkCollision();
 
 }
@@ -92,7 +91,13 @@ void Bullet::checkCollision(){
 		if(Physics::Instance().checkCollision(dynamic_cast<SDLGameObject*>(m_boss), dynamic_cast<SDLGameObject*>(this))){
 			m_active = false;
 			Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
-			m_boss->takeDamage(100);
+			m_boss->takeDamage(10);
+			if(m_venemous){
+				INFO("VENEMOUS TRUE");
+				m_collided = true;
+				m_boss->setEnemyTime(300);
+			}
+			
 			int score = Game::Instance().getScore();
 			Game::Instance().setScore(score + 10);
 			TextureManager::Instance().loadText(std::to_string(Game::Instance().getScore()), "assets/fonts/Lato-Regular.ttf", "score", {255,255,255}, 50, Game::Instance().getRenderer());

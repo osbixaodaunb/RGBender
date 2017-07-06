@@ -34,12 +34,19 @@ public:
 	void setBoss(Enemy *p_boss){
 		m_boss = p_boss;
 	}
+	void setVenemous(bool isVenemous){
+		m_venemous = isVenemous;
+	}
 
+	bool getVenemous(){
+		return m_venemous;
+	}
+	bool m_collided;
+	
 private:
 	double rotateTowards(engine::Vector2D);
-
 	int m_moveSpeed;
-
+	bool m_venemous = false;
 	Enemy *m_boss;
 
 	Uint32 timeToLive;

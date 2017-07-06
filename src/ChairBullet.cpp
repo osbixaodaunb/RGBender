@@ -78,9 +78,14 @@ void ChairBullet::checkCollision(){
 			Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
 			INFO("Bullet collided");
 			INFO("PLAYER LOST THE GAME");
-			m_player->setLife((m_player->getLife()) - 30);
-			m_player->setPlayerMoves(false);
-			m_player->setStunTime(Timer::Instance().step());
+			if(!m_player->getShieldActive()){
+				m_player->setLife((m_player->getLife()) - 30);
+				m_player->setPlayerMoves(false);
+				m_player->setStunTime(Timer::Instance().step());
+			}
+			else if(m_player->getShieldActive())
+				m_player->setShieldHits();
+			
 			//Game::Instance().getStateMachine()->changeState(new GameOverState());
 		}
 	}

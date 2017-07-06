@@ -28,15 +28,29 @@ public:
 	void setFireRate(int fireRate){
 		m_fireRate = fireRate;
 	}
-	//void setLife(int life, Uint32 time);
 	void setLife(int life){
 		m_life = life;
 	}
 	int getLife(){
 		return m_life;
 	}
-
-
+	Bullet* getPlayerBullet(){
+		return bullet;
+	}
+	void setShieldHits(){
+		shieldHits++;
+	}
+	int getShieldHits(){
+		return shieldHits;
+	}
+	void setActiveShield(bool isActive){
+		m_isShieldActive = isActive;
+	}
+	bool getShieldActive(){
+		return m_isShieldActive;
+	}
+	void setBulletVenemous(bool isVenemous);
+	void setPoison();
 	void setPlayerMoves(bool);
 	int setStunTime(int value){
 		stunTime = value;
@@ -46,6 +60,10 @@ public:
 		return stunTime;
 	}
 private:
+	Bullet *bullet = NULL;
+	bool m_isShieldActive;
+	int shieldHits = 0;
+	bool m_bulletVenemous = false;
 	int count = 0;
 	void handleInput();
 	SkillManager m_skillManager = SkillManager(this);
