@@ -62,10 +62,10 @@ void BossBullet::draw(){
 void BossBullet::update(){
 	Vector2D tmp = m_velocity;
 	
-	double sign = sin((Timer::Instance().step() - originTime)/250);
+	double sign = sin((Timer::Instance().step() - originTime)/125);
 	sign /= fabs(sign);
 
-	sign *= 2;
+	sign *= 1;
 	m_velocity += Vector2D(normal.getX()*sign, normal.getY()*sign);
 
 	m_position += m_velocity;
