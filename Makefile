@@ -175,6 +175,78 @@ src/Bullet.cpp.s:
 	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/Bullet.cpp.s
 .PHONY : src/Bullet.cpp.s
 
+src/ChairBullet.o: src/ChairBullet.cpp.o
+.PHONY : src/ChairBullet.o
+
+# target to build an object file
+src/ChairBullet.cpp.o:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/ChairBullet.cpp.o
+.PHONY : src/ChairBullet.cpp.o
+
+src/ChairBullet.i: src/ChairBullet.cpp.i
+.PHONY : src/ChairBullet.i
+
+# target to preprocess a source file
+src/ChairBullet.cpp.i:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/ChairBullet.cpp.i
+.PHONY : src/ChairBullet.cpp.i
+
+src/ChairBullet.s: src/ChairBullet.cpp.s
+.PHONY : src/ChairBullet.s
+
+# target to generate assembly for a file
+src/ChairBullet.cpp.s:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/ChairBullet.cpp.s
+.PHONY : src/ChairBullet.cpp.s
+
+src/ChildBullet.o: src/ChildBullet.cpp.o
+.PHONY : src/ChildBullet.o
+
+# target to build an object file
+src/ChildBullet.cpp.o:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/ChildBullet.cpp.o
+.PHONY : src/ChildBullet.cpp.o
+
+src/ChildBullet.i: src/ChildBullet.cpp.i
+.PHONY : src/ChildBullet.i
+
+# target to preprocess a source file
+src/ChildBullet.cpp.i:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/ChildBullet.cpp.i
+.PHONY : src/ChildBullet.cpp.i
+
+src/ChildBullet.s: src/ChildBullet.cpp.s
+.PHONY : src/ChildBullet.s
+
+# target to generate assembly for a file
+src/ChildBullet.cpp.s:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/ChildBullet.cpp.s
+.PHONY : src/ChildBullet.cpp.s
+
+src/Childmaiden.o: src/Childmaiden.cpp.o
+.PHONY : src/Childmaiden.o
+
+# target to build an object file
+src/Childmaiden.cpp.o:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/Childmaiden.cpp.o
+.PHONY : src/Childmaiden.cpp.o
+
+src/Childmaiden.i: src/Childmaiden.cpp.i
+.PHONY : src/Childmaiden.i
+
+# target to preprocess a source file
+src/Childmaiden.cpp.i:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/Childmaiden.cpp.i
+.PHONY : src/Childmaiden.cpp.i
+
+src/Childmaiden.s: src/Childmaiden.cpp.s
+.PHONY : src/Childmaiden.s
+
+# target to generate assembly for a file
+src/Childmaiden.cpp.s:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/Childmaiden.cpp.s
+.PHONY : src/Childmaiden.cpp.s
+
 src/Enemy.o: src/Enemy.cpp.o
 .PHONY : src/Enemy.o
 
@@ -431,6 +503,15 @@ help:
 	@echo "... src/Bullet.o"
 	@echo "... src/Bullet.i"
 	@echo "... src/Bullet.s"
+	@echo "... src/ChairBullet.o"
+	@echo "... src/ChairBullet.i"
+	@echo "... src/ChairBullet.s"
+	@echo "... src/ChildBullet.o"
+	@echo "... src/ChildBullet.i"
+	@echo "... src/ChildBullet.s"
+	@echo "... src/Childmaiden.o"
+	@echo "... src/Childmaiden.i"
+	@echo "... src/Childmaiden.s"
 	@echo "... src/Enemy.o"
 	@echo "... src/Enemy.i"
 	@echo "... src/Enemy.s"

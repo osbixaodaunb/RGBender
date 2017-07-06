@@ -18,6 +18,7 @@ class Player : public engine::SDLGameObject{
 public:
 	Player();
 
+	void changeSprite(int);
 	void load(const engine::LoaderParams* pParams);
 	void draw();
 	void update();
@@ -45,6 +46,7 @@ public:
 		return stunTime;
 	}
 private:
+	int count = 0;
 	void handleInput();
 	SkillManager m_skillManager = SkillManager(this);
 	std::pair<default_inks, default_inks> m_pSkills;
