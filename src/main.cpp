@@ -10,7 +10,7 @@ int main(int argc, char* argv[]){
 	Uint32 frameStart, frameTime;
 
 	const int center = Game::Instance().getCenterScreen();
-	Game::Instance().init("Chapter 1", center, center,
+	Game::Instance().init("RGBender", center, center,
 						  1366, 768, false);
 
 	while(Game::Instance().running()){
