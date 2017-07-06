@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="2017.05.02" orientation="orthogonal" renderorder="right-down" width="129" height="72" tilewidth="96" tileheight="96" nextobjectid="22">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="129" height="72" tilewidth="96" tileheight="96" nextobjectid="22">
  <properties>
   <property name="RAG" value="assets/bosszika.png"/>
   <property name="child" value="assets/teste.png"/>
+  <property name="down" value="assets/down.png"/>
+  <property name="downleft" value="assets/downleft.png"/>
   <property name="helicopter" value="assets/protagonista_up.png"/>
+  <property name="left" value="assets/left.png"/>
+  <property name="up" value="assets/up.png"/>
+  <property name="upright" value="assets/upright.png"/>
  </properties>
- <tileset firstgid="1" name="tile_azulejo_1" tilewidth="96" tileheight="96" tilecount="1" columns="1">
+ <tileset firstgid="1" name="tile_azulejo_1" tilewidth="96" tileheight="96">
   <image source="tile_azulejo_1.png" width="96" height="96"/>
  </tileset>
  <layer name="Tile Layer 1" width="129" height="72">
@@ -19,9 +24,9 @@
     <property name="colliderHeight" value="50"/>
     <property name="colliderWidth" value="50"/>
     <property name="numFrames" value="5"/>
-    <property name="textureHeight" value="92"/>
-    <property name="textureID" value="helicopter"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureHeight" value="96"/>
+    <property name="textureID" value="up"/>
+    <property name="textureWidth" value="79"/>
    </properties>
   </object>
   <object id="4" name="Child" type="Childmaiden" x="783" y="280">

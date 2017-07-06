@@ -24,11 +24,10 @@ void SDLGameObject::draw(){
 	int x = (int) m_position.getX();
 	int y = (int) m_position.getY();
 
-	if(m_velocity.getX() > 0){
-		TextureManager::Instance().drawFrame(m_textureID, x, y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance().getRenderer(), SDL_FLIP_HORIZONTAL, m_angle);
-	} else {
-		TextureManager::Instance().drawFrame(m_textureID, x, y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance().getRenderer(), SDL_FLIP_NONE, m_angle );
-	}
+	SDL_RendererFlip flip = m_flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE;
+
+	TextureManager::Instance().drawFrame(m_textureID, x, y, m_width, m_height, m_currentRow, m_currentFrame, Game::Instance().getRenderer(), flip, m_angle);
+	
 }
 
 void SDLGameObject::update(){

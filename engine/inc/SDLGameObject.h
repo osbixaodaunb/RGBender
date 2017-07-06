@@ -52,6 +52,8 @@ namespace engine{
 
 		int m_currentFrame;
 		int m_currentRow;
+		
+		bool m_flip = false;
 
 		int m_numFrames;
 

@@ -18,6 +18,7 @@ class Player : public engine::SDLGameObject{
 public:
 	Player();
 
+	void changeSprite(int);
 	void load(const engine::LoaderParams* pParams);
 	void draw();
 	void update();
