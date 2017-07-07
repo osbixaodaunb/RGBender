@@ -301,7 +301,7 @@ void Player::useSkill(){
 	}
 
 
-	if(InputHandler::Instance().isKeyDown("x", 100)){
+	if(InputHandler::Instance().isKeyDown("r", 100)){
 		std::map<std::pair<default_inks, default_inks>, bool>::iterator it = m_skillManager.getCoolDownMap()->find(m_pSkills);
 		if(it != m_skillManager.getCoolDownMap()->end()){
 			if(it->second == false){
