@@ -25,13 +25,16 @@ Player::Player() : SDLGameObject(){
 	m_fireRate = 500;
 	m_isShieldActive = false;
 	m_bulletVenemous = false;
+	for(int i=1; i<7; i++){
+		TextureManager::Instance().load("assets/player_health" + to_string(i) + ".png", "health" + to_string(i), Game::Instance().getRenderer());
+	}
 	TextureManager::Instance().load("assets/ataque_protagonista_preto.png", "bullet", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/health.png", "health", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/circle.png", "instance", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/Cadeira_frente.png", "chairBullet", Game::Instance().getRenderer());
 
 	INFO("Player inicializado");
-	m_life = 100;
+	m_life = 6;
 	canMove = true;
 }
 
@@ -50,10 +53,9 @@ void Player::draw(){
 	}
 	
 	if(bullet!= NULL && bullet->getVenemous() == true){
-		INFO("EASDJADJADJAIDJAI{PDJAPDJASD");
 		TextureManager::Instance().draw("greenskill", 110, 610, 80, 80, Game::Instance().getRenderer());
 	}
-	TextureManager::Instance().draw("health", 0, 0, m_life, 32, Game::Instance().getRenderer());
+	TextureManager::Instance().draw("health" +to_string(m_life), 1000, 620, 180, 80, Game::Instance().getRenderer());
 	SDLGameObject::draw();
 }
 
@@ -115,7 +117,7 @@ void Player::setBulletVenemous(bool isVenemous){
 void Player::setPoison(){
 	if(bullet != NULL && bullet->getVenemous() && bullet->isActive()){
 		if(Timer::Instance().step() <= m_boss->getEnemyTime() && bullet->m_collided){
-			m_boss->takeDamage(5);
+			m_boss->takeDamage(1);
 			int score = Game::Instance().getScore();
 			Game::Instance().setScore(score + 5);
 			TextureManager::Instance().loadText(std::to_string(Game::Instance().getScore()), "assets/fonts/Lato-Regular.ttf", "score", {255,255,255}, 50, Game::Instance().getRenderer());

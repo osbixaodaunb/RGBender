@@ -54,7 +54,17 @@ uint8_t* SkillManager::redPlus(){
 
 uint8_t* SkillManager::greenPlus(){
 	INFO("GREEN PLUS");
-	m_player->getPlayerBullet()->setVenemous(true);
+	uint8_t* pixels = new uint8_t[3];
+	if(m_player->getPlayerBullet() != NULL){
+		m_player->getPlayerBullet()->setVenemous(true);
+		pixels[0] = 0;
+		pixels[1] = 255;
+		pixels[2] = 0;
+	}else{
+		pixels[0] = 255;
+		pixels[1] = 255;
+		pixels[2] = 255;
+	}
 
 	m_player->setFireRate(900);
 	std::function<void(int)> redSkill = std::bind(&Player::setFireRate, m_player, 500);
@@ -69,10 +79,8 @@ uint8_t* SkillManager::greenPlus(){
 
 	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(3000, reset, 2));
 
-	uint8_t* pixels = new uint8_t[3];
-	pixels[0] = 0;
-	pixels[1] = 255;
-	pixels[2] = 0;
+	
+	
 	return pixels;
 }
 
