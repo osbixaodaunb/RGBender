@@ -10,6 +10,7 @@
 #include "Vector2D.h"
 #include "Timer.h"
 #include "SDLGameObject.h"
+#include "AudioManager.h"
 
 using namespace std;
 using namespace engine;
@@ -182,6 +183,7 @@ void XuxaBoss::childAttack(){
 	bullet->load(velocity, bossPivot);
 	Game::Instance().getStateMachine()->currentState()->addGameObject(bullet);
 
+	AudioManager::Instance().playChunk("assets/sounds/childflying.wav");
 	std::function<void(int)> callback = std::bind(&XuxaBoss::untiltChild, this, 0);
 	engine::Game::Instance().addCooldown(new engine::Cooldown<int>(2000, callback, 0));
 
