@@ -101,6 +101,13 @@ void Player::update(){
 void Player::setBulletVenemous(bool isVenemous){
 	m_bulletVenemous = isVenemous;
 	bullet->setVenemous(isVenemous);
+	if(isVenemous == false){
+		uint8_t* pixels = new uint8_t[3];
+		pixels[0] = 255;
+		pixels[1] = 255;
+		pixels[2] = 255;
+		TheTextureManager::Instance().changeColorPixels(pixels, "RAG");
+	}
 	
 
 }
@@ -108,7 +115,10 @@ void Player::setBulletVenemous(bool isVenemous){
 void Player::setPoison(){
 	if(bullet != NULL && bullet->getVenemous() && bullet->isActive()){
 		if(Timer::Instance().step() <= m_boss->getEnemyTime() && bullet->m_collided){
-			m_boss->takeDamage(3);
+			m_boss->takeDamage(5);
+			int score = Game::Instance().getScore();
+			Game::Instance().setScore(score + 5);
+			TextureManager::Instance().loadText(std::to_string(Game::Instance().getScore()), "assets/fonts/Lato-Regular.ttf", "score", {255,255,255}, 50, Game::Instance().getRenderer());
 			INFO(m_boss->getHealth());
 		}else if(Timer::Instance().step() >= m_boss->getEnemyTime()){
 			//bullet->m_collided = false;

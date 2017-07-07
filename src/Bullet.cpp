@@ -91,11 +91,16 @@ void Bullet::checkCollision(){
 		if(Physics::Instance().checkCollision(dynamic_cast<SDLGameObject*>(m_boss), dynamic_cast<SDLGameObject*>(this))){
 			m_active = false;
 			Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
-			m_boss->takeDamage(100);
+			m_boss->takeDamage(10);
 			if(m_venemous){
 				INFO("VENEMOUS TRUE");
 				m_collided = true;
-				m_boss->setEnemyTime(300);
+				uint8_t* pixels = new uint8_t[3];
+				pixels[0] = 152;
+				pixels[1] = 255;
+				pixels[2] = 156;
+				TheTextureManager::Instance().changeColorPixels(pixels, "RAG");
+				m_boss->setEnemyTime(1000);
 			}
 			
 			int score = Game::Instance().getScore();
