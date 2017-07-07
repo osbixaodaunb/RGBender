@@ -36,9 +36,7 @@ void PlayState::update(){
 	if(pLevel != NULL)
 		pLevel->update();
 
-	if(InputHandler::Instance().isKeyDown("q")){
-		Game::Instance().getStateMachine()->pushState(new GameOverState());
-	}
+	
 	m_playerLife = m_player->getLife();
 	
 	//if(checkCollision(dynamic_cast<SDLGameObject*>(m_gameObjects[0]), dynamic_cast<SDLGameObject*>(m_gameObjects[1]))){

@@ -10,6 +10,7 @@
 #include "Enemy.h"
 #include "Physics.h"
 #include "GameOverState.h"
+#include "AudioManager.h"
 #include <iostream>
 
 using namespace engine;
@@ -79,6 +80,7 @@ void ChairBullet::checkCollision(){
 			INFO("Bullet collided");
 			INFO("PLAYER LOST THE GAME");
 			if(!m_player->getShieldActive()){
+				AudioManager::Instance().playChunk("assets/sounds/chair.wav");
 				m_player->setLife((m_player->getLife()) - 30);
 				m_player->setPlayerMoves(false);
 				m_player->setStunTime(Timer::Instance().step());

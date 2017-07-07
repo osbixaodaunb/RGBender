@@ -152,7 +152,7 @@ void Player::handleInput(){
 	useSkill();
 	if(InputHandler::Instance().getMouseButtonState(LEFT, m_fireRate)){
 		count = Timer::Instance().step() + 300;
-		AudioManager::Instance().playChunk("assets/sounds/shot.wav");
+		AudioManager::Instance().playChunk("assets/sounds/spray.wav");
 		INFO("FIRE RATE: " + m_fireRate);
 		Vector2D pivot = Vector2D(m_width/2+m_position.getX(), m_height/2 + m_position.getY());
 		Vector2D target = InputHandler::Instance().getMousePosition() - pivot;
