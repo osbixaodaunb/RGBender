@@ -35,6 +35,7 @@
 	<PAUSE>
 		<TEXTURES>
 			<texture filename="assets/RGBender_TelaAberturaJogo.png" ID="fundo"/>
+			<texture filename="assets/RGBender_IdVisual_FundoMenuPausa_MenuGameOver.png" ID="fundopreto"/>
 			<texture filename="assets/resumeButton.png" ID="resumebutton"/>
 			<texture filename="assets/menuButton.png" ID="mainbutton"/>
 		</TEXTURES>
@@ -43,7 +44,10 @@
 			<object type="AnimatedGraphic" x="0" y="0" width="1366"
 				height="768" textureID="fundo" numFrames="1"
 				animSpeed="1"/>
-			<object type="MenuButton" x="483" y="250" width="400" height="82" textureID="resumebutton" numFrames="0" callbackID="1"/>
+			<object type="AnimatedGraphic" x="458" y="250" width="450"
+				height="250" textureID="fundopreto" numFrames="1"
+				animSpeed="1"/>
+			<object type="MenuButton" x="483" y="280" width="400" height="82" textureID="resumebutton" numFrames="0" callbackID="1"/>
 			<object type="MenuButton" x="483" y="400" width="400" height="58" textureID="mainbutton" numFrames="0" callbackID="2"/>
 		</OBJECTS>
 	</PAUSE>
@@ -52,6 +56,7 @@
 		<TEXTURES>
 			<texture filename="assets/RGBender_TelaAberturaJogo.png" ID="fundo"/>
 			<texture filename="assets/gameover.png" ID="gameovertext"/>
+			<texture filename="assets/RGBender_IdVisual_FundoMenuPausa_MenuGameOver.png" ID="fundopreto"/>
 			<texture filename="assets/menuButton.png" ID="mainbutton"/>
 			<texture filename="assets/restart.png" ID="restartbutton"/>
 		</TEXTURES>
@@ -60,8 +65,11 @@
 				height="768" textureID="fundo" numFrames="1"
 				animSpeed="1"/>
 			<object type="AnimatedGraphic" x="588" y="200" width="190" height="30" textureID="gameovertext" numFrames="2" animSpeed="2"/>
+			<object type="AnimatedGraphic" x="458" y="250" width="450"
+				height="250" textureID="fundopreto" numFrames="1"
+				animSpeed="1"/>
 			<object type="MenuButton" x="483" y="300" width="400" height="58" textureID="mainbutton" numFrames="0" callbackID="1"/>
-			<object type="MenuButton" x="485" y="450" width="400" height="90" textureID="restartbutton" numFrames="0" callbackID="2"/>
+			<object type="MenuButton" x="485" y="380" width="400" height="90" textureID="restartbutton" numFrames="0" callbackID="2"/>
 		</OBJECTS>
 	</GAMEOVER>
 	<WIN>
