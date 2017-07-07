@@ -463,6 +463,30 @@ src/SkillManager.cpp.s:
 	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/SkillManager.cpp.s
 .PHONY : src/SkillManager.cpp.s
 
+src/WinGameState.o: src/WinGameState.cpp.o
+.PHONY : src/WinGameState.o
+
+# target to build an object file
+src/WinGameState.cpp.o:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/WinGameState.cpp.o
+.PHONY : src/WinGameState.cpp.o
+
+src/WinGameState.i: src/WinGameState.cpp.i
+.PHONY : src/WinGameState.i
+
+# target to preprocess a source file
+src/WinGameState.cpp.i:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/WinGameState.cpp.i
+.PHONY : src/WinGameState.cpp.i
+
+src/WinGameState.s: src/WinGameState.cpp.s
+.PHONY : src/WinGameState.s
+
+# target to generate assembly for a file
+src/WinGameState.cpp.s:
+	$(MAKE) -f CMakeFiles/rgbender.dir/build.make CMakeFiles/rgbender.dir/src/WinGameState.cpp.s
+.PHONY : src/WinGameState.cpp.s
+
 src/XuxaBoss.o: src/XuxaBoss.cpp.o
 .PHONY : src/XuxaBoss.o
 
@@ -563,6 +587,9 @@ help:
 	@echo "... src/SkillManager.o"
 	@echo "... src/SkillManager.i"
 	@echo "... src/SkillManager.s"
+	@echo "... src/WinGameState.o"
+	@echo "... src/WinGameState.i"
+	@echo "... src/WinGameState.s"
 	@echo "... src/XuxaBoss.o"
 	@echo "... src/XuxaBoss.i"
 	@echo "... src/XuxaBoss.s"

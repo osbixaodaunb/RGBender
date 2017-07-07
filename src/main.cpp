@@ -11,7 +11,7 @@ int main(int argc, char* argv[]){
 
 	const int center = Game::Instance().getCenterScreen();
 	Game::Instance().init("RGBender", center, center,
-						  1366, 768, false);
+						  1366, 768, true);
 
 	while(Game::Instance().running()){
 		frameStart = SDL_GetTicks();
