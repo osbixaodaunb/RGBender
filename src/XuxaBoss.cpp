@@ -23,6 +23,9 @@ int show = true;
 int cont = 0;
 XuxaBoss::XuxaBoss() : Enemy(){
 	m_fireRate = 1;
+	for(int i=1; i<10; i++){
+		TextureManager::Instance().load("assets/skill_cantar" + to_string(i) + ".png", "bullet" + to_string(i), Game::Instance().getRenderer());
+	}
 	TextureManager::Instance().load("assets/bullet.png", "bulletboss", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/Boss_Empty_Health.png", "emptyhealthboss", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/Boss_Health.png", "healthboss", Game::Instance().getRenderer());
@@ -124,7 +127,6 @@ void XuxaBoss::untiltChair(int placeholder){
 void XuxaBoss::protect(int placeholder){
 	protection = true;
 }
-
 
 void XuxaBoss::shieldStatus(bool param){	
 	for(auto x : engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects()){

@@ -11,6 +11,9 @@
 #include "Physics.h"
 #include "GameOverState.h"
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+
 
 using namespace engine;
 
@@ -19,14 +22,21 @@ BossBullet::~BossBullet(){
 }
 
 BossBullet::BossBullet(Player *target) : SDLGameObject(){
+
+	std::srand(std::time(0));
+
 	setPlayer(target);
 	timeToLive = 5000;
 	m_active = true;
+
+	m_textureID = "bullet" + std::to_string(1 + std::rand()%9);
 }
 
 void BossBullet::load(const LoaderParams* pParams){
+	std::srand(std::time(0));
 	m_velocity = Vector2D(0,0);
 
+	m_textureID = "bullet" + std::to_string(1 + std::rand()%9);
 	SDLGameObject::load(pParams);
 }
 
@@ -39,10 +49,12 @@ double BossBullet::rotateTowards(Vector2D pPosition){
 	return Vector2D::angle(target, Vector2D(0, 1));
 }
 void BossBullet::load(Vector2D pVelocity, Vector2D pPosition){
+	std::srand(std::time(0));
 	double angle = rotateTowards(pPosition);
 
 	m_moveSpeed = 3;
-	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 16, 16, "bulletboss", 0, 0, 0, angle);
+	m_textureID = "bullet" + std::to_string(1 + std::rand()%9);
+	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 48, 48, m_textureID, 0, 0, 0, -angle);
 	SDLGameObject::load(pParams);
 
 	m_currentFrame = 0;
