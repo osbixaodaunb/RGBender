@@ -29,7 +29,7 @@ bool MainMenuState::onEnter(){
 	// parse the state
 	StateParser stateParser;
 	stateParser.parseState("test.xml", s_menuID, &m_gameObjects, &m_textureIDList);
-	AudioManager::Instance().playMusic("assets/sounds/lp.mp3");
+	AudioManager::Instance().playMusic("assets/sounds/xuxamenutheme.mp3");
 	m_callbacks.push_back(0); // pushback 0 callbackID starts with 1
 	m_callbacks.push_back(s_menuToPlay);
 	m_callbacks.push_back(s_exitFromMenu);
