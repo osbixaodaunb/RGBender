@@ -42,7 +42,7 @@ void ChildBullet::load(Vector2D pVelocity, Vector2D pPosition){
 	double angle = rotateTowards(pPosition);
 
 	m_moveSpeed = 8;
-	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 40, 60, "childBullet", 0, 0, 0, angle);
+	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 42, 42, "childBullet", 0, 0, 0, angle, 35, 35);
 	SDLGameObject::load(pParams);
 
 	m_currentFrame = 0;
@@ -56,7 +56,7 @@ void ChildBullet::draw(){
 }
 
 void ChildBullet::update(){
-	m_textureID = "child";
+	m_textureID = "childBullet";
 	m_position += m_velocity;
 
 	if(Timer::Instance().step() >= bornTime + timeToLive){

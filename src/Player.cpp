@@ -28,7 +28,6 @@ Player::Player() : SDLGameObject(){
 	TextureManager::Instance().load("assets/ataque_protagonista_preto.png", "bullet", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/health.png", "health", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/circle.png", "instance", Game::Instance().getRenderer());
-	TextureManager::Instance().load("assets/teste.png", "childBullet", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/Cadeira_frente.png", "chairBullet", Game::Instance().getRenderer());
 
 	INFO("Player inicializado");
@@ -49,6 +48,7 @@ void Player::draw(){
 	if(m_fireRate != 500){
 		TextureManager::Instance().draw("redskill", 110, 610, 80, 80, Game::Instance().getRenderer());
 	}
+	
 	if(bullet!= NULL && bullet->getVenemous() == true){
 		INFO("EASDJADJADJAIDJAI{PDJAPDJASD");
 		TextureManager::Instance().draw("greenskill", 110, 610, 80, 80, Game::Instance().getRenderer());
@@ -256,15 +256,15 @@ void Player::move(){
 	if(getPosition().getY() + getHeight() >= 705){
 		if(m_velocity.getY() > 0)
 			m_velocity.setY(0);
-	} else if(getPosition().getY() <= 3){
+	} else if(getPosition().getY() <= 20){
 		if(m_velocity.getY() < 0)
 			m_velocity.setY(0);
 	}
 
-	if(getPosition().getX() + getWidth() >= 1382){
+	if(getPosition().getX() + getWidth() >= 1365){
 		if(m_velocity.getX() > 0)
 			m_velocity.setX(0);
-	} else if(getPosition().getX() <= -17){
+	} else if(getPosition().getX() <= -6){
 		if(m_velocity.getX() < 0)
 			m_velocity.setX(0);
 	}

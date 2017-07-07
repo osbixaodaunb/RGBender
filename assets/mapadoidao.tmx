@@ -21,12 +21,22 @@
   <property name="uprightstun" value="assets/uprightstun.png"/>
   <property name="upstun" value="assets/upstun.png"/>
  </properties>
- <tileset firstgid="1" name="tile_azulejo_final" tilewidth="96" tileheight="96" tilecount="1" columns="1">
-  <image source="tile_azulejo_final.png" width="96" height="96"/>
+ <tileset firstgid="1" name="tile_cenario" tilewidth="96" tileheight="96" spacing="2" margin="2" tilecount="15" columns="5">
+  <image source="tile_cenario.png" width="560" height="324"/>
  </tileset>
  <layer name="Tile Layer 1" width="129" height="72">
   <data encoding="base64" compression="zlib">
    eJztwwENAAAMw6DOv+kLOSSsmqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq+voBHIYkSQ==
+  </data>
+ </layer>
+ <layer name="Tile Layer 3" width="129" height="72">
+  <data encoding="base64" compression="zlib">
+   eJzt1LEJAEAIBMHD/O2/XDsw+FBmwEjMFpOklnnLDrihP+/8gTs0gAbQABpAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADK8/AIg=
+  </data>
+ </layer>
+ <layer name="Tile Layer 2" width="129" height="72">
+  <data encoding="base64" compression="zlib">
+   eJzt0bEJACAQA8B0NuL+47qA+o0gwl0bAoH0JCNnq7wVHf5R/b/Tr64AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOClCbrnAEo=
   </data>
  </layer>
  <objectgroup name="Object Layer 1">
