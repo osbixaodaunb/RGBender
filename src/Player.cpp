@@ -25,7 +25,7 @@ Player::Player() : SDLGameObject(){
 	m_fireRate = 500;
 	m_isShieldActive = false;
 	m_bulletVenemous = false;
-	TextureManager::Instance().load("assets/bullet.png", "bullet", Game::Instance().getRenderer());
+	TextureManager::Instance().load("assets/ataque_protagonista_preto.png", "bullet", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/health.png", "health", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/circle.png", "instance", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/teste.png", "childBullet", Game::Instance().getRenderer());
@@ -58,7 +58,7 @@ void Player::draw(){
 }
 
 void Player::update(){
-	std::cout << "Player top: " << getPosition().getX() << std::endl;
+	//std::cout << "Player top: " << getPosition().getX() << std::endl;
 
 	if(m_life <= 0){
 		Game::Instance().getStateMachine()->changeState(new GameOverState());

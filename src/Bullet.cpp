@@ -59,7 +59,7 @@ void Bullet::draw(){
 void Bullet::update(){
 	//std::cout << "Bullet top: " << getPosition().getY() + (getHeight() - getCollider().getHeight())/2 << std::endl;
 	m_position += m_velocity;
-
+	m_currentFrame = int(((SDL_GetTicks() / (300)) % 4));
 	if(Timer::Instance().step() >= bornTime + timeToLive){
 		m_active = false;
 		Game::Instance().getStateMachine()->currentState()->removeGameObject(this);

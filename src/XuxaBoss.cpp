@@ -96,6 +96,12 @@ void XuxaBoss::update(){
 		}
 		childAttack();
 		tilt_child = true;
+		int fifteen = m_totalHealth/8;
+		if(m_actualHealth <= fifteen and !tilt_chair){
+			throwChair();
+			tilt_chair = true;
+		}
+
 	}
 
 	if(!tilt_chair and m_actualHealth <= half and m_actualHealth >= quarter){
