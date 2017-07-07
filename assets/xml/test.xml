@@ -2,7 +2,7 @@
 <STATES>
 	<MENU>
 		<TEXTURES>
-			<texture filename="assets/RGBender_TelaAberturaJogo.png" ID="fundo"/>
+			<texture filename="assets/opening.png" ID="fundo"/>
 			<texture filename="assets/logo.png" ID="logo"/>
 			<texture filename="assets/novojogo.png" ID="playbutton"/>
 			<texture filename="assets/exitButton.png" ID="exitbutton"/>
@@ -11,13 +11,10 @@
 			<object type="AnimatedGraphic" x="0" y="0" width="1366"
 				height="768" textureID="fundo" numFrames="1"
 				animSpeed="1"/>
-			<object type="AnimatedGraphic" x="434" y="250" width="498"
-				height="159" textureID="logo" numFrames="1"
-				animSpeed="1"/>
-			<object type="MenuButton" x="483" y="450" width="400"
+			<object type="MenuButton" x="483" y="350" width="400"
 				height="87" textureID="playbutton" numFrames="0"
 				callbackID="1"/>
-			<object type="MenuButton" x="483" y="550" width="400"
+			<object type="MenuButton" x="483" y="450" width="400"
 				height="79" textureID="exitbutton" numFrames="0"
 				callbackID="2"/>
 		</OBJECTS>

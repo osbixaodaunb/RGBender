@@ -35,6 +35,7 @@ void Childmaiden::update(){
 
 void Childmaiden::load(const engine::LoaderParams *pParams){
 	SDLGameObject::load(pParams);
+	
 	std::vector<SDLGameObject*> v = engine::Game::Instance().getStateMachine()->currentState()->getShieldObjects();
 	for(int i = 0; i < v.size(); i++){
 		if(this == dynamic_cast<Childmaiden*>(v[i])){

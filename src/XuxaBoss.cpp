@@ -30,6 +30,10 @@ XuxaBoss::XuxaBoss() : Enemy(){
 	TextureManager::Instance().load("assets/Boss_Empty_Health.png", "emptyhealthboss", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/Boss_Health.png", "healthboss", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/coroinha.png", "childBullet", Game::Instance().getRenderer());
+	TextureManager::Instance().load("assets/xuxa_sprites1.png", "xuxa1", Game::Instance().getRenderer());
+	TextureManager::Instance().load("assets/xuxa_sprites2.png", "xuxa2", Game::Instance().getRenderer());
+	TextureManager::Instance().load("assets/xuxa_sprites3.png", "xuxa3", Game::Instance().getRenderer());
+	TextureManager::Instance().load("assets/xuxa_sprites4.png", "xuxa4", Game::Instance().getRenderer());
 	
 	m_states.push_back(&XuxaBoss::quarterLife);
 	m_states.push_back(&XuxaBoss::halfLife);
@@ -62,9 +66,30 @@ void XuxaBoss::draw(){
 	
 	Enemy::draw();
 }
-
+int presenting = 0;
 void XuxaBoss::update(){
 	//std::cout << "Xuxa bottom: " << getPosition().getY() + (getHeight() + getCollider().getHeight())/2 << std::endl;
+	
+	m_width = 89;
+
+	int half = m_totalHealth / 2;
+	int quarter = m_totalHealth / 4;
+	if(presenting > 80){
+		m_numFrames = 5;
+		if(m_actualHealth > half)
+			m_textureID = "xuxa2";
+		else if(m_actualHealth <= half and m_actualHealth > quarter){
+			m_textureID = "xuxa3";
+		}
+		else if(m_actualHealth <= quarter){
+			m_textureID = "xuxa4";
+		}
+	}
+	else{
+		m_numFrames = 4;
+		m_textureID = "xuxa1";
+		presenting++;
+	}
 
 	if(Game::Instance().getStateMachine()->currentState()->getStateID() == "PLAY"){
 		PlayState *playState = dynamic_cast<PlayState*>(Game::Instance().getStateMachine()->currentState());
@@ -79,9 +104,7 @@ void XuxaBoss::update(){
 		tilt = true;
 	}
 	
-	int half = m_totalHealth / 2;
-	int quarter = m_totalHealth / 4;
-
+	presenting++;
 	if(m_actualHealth > quarter){		
 		if(!protection and (Timer::Instance().step() - getShieldTime()) > 3000){
 			shieldStatus(true);
@@ -99,7 +122,7 @@ void XuxaBoss::update(){
 				dynamic_cast<Childmaiden*>(x)->setVisibility(true);
 			}
 		}
-		AudioManager::Instance().playChunk("assets/sounds/claudia2.wav");
+		AudioManager::Instance().playChunk("assets/sounds/claudia2	.wav");
 		childAttack();
 		tilt_child = true;
 		int fifteen = m_totalHealth/8;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="2017.05.02" orientation="orthogonal" renderorder="right-down" width="129" height="72" tilewidth="96" tileheight="96" nextobjectid="41">
  <properties>
-  <property name="RAG" value="assets/bosszika.png"/>
-  <property name="chair" value="assets/Cadeira_frente.png"/>
+  <property name="RAG" value="assets/xuxa_sprites.png"/>
   <property name="child" value="assets/teste.png"/>
+  <property name="childnova" value="assets/RGBender_Coroinhas_MadreXuxa_Frente.png"/>
   <property name="down" value="assets/down.png"/>
   <property name="downattack" value="assets/downattack.png"/>
   <property name="downleft" value="assets/downleft.png"/>
@@ -21,8 +21,8 @@
   <property name="uprightstun" value="assets/uprightstun.png"/>
   <property name="upstun" value="assets/upstun.png"/>
  </properties>
- <tileset firstgid="1" name="tile_cenario" tilewidth="96" tileheight="96" spacing="2" margin="2" tilecount="15" columns="5">
-  <image source="tile_cenario.png" width="560" height="324"/>
+ <tileset firstgid="1" name="tilecenario" tilewidth="96" tileheight="96" spacing="2" margin="2" tilecount="15" columns="5">
+  <image source="tilecenario.png" width="560" height="324"/>
  </tileset>
  <layer name="Tile Layer 1" width="129" height="72">
   <data encoding="base64" compression="zlib">
@@ -31,12 +31,12 @@
  </layer>
  <layer name="Tile Layer 3" width="129" height="72">
   <data encoding="base64" compression="zlib">
-   eJzt1LEJAEAIBMHD/O2/XDsw+FBmwEjMFpOklnnLDrihP+/8gTs0gAbQABpAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADK8/AIg=
+   eJztwwEJADAMwLAy/6Kn4BcwEkjV9DafAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADADQuhNwAR
   </data>
  </layer>
  <layer name="Tile Layer 2" width="129" height="72">
   <data encoding="base64" compression="zlib">
-   eJzt0bEJACAQA8B0NuL+47qA+o0gwl0bAoH0JCNnq7wVHf5R/b/Tr64AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOClCbrnAEo=
+   eJztziEOwCAQRcENphW03P+2BYEpCEybkMwkT+0XmyPirKVJV+2OUd8fkxv7Ka9Wd638+XcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPzhAZ7QAN4=
   </data>
  </layer>
  <objectgroup name="Object Layer 1">
@@ -44,9 +44,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -54,9 +54,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -64,9 +64,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -74,9 +74,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -84,9 +84,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -94,9 +94,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -104,9 +104,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -114,9 +114,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -124,9 +124,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -134,9 +134,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -144,9 +144,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -154,9 +154,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -164,9 +164,9 @@
    <properties>
     <property name="colliderHeight" value="34"/>
     <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="3"/>
-    <property name="textureHeight" value="46"/>
-    <property name="textureID" value="child"/>
+    <property name="numFrames" value="1"/>
+    <property name="textureHeight" value="42"/>
+    <property name="textureID" value="childnova"/>
     <property name="textureWidth" value="42"/>
    </properties>
   </object>
@@ -182,12 +182,12 @@
   </object>
   <object id="1" name="Xuxa" type="XuxaBoss" x="603" y="80">
    <properties>
-    <property name="colliderHeight" value="200"/>
-    <property name="colliderWidth" value="200"/>
-    <property name="numFrames" value="6"/>
-    <property name="textureHeight" value="223"/>
+    <property name="colliderHeight" value="80"/>
+    <property name="colliderWidth" value="115"/>
+    <property name="numFrames" value="9"/>
+    <property name="textureHeight" value="128"/>
     <property name="textureID" value="RAG"/>
-    <property name="textureWidth" value="223"/>
+    <property name="textureWidth" value="89"/>
    </properties>
   </object>
  </objectgroup>
