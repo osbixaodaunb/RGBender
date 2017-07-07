@@ -35,7 +35,7 @@ BossBullet::BossBullet(Player *target) : SDLGameObject(){
 void BossBullet::load(const LoaderParams* pParams){
 	std::srand(std::time(0));
 	m_velocity = Vector2D(0,0);
-
+	
 	m_textureID = "bullet" + std::to_string(1 + std::rand()%9);
 	SDLGameObject::load(pParams);
 }
@@ -50,11 +50,11 @@ double BossBullet::rotateTowards(Vector2D pPosition){
 }
 void BossBullet::load(Vector2D pVelocity, Vector2D pPosition){
 	std::srand(std::time(0));
-	double angle = rotateTowards(pPosition);
+	double m_angle = 0;
 
 	m_moveSpeed = 3;
 	m_textureID = "bullet" + std::to_string(1 + std::rand()%9);
-	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 48, 48, m_textureID, 0, 0, 0, -angle);
+	LoaderParams* pParams = new LoaderParams(pPosition.getX(), pPosition.getY(), 48, 48, m_textureID, 0, 0, 0, m_angle);
 	SDLGameObject::load(pParams);
 
 	m_currentFrame = 0;

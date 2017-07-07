@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="2017.05.02" orientation="orthogonal" renderorder="right-down" width="129" height="72" tilewidth="96" tileheight="96" nextobjectid="41">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="129" height="72" tilewidth="96" tileheight="96" nextobjectid="41">
  <properties>
   <property name="RAG" value="assets/xuxa_sprites.png"/>
   <property name="child" value="assets/teste.png"/>
-  <property name="childnova" value="assets/RGBender_Coroinhas_MadreXuxa_Frente.png"/>
+  <property name="childnova" value="assets/RGBender_Coroinhas_MadreXuxa_Idle.png"/>
   <property name="down" value="assets/down.png"/>
   <property name="downattack" value="assets/downattack.png"/>
   <property name="downleft" value="assets/downleft.png"/>
@@ -21,7 +21,7 @@
   <property name="uprightstun" value="assets/uprightstun.png"/>
   <property name="upstun" value="assets/upstun.png"/>
  </properties>
- <tileset firstgid="1" name="tilecenario" tilewidth="96" tileheight="96" spacing="2" margin="2" tilecount="15" columns="5">
+ <tileset firstgid="1" name="tilecenario" tilewidth="96" tileheight="96" spacing="2" margin="2">
   <image source="tilecenario.png" width="560" height="324"/>
  </tileset>
  <layer name="Tile Layer 1" width="129" height="72">
@@ -42,132 +42,132 @@
  <objectgroup name="Object Layer 1">
   <object id="4" name="Child" type="Childmaiden" x="783" y="280">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="6" name="Child" type="Childmaiden" x="923" y="121">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="9" name="Child" type="Childmaiden" x="653" y="121">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="10" name="Child" type="Childmaiden" x="713" y="221">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="13" name="Child" type="Childmaiden" x="853" y="221">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="14" name="Child" type="Childmaiden" x="532" y="179">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="15" name="Child" type="Childmaiden" x="507" y="145">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="16" name="Child" type="Childmaiden" x="442" y="283">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="17" name="Child" type="Childmaiden" x="441" y="215">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="18" name="Child" type="Childmaiden" x="431" y="178">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="19" name="Child" type="Childmaiden" x="425" y="74">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="20" name="Child" type="Childmaiden" x="479" y="59">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="21" name="Child" type="Childmaiden" x="556" y="60">
    <properties>
-    <property name="colliderHeight" value="34"/>
-    <property name="colliderWidth" value="40"/>
-    <property name="numFrames" value="1"/>
-    <property name="textureHeight" value="42"/>
+    <property name="colliderHeight" value="72"/>
+    <property name="colliderWidth" value="64"/>
+    <property name="numFrames" value="10"/>
+    <property name="textureHeight" value="72"/>
     <property name="textureID" value="childnova"/>
-    <property name="textureWidth" value="42"/>
+    <property name="textureWidth" value="64"/>
    </properties>
   </object>
   <object id="2" name="Player" type="Player" x="737" y="613">
