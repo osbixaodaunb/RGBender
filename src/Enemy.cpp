@@ -5,6 +5,7 @@
 #include "Log.h"
 #include <iostream>
 #include <string>
+#include "WinGameState.h"
 
 using namespace std;
 using namespace engine;
@@ -65,6 +66,6 @@ void Enemy::changeState(){
 		INFO("XUXA IS DEAD!");
 		TextureManager::Instance().clearFromTextureMap("RAG"); //Só pra ter um feedback inicial, mas pode remover isso
 		
-		Game::Instance().getStateMachine()->changeState(new MainMenuState());
+		Game::Instance().getStateMachine()->changeState(new WinGameState());
 	}
 }

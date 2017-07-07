@@ -2,7 +2,7 @@
 <STATES>
 	<MENU>
 		<TEXTURES>
-			<texture filename="assets/wall.jpg" ID="fundo"/>
+			<texture filename="assets/RGBender_TelaAberturaJogo.png" ID="fundo"/>
 			<texture filename="assets/logo.png" ID="logo"/>
 			<texture filename="assets/novojogo.png" ID="playbutton"/>
 			<texture filename="assets/exitButton.png" ID="exitbutton"/>
@@ -11,13 +11,13 @@
 			<object type="AnimatedGraphic" x="0" y="0" width="1366"
 				height="768" textureID="fundo" numFrames="1"
 				animSpeed="1"/>
-			<object type="AnimatedGraphic" x="434" y="100" width="498"
+			<object type="AnimatedGraphic" x="434" y="250" width="498"
 				height="159" textureID="logo" numFrames="1"
 				animSpeed="1"/>
-			<object type="MenuButton" x="483" y="300" width="400"
+			<object type="MenuButton" x="483" y="450" width="400"
 				height="87" textureID="playbutton" numFrames="0"
 				callbackID="1"/>
-			<object type="MenuButton" x="483" y="500" width="400"
+			<object type="MenuButton" x="483" y="550" width="400"
 				height="117" textureID="exitbutton" numFrames="0"
 				callbackID="2"/>
 		</OBJECTS>
@@ -34,7 +34,7 @@
 	</PLAY>
 	<PAUSE>
 		<TEXTURES>
-			<texture filename="assets/wall.jpg" ID="fundo"/>
+			<texture filename="assets/RGBender_TelaAberturaJogo.png" ID="fundo"/>
 			<texture filename="assets/resumeButton.png" ID="resumebutton"/>
 			<texture filename="assets/menuButton.png" ID="mainbutton"/>
 		</TEXTURES>
@@ -50,7 +50,7 @@
 
 	<GAMEOVER>
 		<TEXTURES>
-			<texture filename="assets/wall.jpg" ID="fundo"/>
+			<texture filename="assets/RGBender_TelaAberturaJogo.png" ID="fundo"/>
 			<texture filename="assets/gameover.png" ID="gameovertext"/>
 			<texture filename="assets/menuButton.png" ID="mainbutton"/>
 			<texture filename="assets/restart.png" ID="restartbutton"/>
@@ -64,4 +64,16 @@
 			<object type="MenuButton" x="485" y="450" width="400" height="90" textureID="restartbutton" numFrames="0" callbackID="2"/>
 		</OBJECTS>
 	</GAMEOVER>
+	<WIN>
+		<TEXTURES>
+			<texture filename="assets/RGBender_TelaAberturaJogo.png" ID="fundo"/>
+			<texture filename="assets/menuButton.png" ID="mainbutton"/>
+		</TEXTURES>
+		<OBJECTS>
+			<object type="AnimatedGraphic" x="0" y="0" width="1366"
+				height="768" textureID="fundo" numFrames="1"
+				animSpeed="1"/>
+			<object type="MenuButton" x="483" y="380" width="400" height="58" textureID="mainbutton" numFrames="0" callbackID="1"/>
+		</OBJECTS>
+	</WIN>
 </STATES>
