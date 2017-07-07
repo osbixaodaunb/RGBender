@@ -8,6 +8,8 @@
 using namespace std;
 using namespace engine;
 
+Vector2D posToRound(630, 210);
+
 Childmaiden::Childmaiden(){
 	isVisible = true;
 	sinalx = 1;
@@ -28,7 +30,7 @@ engine::Vector2D rotateVec(engine::Vector2D vec, double ang){
 
 void Childmaiden::update(){
 	m_currentFrame = int(((SDL_GetTicks() / 300) % m_numFrames));
-	m_position = Vector2D(685, 187) + rotateVec(startPoint,
+	m_position = posToRound + rotateVec(startPoint,
 				(engine::Timer::Instance().step() - originTime) / 1000.0);
 	
 }
@@ -40,12 +42,12 @@ void Childmaiden::load(const engine::LoaderParams *pParams){
 	for(int i = 0; i < v.size(); i++){
 		if(this == dynamic_cast<Childmaiden*>(v[i])){
 			Vector2D vec(0,130);
-			m_position = Vector2D(685,187) + rotateVec(vec, 72 * i);
+			m_position = posToRound + rotateVec(vec, 72 * i);
 			cout << v.size() << endl;
 		}
 	}
 
-	startPoint = m_position - Vector2D(685, 187);
+	startPoint = m_position - posToRound;
 }
 
 void Childmaiden::draw(){

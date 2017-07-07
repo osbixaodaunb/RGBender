@@ -34,7 +34,7 @@ XuxaBoss::XuxaBoss() : Enemy(){
 	TextureManager::Instance().load("assets/xuxa_sprites2.png", "xuxa2", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/xuxa_sprites3.png", "xuxa3", Game::Instance().getRenderer());
 	TextureManager::Instance().load("assets/xuxa_sprites4.png", "xuxa4", Game::Instance().getRenderer());
-	TextureManager::Instance().loadText("Madre Xuxa", "assets/fonts/Lato-Regular.ttf", "madreXuxa", {255,255,255}, 1000, Game::Instance().getRenderer());
+	TextureManager::Instance().loadText("Madre Xuxa", "assets/fonts/Lato-Regular.ttf", "madreXuxa", {255,255,10}, 1000, Game::Instance().getRenderer());
 
 	m_states.push_back(&XuxaBoss::quarterLife);
 	m_states.push_back(&XuxaBoss::halfLife);

@@ -180,7 +180,7 @@
     <property name="textureWidth" value="79"/>
    </properties>
   </object>
-  <object id="1" name="Xuxa" type="XuxaBoss" x="603" y="80">
+  <object id="1" name="Xuxa" type="XuxaBoss" x="603" y="110">
    <properties>
     <property name="colliderHeight" value="80"/>
     <property name="colliderWidth" value="115"/>

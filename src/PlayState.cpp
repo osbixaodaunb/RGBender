@@ -50,9 +50,9 @@ void PlayState::render(){
 		pLevel->render();
 	}
 
-	TextureManager::Instance().draw("emptyhealthboss", 500, m_boss->getPosition().getY()+40, 424, 60, Game::Instance().getRenderer());
-	TextureManager::Instance().draw("healthboss", 500+11, m_boss->getPosition().getY()+57, m_boss->getHealth()-20,28, Game::Instance().getRenderer());
-	TextureManager::Instance().draw("madreXuxa", 630, m_boss->getPosition().getY(), 180, 60, Game::Instance().getRenderer());
+	TextureManager::Instance().draw("emptyhealthboss", 500, m_boss->getPosition().getY()-77, 424, 60, Game::Instance().getRenderer());
+	TextureManager::Instance().draw("healthboss", 500+11, m_boss->getPosition().getY()-60, m_boss->getHealth()-20,28, Game::Instance().getRenderer());
+	TextureManager::Instance().draw("madreXuxa", 620, m_boss->getPosition().getY() - 120, 180, 60, Game::Instance().getRenderer());
 	GameState::render();
 }
 
@@ -61,7 +61,7 @@ bool PlayState::onEnter(){
 	//StateParser stateParser;
 	//stateParser.parseState("test.xml", s_playID, &m_gameObjects, &m_textureIDList);
 	Game::Instance().setScore(0);
-	TextureManager::Instance().loadText(to_string(Game::Instance().getScore()), "assets/fonts/Lato-Regular.ttf", "score", {255,255,255}, 50, Game::Instance().getRenderer());
+	TextureManager::Instance().loadText(to_string(Game::Instance().getScore()), "assets/fonts/Lato-Regular.ttf", "score", {0,0,0}, 50, Game::Instance().getRenderer());
 	AudioManager::Instance().playMusic("assets/sounds/xuxabeat.mp3");
 	LevelParser levelParser;
 	pLevel = levelParser.parseLevel("assets/mapadoidao.tmx");
