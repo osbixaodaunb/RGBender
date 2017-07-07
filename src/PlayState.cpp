@@ -51,6 +51,9 @@ void PlayState::render(){
 	if(pLevel != NULL){
 		pLevel->render();
 	}
+
+	TextureManager::Instance().draw("emptyhealthboss", m_boss->getPosition().getX() + 300, m_boss->getPosition().getY()+20, 106, 60, Game::Instance().getRenderer());
+	TextureManager::Instance().draw("healthboss", m_boss->getPosition().getX()+3+300, m_boss->getPosition().getY()+37, m_boss->getHealth()/10,28, Game::Instance().getRenderer());
 	
 	GameState::render();
 }
