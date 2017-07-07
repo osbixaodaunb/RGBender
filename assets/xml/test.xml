@@ -54,7 +54,7 @@
 
 	<GAMEOVER>
 		<TEXTURES>
-			<texture filename="assets/RGBender_TelaAberturaJogo.png" ID="fundo"/>
+			<texture filename="assets/RGBender_TelaDerrota.png" ID="fundo"/>
 			<texture filename="assets/gameover.png" ID="gameovertext"/>
 			<texture filename="assets/RGBender_IdVisual_FundoMenuPausa_MenuGameOver.png" ID="fundopreto"/>
 			<texture filename="assets/menuButton.png" ID="mainbutton"/>
@@ -74,7 +74,7 @@
 	</GAMEOVER>
 	<WIN>
 		<TEXTURES>
-			<texture filename="assets/RGBender_TelaAberturaJogo.png" ID="fundo"/>
+			<texture filename="assets/RGBender_TelaVitoria.png" ID="fundo"/>
 			<texture filename="assets/menuButton.png" ID="mainbutton"/>
 		</TEXTURES>
 		<OBJECTS>
