@@ -18,7 +18,7 @@
 				height="87" textureID="playbutton" numFrames="0"
 				callbackID="1"/>
 			<object type="MenuButton" x="483" y="550" width="400"
-				height="117" textureID="exitbutton" numFrames="0"
+				height="79" textureID="exitbutton" numFrames="0"
 				callbackID="2"/>
 		</OBJECTS>
 	</MENU>
@@ -64,12 +64,11 @@
 			<object type="AnimatedGraphic" x="0" y="0" width="1366"
 				height="768" textureID="fundo" numFrames="1"
 				animSpeed="1"/>
-			<object type="AnimatedGraphic" x="588" y="200" width="190" height="30" textureID="gameovertext" numFrames="2" animSpeed="2"/>
-			<object type="AnimatedGraphic" x="458" y="250" width="450"
+			<object type="AnimatedGraphic" x="458" y="355" width="430"
 				height="250" textureID="fundopreto" numFrames="1"
 				animSpeed="1"/>
-			<object type="MenuButton" x="483" y="300" width="400" height="58" textureID="mainbutton" numFrames="0" callbackID="1"/>
-			<object type="MenuButton" x="485" y="380" width="400" height="90" textureID="restartbutton" numFrames="0" callbackID="2"/>
+			<object type="MenuButton" x="483" y="400" width="400" height="58" textureID="mainbutton" numFrames="0" callbackID="1"/>
+			<object type="MenuButton" x="485" y="480" width="400" height="90" textureID="restartbutton" numFrames="0" callbackID="2"/>
 		</OBJECTS>
 	</GAMEOVER>
 	<WIN>
@@ -81,7 +80,7 @@
 			<object type="AnimatedGraphic" x="0" y="0" width="1366"
 				height="768" textureID="fundo" numFrames="1"
 				animSpeed="1"/>
-			<object type="MenuButton" x="483" y="380" width="400" height="58" textureID="mainbutton" numFrames="0" callbackID="1"/>
+			<object type="MenuButton" x="483" y="580" width="400" height="58" textureID="mainbutton" numFrames="0" callbackID="1"/>
 		</OBJECTS>
 	</WIN>
 </STATES>
