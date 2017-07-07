@@ -50,9 +50,9 @@ void PlayState::render(){
 		pLevel->render();
 	}
 
-	TextureManager::Instance().draw("emptyhealthboss", m_boss->getPosition().getX() + 300, m_boss->getPosition().getY()+20, 106, 60, Game::Instance().getRenderer());
-	TextureManager::Instance().draw("healthboss", m_boss->getPosition().getX()+3+300, m_boss->getPosition().getY()+37, m_boss->getHealth()/10,28, Game::Instance().getRenderer());
-	
+	TextureManager::Instance().draw("emptyhealthboss", 500, m_boss->getPosition().getY()+40, 424, 60, Game::Instance().getRenderer());
+	TextureManager::Instance().draw("healthboss", 500+11, m_boss->getPosition().getY()+57, m_boss->getHealth()-20,28, Game::Instance().getRenderer());
+	TextureManager::Instance().draw("madreXuxa", 630, m_boss->getPosition().getY(), 180, 60, Game::Instance().getRenderer());
 	GameState::render();
 }
 

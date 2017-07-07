@@ -81,7 +81,7 @@ void ChairBullet::checkCollision(){
 			INFO("PLAYER LOST THE GAME");
 			if(!m_player->getShieldActive()){
 				AudioManager::Instance().playChunk("assets/sounds/chair.wav");
-				m_player->setLife((m_player->getLife()) - 30);
+				m_player->setLife((m_player->getLife()) - 1);
 				m_player->setPlayerMoves(false);
 				m_player->setStunTime(Timer::Instance().step());
 			}

@@ -105,7 +105,7 @@ void BossBullet::checkCollision(){
 			//INFO("Bullet collided");
 			//INFO("PLAYER LOST THE GAME");
 			if(!m_player->getShieldActive())
-				m_player->setLife((m_player->getLife()) - 15);
+				m_player->setLife((m_player->getLife()) - 1);
 			else if(m_player->getShieldActive())
 				m_player->setShieldHits();
 			//Game::Instance().getStateMachine()->changeState(new GameOverState());

@@ -24,6 +24,7 @@ Bullet::Bullet(Enemy *p_boss) : SDLGameObject(){
 
 	timeToLive = 1000;
 	m_active = true;
+	m_venemous = false;
 }
 
 void Bullet::load(const LoaderParams* pParams){
@@ -62,6 +63,7 @@ void Bullet::update(){
 	m_currentFrame = int(((SDL_GetTicks() / (300)) % 4));
 	if(Timer::Instance().step() >= bornTime + timeToLive){
 		m_active = false;
+		m_venemous = false;
 		Game::Instance().getStateMachine()->currentState()->removeGameObject(this);
 	}
 	checkCollision();

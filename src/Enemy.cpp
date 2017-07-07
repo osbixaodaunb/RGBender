@@ -11,7 +11,7 @@ using namespace std;
 using namespace engine;
 
 Enemy::Enemy() : SDLGameObject(){
-	m_totalHealth = 1000;
+	m_totalHealth = 425;
 	m_actualHealth = m_totalHealth;
 }
 
