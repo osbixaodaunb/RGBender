@@ -61,7 +61,7 @@ bool PlayState::onEnter(){
 	//stateParser.parseState("test.xml", s_playID, &m_gameObjects, &m_textureIDList);
 	Game::Instance().setScore(0);
 	TextureManager::Instance().loadText(to_string(Game::Instance().getScore()), "assets/fonts/Lato-Regular.ttf", "score", {255,255,255}, 50, Game::Instance().getRenderer());
-	AudioManager::Instance().playMusic("assets/sounds/xuxatheme.mp3");
+	AudioManager::Instance().playMusic("assets/sounds/xuxabeat.mp3");
 	LevelParser levelParser;
 	pLevel = levelParser.parseLevel("assets/mapadoidao.tmx");
 	m_player = pLevel->getPlayer();
