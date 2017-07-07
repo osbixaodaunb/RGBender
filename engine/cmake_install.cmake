@@ -1,4 +1,4 @@
-# Install script for directory: /home/harrison/Documents/UnB/IJE/RGBender/engine
+# Install script for directory: /home/felipe/Documents/C-C++/SDL/livro/engine
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

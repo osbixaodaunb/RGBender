@@ -222,29 +222,19 @@ void Player::move(){
 
 	if(InputHandler::Instance().isKeyDown("w")){
 		movement += Vector2D(0, -1);
-		if(getPosition().getY() <= 3)
-			movement += Vector2D(0, +1);
-
 	}
 
 	if(InputHandler::Instance().isKeyDown("s")){
 		movement += Vector2D(0, +1);
-		if(getPosition().getY() + (getHeight()) >= 705)
-			movement += Vector2D(0, -1);
 	}
 
 	if(InputHandler::Instance().isKeyDown("d")){
 		movement += Vector2D(1, 0);
-		if(getPosition().getX() + getWidth() >= 1382)
-			movement += Vector2D(-1 , 0);
 	}
 
 
 	if(InputHandler::Instance().isKeyDown("a")){
 		movement += Vector2D(-1, 0);
-
-		if(getPosition().getX() <= -17)
-			movement += Vector2D(1, 0);
 	}
 	movement = movement.norm();
 	if(!m_isDashing){
@@ -252,6 +242,22 @@ void Player::move(){
 	}
 
 	dash();
+
+	if(getPosition().getY() + getHeight() >= 705){
+		if(m_velocity.getY() > 0)
+			m_velocity.setY(0);
+	} else if(getPosition().getY() <= 3){
+		if(m_velocity.getY() < 0)
+			m_velocity.setY(0);
+	}
+
+	if(getPosition().getX() + getWidth() >= 1382){
+		if(m_velocity.getX() > 0)
+			m_velocity.setX(0);
+	} else if(getPosition().getX() <= -17){
+		if(m_velocity.getX() < 0)
+			m_velocity.setX(0);
+	}
 
 	m_position += m_velocity;
 	if(Physics::Instance().checkCollision(this, m_boss)){
